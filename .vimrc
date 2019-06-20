@@ -1,4 +1,4 @@
-let mapleader = "\\"
+et mapleader = "\\"
 set number relativenumber
 set ruler
 set incsearch
@@ -13,7 +13,11 @@ set softtabstop=4   " Sets the number of columns for a TAB.
 filetype indent on
 set cursorline
 set showcmd
+"colorscheme Mogao
+"syntax on
 "set autoindent
+
+
 " for powerline setup in vim
 
 set  rtp+=/usr/local/lib/python3.6/dist-packages/powerline/bindings/vim/
@@ -22,6 +26,8 @@ set t_Co=256
 nnoremap <silent> <leader>l :nohl<CR><leader>l                  "<leader>l redraws the screen and removes any search highlighting.
 :hi CursorLine   cterm=bold ctermbg=darkred        "hilights current line
 set cursorcolumn
+set undofile " Maintain undo history between sessions
+set undodir=~/.vim/undodir
 
 " copy paste from/to + clipboard simplified
 
@@ -49,6 +55,8 @@ nmap <BS> i<BS><ESC>l
 nnoremap <leader>wv :source $MYVIMRC<CR>        
 nnoremap <leader>w :w<cr> 
 inoremap <leader>w <esc>:w<cr>
+
+" tabs to spaces and spaces to tabs
 nnoremap <leader>t :set expandtab!<cr> <bar> w<cr>
 inoremap <leader>t <esc>:set expandtab!<cr> <bar> w<cr>
 nnoremap <leader>nt :set expandtab<cr> <bar> w<cr>
