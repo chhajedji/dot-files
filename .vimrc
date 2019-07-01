@@ -1,4 +1,4 @@
-et mapleader = "\\"
+let mapleader = "\\"
 set number relativenumber
 set ruler
 set incsearch
