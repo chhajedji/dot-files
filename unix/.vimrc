@@ -14,7 +14,7 @@ filetype indent on
 set cursorline
 set showcmd
 "colorscheme Mogao
-syntax on
+syntax enable
 set autoindent
 
 
@@ -27,7 +27,7 @@ nnoremap <silent> <leader>l :nohl<CR><leader>l                  "<leader>l redra
 
 " hilights current line
 :hi CursorLine   cterm=bold "ctermbg=black        
-"set cursorcolumn
+set cursorcolumn
 "set undofile " Maintain undo history between sessions
 "set undodir=~/.vim/undodir
 
@@ -48,7 +48,7 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 map <C-j> <C-w>j
 
-" to map Enter, backpsace with new line in normal mode
+" to map Enter, backspace with new line in normal mode
 
 nmap <CR> o<Esc>
 nmap <BS> i<BS><ESC>l
@@ -86,7 +86,10 @@ set backspace=indent,eol,start
 " setup for pathogen plugin manager
 execute pathogen#infect()
 
+" for showing 2 status line (for lightline plugin)
 set laststatus=2
+" for not showing modes (eg: ----INSERT----) in status line 
+set noshowmode
 
 " for ctags
 set tags=./tags;
