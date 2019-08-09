@@ -29,6 +29,8 @@ set cursorcolumn
 set undofile " Maintain undo history between sessions
 set undodir=~/.vim/undodir
 
+set so=4 "short for set scrolloff=999  also zk/zj won't work in this mode. use ':set so=0' to exit this mode
+
 " copy paste from/to + clipboard simplified
 
 vnoremap <C-c> "+y
