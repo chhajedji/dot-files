@@ -14,8 +14,8 @@ filetype indent on
 set cursorline
 set showcmd
 "colorscheme Mogao
-"syntax on
-"set autoindent
+syntax enable
+set autoindent
 
 
 " for powerline setup in vim
@@ -23,17 +23,21 @@ set showcmd
 set  rtp+=/usr/local/lib/python3.6/dist-packages/powerline/bindings/vim/
 set laststatus=2
 set t_Co=256
-nnoremap <silent> <leader>l :nohl<CR><leader>l                  "<leader>l redraws the screen and removes any search highlighting.
+
+"<leader>l redraws the screen and removes any search highlighting.
+nnoremap <silent> <leader>l :nohl<CR><leader>l                  
+
 :hi CursorLine   cterm=bold ctermbg=darkred        "hilights current line
 set cursorcolumn
-set undofile " Maintain undo history between sessions
-set undodir=~/.vim/undodir
 
-set so=4 "short for set scrolloff=999  also zk/zj won't work in this mode. use ':set so=0' to exit this mode
+" To maintain undo history between sessions
+
+"set undofile
+"set undodir=~/.vim/undodir
 
 " copy paste from/to + clipboard simplified
 
-vnoremap <C-c> "+y
+vmap <C-c> "+y
 map <C-p> "+p
 
 "to set indentation lines
@@ -58,8 +62,28 @@ nnoremap <leader>wv :source $MYVIMRC<CR>
 nnoremap <leader>w :w<cr> 
 inoremap <leader>w <esc>:w<cr>
 
+"setting timeout for esc key as 0
+set timeoutlen=1000 ttimeoutlen=0
+
+" set scrolling with cursor in middle
+set so=4 "short for set scrolloff=999  also zk/zj won't work in this mode. use ':set so=0' to exit this mode
+
+"putting the current line at various places on current screen
+nnoremap zj zb
+nnoremap zk zt
+
+"searching visually selected block with '//'
+vnoremap // y/<C-R>"<CR>
+
 " tabs to spaces and spaces to tabs
 nnoremap <leader>t :set expandtab!<cr> <bar> w<cr>
-inoremap <leader>t <esc>:set expandtab!<cr> <bar> w<cr>
 nnoremap <leader>nt :set expandtab<cr> <bar> w<cr>
-inoremap <leader>nt <esc>:set expandtab<cr> <bar> w<cr>
+
+" for showing 2 status line (for lightline plugin)
+set laststatus=2
+" for not showing modes (eg: ----INSERT----) in status line 
+set noshowmode
+
+" for ctags
+set tags=./tags;
+
