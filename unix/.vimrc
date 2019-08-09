@@ -13,22 +13,19 @@ set softtabstop=4   " Sets the number of columns for a TAB.
 filetype indent on
 set cursorline
 set showcmd
-"colorscheme Mogao
 syntax enable
 set autoindent
 
-
-" for powerline setup in vim
-
-"set  rtp+=/usr/local/lib/python3.6/dist-packages/powerline/bindings/vim/
-"set laststatus=2
-"set t_Co=256
-nnoremap <silent> <leader>l :nohl<CR><leader>l                  "<leader>l redraws the screen and removes any search highlighting.
+"<leader>l redraws the screen and removes any search highlighting.
+nnoremap <silent> <leader>l :nohl<CR><leader>l
 
 " hilights current line
 :hi CursorLine   cterm=bold "ctermbg=black        
 set cursorcolumn
-"set undofile " Maintain undo history between sessions
+
+" To maintain undo history between sessions
+
+"set undofile
 "set undodir=~/.vim/undodir
 
 " copy paste from/to + clipboard simplified
