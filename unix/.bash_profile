@@ -4,6 +4,13 @@
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
 
+# bindings to move 1 word left/right with ctrl+left/right in terminal, just some apple stuff!
+bind '"\e[5C": forward-word'
+bind '"\e[5D": backward-word'
+# bindings to move 1 word left/right with ctrl+left/right in iTerm2, just some apple stuff!
+bind '"\e[1;5C": forward-word'
+bind '"\e[1;5D": backward-word'
+
 # general alias
 
 alias ev="v ~/.vimrc"
@@ -31,7 +38,7 @@ cds() { cd "$@" && ls; }
 # show colors in cscope by changing default editor of cscope to vim
 export CSCOPE_EDITOR=vim
 
-#grep recursively within $IDF_PATH ignoring all binary files, tags  and cscope.out
+#grep recursively within $IDF_PATH ignoring all binary files, tags  and cscope.out. use "-i" for case insensitive search
 gr()
 {
 	grep -r -I --exclude='cscope.out' --exclude='tags' "$1" $IDF_PATH
@@ -58,13 +65,19 @@ alias mc="make -j32 clean"
 alias mf="make -j32 flash"
 
 # to show branch name in prompt string
-parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
+
+# parse_git_branch() {
+#      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+# }
 
 #setting colors and format of directory and username
-#export PS1="\e[40;0;31m[\[\033[36m\]\u \[\033[33;1m\]\w\[\033[m\]\e[0;32m$(parse_git_branch)\e[40;0;31m] \[\033[m\]$ " # dosen't change branch with changing directory
-export PS1="\e[40;0;31m[\[\033[36m\]\u \[\033[33;1m\]\w \[\$txtgrn\]\$git_branch\[\$txtred\]\$git_dirty\[\$txtrst\]\e[40;0;31m] \[\033[m\]$ "
+#export PS1="\e[40;0;31m[\[\033[36m\]\u \[\033[33;1m\]\w\[\033[m\]\e[0;32m$(parse_git_branch)\e[40;0;31m] \[\033[m\]$ " # doesn't change branch with changing directory
+# while changing PS1, for changing colors, do not use `\e....m` format CRLF setting changes due to this. use color format from colors.sh present in git-aware-prompt
+export PS1="\[\$txtred\][\[\033[36m\]\u \[\033[33;1m\]\w \[\$txtgrn\]\$git_branch\[\$txtred\]] \[\033[m\]$ "
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 alias ls='ls -GFh'
+
+
+
+
