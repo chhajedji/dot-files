@@ -30,15 +30,21 @@ alias :q="exit"
 # combined mkdir and cd
 mkcdir() { mkdir "$@" && cd "$@"; }
 
+#default grep without list
+defg() { grep -Ir --exclude="cscope.out" --exclude="tags" "$@"; }
+
+#default grep withlist
+defgl() { grep -Irl --exclude="cscope.out" --exclude="tags" "$@"; }
+
 mtc() { make TEST_COMPONENTS="$1" flash monitor; }
 
 # combined cd and ls
 cds() { cd "$@" && ls; }
 
-# show colors in cscope by changing default editor of cscope to vim
+# change default editor for cscope to vim
 export CSCOPE_EDITOR=vim
 
-#grep recursively within $IDF_PATH ignoring all binary files, tags  and cscope.out. use "-i" for case insensitive search
+# grep recursively within $IDF_PATH ignoring all binary files, tags  and cscope.out. use "-i" for case insensitive search
 gr()
 {
 	grep -r -I --exclude='cscope.out' --exclude='tags' "$1" $IDF_PATH
@@ -50,11 +56,13 @@ export LC_ALL=en_US.UTF-8
 
 # alias for git 
 alias gitgraph="git log --graph --decorate --oneline --all"
-alias gb="git branch"
-alias gl="clear && git log --oneline"
-alias gs="git status"
-alias gc="git checkout"
-alias gsub="git submodule update --init --recursive"
+alias gitb="git branch"
+alias gitl="clear && git log --oneline"
+alias gits="git status"
+alias gitc="git checkout"
+alias gitsub="git submodule update --init --recursive"
+alias gitdinit="git submodule deinit --all -f"
+alias gitd="git diff"
 
 
 #alias for esp
@@ -63,21 +71,29 @@ alias mmc="make menuconfig -j32"
 alias mfm="make -j32 flash monitor"
 alias mc="make -j32 clean"
 alias mf="make -j32 flash"
+alias mm="make -j32 monitor"
+alias mef="make -j32 erase_flash"
+alias efuse="python /Users/chinmayc/esp/esp-idf/components/esptool_py/esptool/espefuse.py --port /dev/cu.SLAB_USBtoUART"
 
-# to show branch name in prompt string
 
-# parse_git_branch() {
-#      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-# }
+# modifying prompt (PS1)
+# while changing PS1, for changing colors, do not use `\e....m` format. CRLF setting changes due to this. use color format from colors.sh present in git-aware-prompt
 
-#setting colors and format of directory and username
-#export PS1="\e[40;0;31m[\[\033[36m\]\u \[\033[33;1m\]\w\[\033[m\]\e[0;32m$(parse_git_branch)\e[40;0;31m] \[\033[m\]$ " # doesn't change branch with changing directory
-# while changing PS1, for changing colors, do not use `\e....m` format CRLF setting changes due to this. use color format from colors.sh present in git-aware-prompt
-export PS1="\[\$txtred\][\[\033[36m\]\u \[\033[33;1m\]\w \[\$txtgrn\]\$git_branch\[\$txtred\]] \[\033[m\]$ "
+# sample: shows git branch, user, current working directory with colors in background
+# export PS1="\[\033[0m\]\u \[\033[1;48;5;45;38;5;0m\] \w/ \[\033[1;48;5;227;38;5;0m\](\$(git branch 2>/dev/null|grep '^*'|colrm 1 2))$ \[\033[0m\] "
+
+# using `colors.sh` and `prompt.sh` from `git-aware-prompt` in `~/.bash/`
+# export PS1="\[\$bldred\][\[\$bldcyn\]\u \[\$bldylw\]\w \[\$bldgrn\]\$git_branch\[\$bldred\]]\[\$txtrst\]$ "
+
+# reference: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
+export PS1="\[\033[1;31m\][\[\033[1;36m\]\u \[\\033[1;33m\]\w \[\\033[1;32m\]\$git_branch\[\\033[1;31m\]]\[\\033[0m\]$ "
+
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 alias ls='ls -GFh'
 
+# TERM=xterm; export TERM
+export TERM
 
-
-
+# up arrow will skip all identical commands to current one
+HISTCONTROL=$HISTCONTROL:ignoredups
