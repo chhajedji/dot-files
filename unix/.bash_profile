@@ -25,6 +25,7 @@ alias v="vim +"
 alias cpwd="pwd | pbcopy"
 alias espPort="echo /dev/cu.SLAB_USBtoUART | pbcopy && echo /dev/cu.SLAB_USBtoUART copied to clipboard"
 alias :q="exit"
+alias pforce="git push --force-with-lease"    # force push with lease
 
 # functions
 
@@ -34,11 +35,15 @@ mkcdir() { mkdir "$@" && cd "$@"; }
 # modified gid diff with `d`
 d() { git diff --color=always "$@" | less -r; }
 
+
 #default grep without list
-defg() { grep -Ir --include=*.c --include=.h "$@"; }
+defg() { grep -Inr --include=*.c --include=.h "$@"; }
+
+# azure monitor events
+azm() { az iot hub monitor-events -n "$1" --login "$2"; }
 
 #default grep withlist
-defgl() { grep -Irl --exclude="cscope.out" --exclude="tags" "$@"; }
+defgl() { grep -Irln --exclude="cscope.out" --exclude="tags" "$@"; }
 
 mtc() { make TEST_COMPONENTS="$1" flash monitor; }
 
@@ -102,8 +107,14 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 alias ls='ls -GFh'
 
+# enable vi key bindings in shell
+# set -o vi
+
 TERM=xterm-256color
 export TERM
+
+# opens github/gitlab etc page of current repo with current commit
+export PATH=/Users/chinmayc/.bash/git-open:$PATH
 
 # up arrow will skip all identical commands to current one
 HISTCONTROL=$HISTCONTROL:ignoredups

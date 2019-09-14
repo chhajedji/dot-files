@@ -1,0 +1,3 @@
+[submodule "unix/.bash/git-open"]
+	path = unix/.bash/git-open
+	url = /Users/chinmayc/.bash/git-open
