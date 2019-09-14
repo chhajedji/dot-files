@@ -1,0 +1,6 @@
+[submodule "unix/.bash/git-open"]
+	path = unix/.bash/git-open
+	url = https://github.com/paulirish/git-open
+[submodule "unix/.vim/Vundle.vim"]
+	path = unix/.vim/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim
