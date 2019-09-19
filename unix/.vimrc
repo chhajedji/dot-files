@@ -320,3 +320,6 @@ set cscopetag
 " this will search cscope database first, then search tags database.
 " setting this to 1 will search tags first then cscope
 set csto=1
+
+" set syntax for every `.espconfig` file
+au BufNewFile,BufRead .espconfig call dist#ft#SetFileTypeSH("bash")
