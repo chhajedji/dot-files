@@ -38,7 +38,7 @@ set nostartofline
 " dialogue asking if you wish to save changed files.
 set confirm
 
-" Enable use of the mouse for all modes
+" Enable use of the mouse for all modes to disable this, use `set mouse-=a`
 set mouse=a
 
 " Use visual bell instead of beeping when doing something wrong
@@ -134,8 +134,10 @@ noremap <C-j> <C-w>j
 " Command 'F' (`:F`) will show full file path
 command F echo expand('%:p')
 
-" Command PI to install vim plugins with Vundle
+" Command `PI` will install vim plugins with Vundle
 command PI PluginInstall
+
+command EV e ~/.vimrc
 
 " to map Enter, backspace with new line in normal mode
 
@@ -320,3 +322,6 @@ set cscopetag
 " this will search cscope database first, then search tags database.
 " setting this to 1 will search tags first then cscope
 set csto=1
+
+" set syntax for every `.espconfig` file
+au BufNewFile,BufRead .espconfig call dist#ft#SetFileTypeSH("bash")
