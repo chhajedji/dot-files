@@ -26,6 +26,7 @@ alias v="vim +"
 alias cpwd="pwd | pbcopy"
 alias :q="exit"
 alias pforce="git push --force-with-lease"    # force push with lease
+alias sz="du -sh ."
 
 # functions
 
