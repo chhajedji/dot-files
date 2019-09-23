@@ -39,7 +39,7 @@ set nostartofline
 set confirm
 
 " Enable use of the mouse for all modes to disable this, use `set mouse-=a`
-set mouse=a
+" set mouse=a
 
 " Use visual bell instead of beeping when doing something wrong
 " set visualbell
@@ -85,7 +85,8 @@ set list
 
 " setting line characters
 set showbreak=↪\ 
-set listchars=tab:→\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
+" set listchars=tab:→\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
+set listchars=tab:\┆\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
 
 " :help "norestorescreen"
 " For non-Windows Vim: You can set or reset the 't_ti' and 't_te'
