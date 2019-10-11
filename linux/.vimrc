@@ -177,9 +177,11 @@ nnoremap <leader>nt :set expandtab<cr> <bar> w<cr>
 nnoremap zj zb
 nnoremap zk zt
 
-" go to vim next tab with gl and previous with gL
+" Go to vim next tab with `gl` and previous with `gh`. Note that default
+" behaviour of `gh` is to go into `Select-mode`. As this is not used by me,
+" currently, hence mapping it!
 nnoremap gl gt
-nnoremap gL gT
+nnoremap gh gT
 
 "searching visually selected block with '//'
 vnoremap // y/<C-R>"<CR>
@@ -187,8 +189,9 @@ vnoremap // y/<C-R>"<CR>
 " Cycle through grep results
 nnoremap <silent> <leader>f :cn<CR>zv
 nnoremap <silent> <leader>b :cp<CR>zv
+" nnoremap <leader>co :copen<CR>
 
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ plugins ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ plugins ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 " setup for Vundle Plugin manager
 "
@@ -203,7 +206,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 " Plugin 'tpope/vim-fugitive'
-Plugin 'erig0/cscope_dynamic'
+" Plugin 'erig0/cscope_dynamic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
 Plugin 'gnattishness/cscope_maps'

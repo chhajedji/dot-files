@@ -33,8 +33,17 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec $term
 
-# kill focused window
-bindsym $mod+q kill
+# kill focused window with confirmation
+set $close "Close the window? (y/n)"
+
+mode $close {
+    bindsym y kill, mode default
+    bindsym Return kill, mode default
+
+    bindsym n mode default
+    bindsym Escape mode default
+}
+bindsym $mod+q mode $close
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
@@ -104,7 +113,7 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws0 "10"
+set $ws0 "10: "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -246,7 +255,8 @@ exec XDG_CURRENT_DESKTOP=KDE
 exec redshift -O 4500
 
 # wallpaper
-exec_always feh --bg-scale ~/Pictures/Wallpapers/wallpaper3.jpg
+# exec_always feh --bg-scale ~/Pictures/Wallpapers/wallpaper3.jpg
+exec_always feh --randomize --bg-scale ~/Pictures/Wallpapers/wallpapers/Landscapes/
 
 #interactive screenshot by pressing printscreen
 bindsym Print exec gnome-screenshot -i
@@ -262,7 +272,7 @@ hide_edge_borders both
 # turns off the name of the window
 for_window [class=".*"] border pixel 5
 # Set inner/outer gaps
-gaps inner 15 
+gaps inner 15
 gaps outer 15
 
 # Activate smart borders (always). No borders for single window but borders for
@@ -280,4 +290,4 @@ bindsym $mod+Shift+x		gaps inner current minus 5
 bindsym $mod+Shift+t		gaps inner current set 15; gaps outer current set 15
 
 # No gaps (almost fullscreen)
-bindsym $mod+f		gaps inner current set 0; gaps outer current set 0
+bindsym $mod+f		gaps inner current set 0; gaps outer current set 1
