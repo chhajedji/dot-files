@@ -164,10 +164,13 @@ meaning() { dict "$@" | less; }
 mkcdir() { mkdir "$@" && cd "$@"; }
 
 # tree will open in less
-tr() { tree -C "$@" | less -r; }
+tr() { tree -C "$@" | less -R; }
 
-# modified gid diff with `d`
-d() { git diff --color=always "$@" | less -r; }
+# modified git diff
+gd() { git diff --color=always "$@" | less -R; }
+
+# Similarly modified git log
+gl() { git log --color=always "$@" | less -R; }
 
 #default grep .c and .h files without list
 cgrep() { grep --color=auto -Inr --include=*.c --include=.h "$@"; }
@@ -206,7 +209,10 @@ alias gcm="git checkout master"
 # export PS1="\[\$bldred\][\[\$bldcyn\]\u \[\$bldylw\]\w\[\$bldred\]] \[\$bldgrn\]\$git_branch\[\$txtrst\]$ "
 
 # reference: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
-export PS1="\[\033[1;31m\][\[\033[1;36m\]\u \[\033[1;33m\]\w\[\033[1;31m\]] \[\033[1;32m\]\$git_branch\[\033[1;36m\]$\[\033[0m\] "
+# With username!
+# export PS1="\[\033[1;31m\][\[\033[1;36m\]\u \[\033[1;33m\]\w\[\033[1;31m\]] \[\033[1;32m\]\$git_branch\[\033[1;36m\]$\[\033[0m\] "
+
+export PS1="\[\033[1;31m\][\[\033[1;33m\]\w\[\033[1;31m\]] \[\033[1;32m\]\$git_branch\[\033[1;36m\]$\[\033[0m\] "
 
 # enable vi key bindings in shell
 # set -o vi
@@ -228,7 +234,7 @@ if [ $(basename "/"$(ps -f -p $(cat /proc/$(echo $$)/stat | cut -d \  -f 4) | ta
   if [ -e /dev/shm/$USER-yakuake-cwd ]; then
     cd "$(cat /dev/shm/$USER-yakuake-cwd)"
   fi
-# on each stroke of the return key, save cwd in a shared memory
+# on each stroke of the return key, save pwd in a shared memory
   export PS1=$PS1'$(pwd > /dev/shm/$USER-yakuake-cwd)'
 fi
 
