@@ -18,6 +18,7 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
+export HISTTIMEFORMAT="%d-%m  %T    "
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -79,13 +80,13 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+    alias grep='grep --color=auto --exclude=cscope* --exclude=tags'
+    alias fgrep='fgrep --color=auto --exclude=cscope* --exclude=tags'
+    alias egrep='egrep --color=auto --exclude=cscope* --exclude=tags'
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -118,81 +119,14 @@ fi
 
 
 . ~/.espconfig
+. ~/.alias
 
 # next 2 lines for git to auto change branch when switched to new directory
 source "/home/chinmay/.bash/git-aware-prompt/colors.sh"
 source "/home/chinmay/.bash/git-aware-prompt/prompt.sh"
 
-
-
-# general alias
-
-alias ev="v ~/.vimrc"
-alias ebp="v ~/.bashrc"
-alias ep="vim ~/.profile"
-alias eec="vim ~/.espconfig"
-alias SB="source ~/.profile"
-alias p2="python"
-alias p3="python3"
-alias v="vim +"
-alias make="make -j32"
-# alias make="colormake"       # `sudo apt install colormake` if not installed. NOTE: menuconfig was not navigatable with colormake
-alias :q="exit"
-alias pforce="git push --force-with-lease"    # force push with lease
-alias sz="du -sh ."
-alias eic="v ~/.config/i3/config"
-alias eib="v ~/.config/i3/i3blocks.conf"
-alias sdn="shutdown now"
-alias update="sudo apt update"
-alias upgrade="sudo apt upgrade"
-alias clean="sudo apt clean"
-alias autoclean="sudo apt autoclean"
-alias autoremove="sudo apt autoremove"
-alias copy='xclip -sel c'
-alias up-to-date="sudo apt update; sudo apt upgrade; sudo apt autoremove; sudo apt autoclean; sudo apt clean; exit"
-alias te="xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"Device Enabled\" 1"
-alias td="xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"Device Enabled\" 0"
-alias me="xinput set-prop \"PixArt Lenovo USB Optical Mouse\" \"Device Enabled\" 1"
-alias md="xinput set-prop \"PixArt Lenovo USB Optical Mouse\" \"Device Enabled\" 0"
-
-# functions
-
-# `dict` will always open in less
-meaning() { dict "$@" | less; }
-
-# combined mkdir and cd
-mkcdir() { mkdir "$@" && cd "$@"; }
-
-# tree will open in less
-tr() { tree -C "$@" | less -R; }
-
-# modified git diff
-gd() { git diff --color=always "$@" | less -R; }
-
-# Similarly modified git log
-gl() { git log --color=always "$@" | less -R; }
-
-#default grep .c and .h files without list
-cgrep() { grep --color=auto -Inr --include=*.c --include=.h "$@"; }
-
-#default grep withlist
-cgrepl() { grep --color=auto -Irln --exclude="cscope.out" --exclude="tags" "$@"; }
-
-# combined cd and ls
-cds() { cd "$@" && ls -CF; }
-
 # change default editor for cscope to vim
 export CSCOPE_EDITOR=vim
-
-# alias for git 
-alias gitgraph="git log --graph --decorate --oneline --all"
-alias gitb="git branch"
-alias gitl="clear && git log --oneline"
-alias s="git status"
-alias gitc="git checkout"
-alias sub="git submodule update --init --recursive"
-alias dinit="git submodule deinit --all -f"
-alias gcm="git checkout master"
 
 # # save pwd in $PROMPT_COMMAND and /tmp/whereami
 # export PROMPT_COMMAND="pwd > /tmp/whereami"
@@ -200,44 +134,23 @@ alias gcm="git checkout master"
 # cd $(cat /tmp/whereami)
 
 # modifying prompt (PS1)
-# while changing PS1, for changing colors, do not use `\e....m` format. CRLF setting changes due to this. use color format from colors.sh present in git-aware-prompt
+
+# While changing PS1, for changing colors, do not use `\e....m` format (Tested
+# for MacOS, not Linux). CRLF setting changes due to this. Use other formatting
+# as used below.
 
 # sample: shows git branch, user, current working directory with colors in background
 # export PS1="\[\033[0m\]Chinmay \[\033[1;48;5;45;38;5;0m\] \w/ \[\033[1;48;5;227;38;5;0m\](\$(git branch 2>/dev/null|grep '^*'|colrm 1 2))$ \[\033[0m\] "
 
-# using `colors.sh` and `prompt.sh` from `git-aware-prompt` in `~/.bash/`
+# using `colors.sh` and `prompt.sh` from `~/.bash/git-aware-prompt/`
 # export PS1="\[\$bldred\][\[\$bldcyn\]\u \[\$bldylw\]\w\[\$bldred\]] \[\$bldgrn\]\$git_branch\[\$txtrst\]$ "
 
-# reference: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
-# With username!
+# reference for color: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
+
+# With username
 # export PS1="\[\033[1;31m\][\[\033[1;36m\]\u \[\033[1;33m\]\w\[\033[1;31m\]] \[\033[1;32m\]\$git_branch\[\033[1;36m\]$\[\033[0m\] "
 
-export PS1="\[\033[1;31m\][\[\033[1;33m\]\w\[\033[1;31m\]] \[\033[1;32m\]\$git_branch\[\033[1;36m\]$\[\033[0m\] "
+export PS1="\[\033[1;31m\][\[\033[1;33m\]\w \[\033[1;32m\]\$git_branch\[\033[1;31m\]]\[\033[0m\] $ "
 
 # enable vi key bindings in shell
 # set -o vi
-
-# opens github/gitlab etc page of current repo with current commit
-export PATH=/home/chinmay/.bash/git-open:$PATH
-
-
-# xrandr | grep 'HDMI-2 connected' && xrandr --output HDMI-2 --primary --mode 1920x1080 --pos 1368x0 --rotate normal --output HDMI-1 --off --output DP-1 --off --output eDP-1 --mode 1368x768 --pos 0x172 --rotate normal --output DP-2 --off
-
-
-################################## test ##################################
-
-
-# source: https://acidbourbon.wordpress.com/2016/12/03/a-quick-and-dirty-fix-for-yakuakes-open-new-tab-in-same-directory-issue/
-
-if [ $(basename "/"$(ps -f -p $(cat /proc/$(echo $$)/stat | cut -d \  -f 4) | tail -1 | sed 's/^.* //')) == "yakuake" ]; then
-# go to last active cwd
-  if [ -e /dev/shm/$USER-yakuake-cwd ]; then
-    cd "$(cat /dev/shm/$USER-yakuake-cwd)"
-  fi
-# on each stroke of the return key, save pwd in a shared memory
-  export PS1=$PS1'$(pwd > /dev/shm/$USER-yakuake-cwd)'
-fi
-
-# dolphin will not look ugly!
-export XDG_CURRENT_DESKTOP=KDE
-export TERMINAL="konsole"

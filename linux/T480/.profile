@@ -25,3 +25,15 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+export TERMINAL="x-terminal-emulator"
+
+# dolphin, system settings and other KDE applications will not look ugly!
+export XDG_CURRENT_DESKTOP=KDE
+
+# Feature under test. Anything related to fonts/language crashes, remove this
+# line or replace by
+#           export LC_ALL=en_IN
+export LC_ALL=en_IN.UTF-8
+
+export PATH="$HOME/.config/i3/scripts:$PATH"

@@ -13,8 +13,11 @@ set incsearch
 set hlsearch
 set autoindent
 
-" The width of a TAB is set to 4.  Still it is a \t. It is just that Vim will interpret it to be having a width of 4.
-set tabstop=4       
+" The width of a TAB is set to 4.  Still it is a \t. It is just that Vim will
+" interpret it to be having a width of 4. While using tabs, use `tabstop` and
+" not `softtabstop` (leave it unset). While using spaces instead of tabs, use
+" `softtabstop` and not `tabstop`(unset).
+" set tabstop=4
 
 " Indents with '>' will have a width of 4.
 set shiftwidth=4
@@ -24,6 +27,14 @@ set softtabstop=4
 
 " no tabs, but spaces!
 set expandtab
+
+" Indentation with mixed tabs and spaces.
+" These settings will cause as many hard tabs as possible being used for
+" indentation, and spaces will be used to fill in the remains. The idea is to set
+" `shiftwidth` and `softtabstop` to the same value, leave `expandtab` at its
+" default ('noexpandtab'). Usually, tabstop is left at its default value:
+" set shiftwidth=4
+" set softtabstop=4
 
 set background=dark
 
@@ -50,7 +61,7 @@ set confirm
 " set cmdheight=2
 
 " features in vertical split
-set fillchars+=vert:\┊
+" set fillchars+=vert:\┊
 
 " If the 'ignorecase' option is on, the case of normal letters is ignored.
 " 'smartcase' can be set to ignore case when the pattern contains lowercase
@@ -73,7 +84,7 @@ set textwidth=80
 " When 'wildmenu' is on, command-line completion operates in an enhanced mode.
 set wildmenu
 
-" hilights current line
+" highlights current line
 " set cursorline
 " set cursorcolumn
 
@@ -81,7 +92,7 @@ set wildmenu
 "set undofile 
 "set undodir=~/.vim/undodir
 
-" This is required to hilight spedific parts like tab, space, eol. Specific parts can be set as done below 
+" This is required to highlight spedific parts like tab, space, eol. Specific parts can be set as done below 
 set list
 
 " setting line characters
@@ -89,13 +100,24 @@ set showbreak=↪\
 set listchars=tab:→\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
 " set listchars=tab:\┆\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
 
+" When a bracket is inserted, briefly jump to the matching one.  The
+" jump is only done if the match can be seen on the screen.  The time to
+" show the match can be set with 'matchtime'.
+set showmatch
+set matchtime=3
+
 " :help "norestorescreen"
 " For non-Windows Vim: You can set or reset the 't_ti' and 't_te'
 " options in your .vimrc.  To disable restoring:
     " set t_ti= t_te=
 " To enable restoring (for an xterm):
-    set t_ti=7[r[?47h t_te=[?47l8
+    " set t_ti=7[r[?47h t_te=[?47l8
 " (Where  is an <Esc>, type CTRL-V <Esc> to insert it)
+
+
+" When on, splitting a window will put the new window right of the
+" current one.
+set splitright
 
 "setting timeout for esc key as 0
 set timeoutlen=1000 ttimeoutlen=0
@@ -104,21 +126,23 @@ set timeoutlen=1000 ttimeoutlen=0
 "short for set scrolloff=999  also zk/zj won't work in this mode. use ':set so=0' to exit this mode
 set so=4
 
-" `set spell` hilights color with red, but now it will underline
-" set spell
+" `set spell` highlights color with red, but now it will underline
+set spell
 hi clear SpellBad
 hi SpellBad cterm=underline,bold  ctermfg=015      ctermbg=000
 
-" hilighting options in vsplit and gui
+" highlighting options in vsplit and gui
 hi vertsplit guifg=fg guibg=bg
 hi StatusLine guibg=White guifg=Black
 
 hi cursorline cterm=bold ctermbg=black
 
-" Changes colors for current line and relativenumbers. After this current line
-" is in yellow and relative lines are in Grey (maybe DarkGrey). Colorscheme may
-" overwrite this.
+" Changes colors for current line number and relativenumbers. After this,
+" current line number is in yellow (by default which is changed with
+" `CursorLineNr`) and relative lines are in Grey (maybe DarkGrey). Colorscheme
+" may overwrite this.
 hi LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+highlight CursorLineNr cterm=Bold,Italic ctermbg=15 ctermfg=8 gui=NONE guibg=#444444 guifg=#ffff00
 
 " Color setting for visually selected text.
 highlight Visual cterm=NONE ctermbg=0 ctermfg=NONE guibg=Grey40
@@ -152,12 +176,12 @@ nmap ,cs :let @+=expand("%")<CR>
 nmap ,cp :let @+=expand("%:p")<CR>
 
 " Command 'F' (`:F`) will show full file path
-command F echo expand('%:p')
+command! F echo expand('%:p')
 
 " Command `PI` will install vim plugins with Vundle
-command PI PluginInstall
+command! PI PluginInstall
 
-command EV e ~/.vimrc
+command! EV e + ~/.vimrc
 
 " To map Enter, backspace with new line in normal mode. Not a good idea to map
 " Enter key as it is used to cycle results in `grep`/`vimgrep`.
@@ -165,7 +189,7 @@ command EV e ~/.vimrc
 nmap <BS> i<BS><ESC>l
 
 " saving files, saving files with/without tabs
-nnoremap <leader>wv :cs kill -1<CR><CR>:source $MYVIMRC<CR>:!source ~/.bashrc<CR><CR>
+nnoremap <leader>wv :cs kill -1<CR><CR>:source $MYVIMRC<CR><CR>
 nnoremap <leader>w :w<CR>
 inoremap <leader>w <esc>:w<CR>
 
@@ -187,9 +211,12 @@ nnoremap gh gT
 vnoremap // y/<C-R>"<CR>
 
 " Cycle through grep results
-nnoremap <silent> <leader>f :cn<CR>zv
-nnoremap <silent> <leader>b :cp<CR>zv
+nnoremap <silent> <leader>f :bn<CR>zv
+nnoremap <silent> <leader>b :bp<CR>zv
 " nnoremap <leader>co :copen<CR>
+
+" set syntax for every `.espconfig` file
+au BufNewFile,BufRead .espconfig call dist#ft#SetFileTypeSH("bash")
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ plugins ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -215,7 +242,8 @@ Plugin 'Yggdroot/indentLine'
 " Plugin 'hari-rangarajan/cctree'
 " Plugin 'vim-scripts/taglist.vim'
 " Plugin 'severin-lemaignan/vim-minimap'
-Plugin 'sheerun/vim-polyglot'
+" Plugin 'sheerun/vim-polyglot'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " Some good colorschemes
 " Plugin 'altercation/vim-colors-solarized'
@@ -272,10 +300,40 @@ hi Comment cterm=italic gui=italic
 " g:cscopedb_small_file="~/esp/cscope_small.db"
 " g:cscopedb_auto_init=1
 
+" ####################################
+
 " vim-surround
 " (https://vimawesome.com/plugin/surround-vim)
-" useful in modifying surrounding parameters like "", '', <>, {}, ()m etc
 "
+" ####################################
+"
+" vim-polyglot
+"
+" Master plugin for all language tools. It invokes other plugins for languages.
+" `octol/vim-cpp-enhanced-highlight` is a part of polyglot working for C/C++.
+" Using `polyglot` messes up with `markdown` files. So avoid using or take care
+" of this issue.
+" Use individual plugin of polyglot listed on their github page.
+"
+" ####################################
+"
+"vim-cpp-enhanced-highlight
+"
+"Highlighting of class scope is disabled by default. To enable set
+let g:cpp_class_scope_highlight = 1
+
+" Highlighting of member variables is disabled by default. To enable set
+let g:cpp_member_variable_highlight = 1
+
+" Highlighting of class names in declarations is disabled by default. To enable set
+let g:cpp_class_decl_highlight = 1
+
+" Highlighting of library concepts is enabled by
+let g:cpp_concepts_highlight = 1
+
+" Highlighting of user defined functions can be disabled by
+" let g:cpp_no_function_highlight = 1
+
 " ####################################
 "
 " NERDCommenter
@@ -289,7 +347,7 @@ let g:NERDSpaceDelims = 1
 
 " indentLine
 
-" leading spaces will also be hilighted
+" leading spaces will also be highlighted
 let g:indentLine_leadingSpaceEnabled = 1
 
 "show different indentation levels with different characters
@@ -298,7 +356,11 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " set character for leading spaces. By default it is '˰'
 let g:indentLine_leadingSpaceChar = '·'
 
-let g:indentLine_color_term = 100
+let g:indentLine_color_term = 239
+"
+" GVim
+let g:indentLine_color_gui = '#A4E57E'
+
 
 " ####################################
 
@@ -333,7 +395,7 @@ let g:lightline = {
 " ####################################
 
 " ctags
-" set tags=./tags;
+set tags=./tags;
 
 " ####################################
 
@@ -343,43 +405,84 @@ let g:lightline = {
 " ####################################
 
 " cscope
-cs add /home/chinmay/esp/esp-idf/cscope.out
-cs add /home/chinmay/esp/esp-alexa/cscope.out
-cs add /home/chinmay/esp/esp-jumpstart/cscope.out
-" cs add /home/chinmay/esp/smart-home/cscope.out
-cs add /home/chinmay/esp/esp-audio-sdk/cscope.out
-cs add /home/chinmay/esp/esp-azure/cscope.out
 
-let $CSCOPE_EDITOR="Vim"
 
-" Map F6 to build cscope and ctags for esp-idf ONLY and add in current file to
-" update the line numbers when new lines are added
-" noremap <F6> :!cd ~/esp/ && cscope -Rb<CR>:cs reset<CR><CR>:!cd ~/esp/esp-idf/ && ctags -R .<CR>:set tags=./tags;<CR><CR>
+if has('cscope')
 
-" if this fails with ctags, delete this and uncomment upper command
-noremap <F6> :!cd ~/esp/esp-idf && cscope -Rb<CR>:cs reset<CR><CR>
-"cscope path to be relative
-set cscoperelative
+    cs kill -1
+    cs add /home/chinmay/esp/esp-idf/cscope.out
+    cs add /home/chinmay/esp/esp-alexa/cscope.out
+    cs add /home/chinmay/esp/esp-jumpstart/cscope.out
+    cs add /home/chinmay/esp/smart-home/cscope.out
+    cs add /home/chinmay/esp/esp-audio-sdk/cscope.out
+    cs add /home/chinmay/esp/esp-azure/cscope.out
 
-" If 'cscopetag' is set, the commands ":tag" and CTRL-] as well as "vim -t"
-" will always use :cstag instead of the default :tag behavior.  Effectively,
-" by setting 'cst', you will always search your cscope databases as well as
-" your tag files.  The default is off.  Examples:
-set cscopetag
+    let $CSCOPE_EDITOR="Vim"
 
-" this will search cscope database first, then search tags database.
-" setting this to 1 will search tags first then cscope
-set csto=1
+    " Map F6 to build cscope and ctags for esp-idf ONLY and add in current file to
+    " update the line numbers when new lines are added
+    noremap <F6> :!cd ~/esp/esp-idf && cscope -Rb; ctags -R .<CR>:cs reset<CR>:set tags=./tags;<CR><CR>
 
-" set syntax for every `.espconfig` file
-au BufNewFile,BufRead .espconfig call dist#ft#SetFileTypeSH("bash")
+    "cscope path to be relative
+    set cscoperelative
 
+    " If 'cscopetag' is set, the commands ":tag" and CTRL-] as well as "vim -t"
+    " will always use :cstag instead of the default :tag behavior.  Effectively,
+    " by setting 'cst', you will always search your cscope databases as well as
+    " your tag files.  The default is off.  Examples:
+    set cscopetag
+
+    " this will search cscope database first, then search tags database.
+    " setting this to 1 will search tags first then cscope
+    set csto=0
+
+    set cscopeverbose
+
+    if has('quickfix')
+        set cscopequickfix=s0,c0,d0,i0,t0,e0
+    endif
+
+    cnoreabbrev csa cs add
+    cnoreabbrev csf cs find
+    cnoreabbrev csk cs kill
+    cnoreabbrev csr cs reset
+    cnoreabbrev css cs show
+    cnoreabbrev csh cs help
+
+endif
 
 " ####################################
 
 " minimap
 
-let g:minimap_show='<leader>ms'
-let g:minimap_update='<leader>mu'
-let g:minimap_close='<leader>gc'
-let g:minimap_toggle='<leader>gt'
+" let g:minimap_show='<leader>ms'
+" let g:minimap_update='<leader>mu'
+" let g:minimap_close='<leader>gc'
+" let g:minimap_toggle='<leader>gt'
+
+
+" ####################################
+" cctree
+
+" Bindings
+" let g:CCTreeKeyTraceForwardTree = '<C-\>>'
+" let g:CCTreeKeyTraceReverseTree = '<C-\><'
+" let g:CCTreeKeyHilightTree = '<C-l>'
+" let g:CCTreeKeySaveWindow = '<C-\>y'
+" let g:CCTreeKeyToggleWindow = '<C-\>w'
+" let g:CCTreeKeyCompressTree = 'zs'
+" let g:CCTreeKeyDepthPlus = '<C-\>='
+" let g:CCTreeKeyDepthMinus = '<C-\>-'
+" 
+" " Settings
+" let g:CCTreeCscopeDb = "cscope.out"
+" let g:CCTreeOrientation = "rightabove"
+" let g:CCTreeWindowVertical = 1
+" 
+" let g:CCTreeDisplayMode = 1
+"             default: 1
+" Values: 1 -- Ultra-compact (takes minimum screen width)
+"         2 -- Compact       (Takes little more space)
+"         3 -- Wide          (Takes copious amounts of space)
+
+
