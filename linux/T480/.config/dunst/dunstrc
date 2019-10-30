@@ -1,3 +1,4 @@
+# wiki source: https://github.com/dunst-project/dunst/blob/master/docs/dunst.pod
 [global]
     ### Display ###
 
@@ -29,7 +30,8 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "300x5-30+20"
+    # geometry = "300x5-30+20"      # do this for notification on top right
+    geometry = "0x0-25+25"          # do this for notification on bottom right
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -82,7 +84,7 @@
     # Set to 0 to disable.
     # A client can set the 'transient' hint to bypass this. See the rules
     # section for how to disable this if necessary
-    idle_threshold = 120
+    idle_threshold = 30
 
     ### Text ###
 

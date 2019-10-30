@@ -86,6 +86,7 @@ set wildmenu
 
 " highlights current line
 " set cursorline
+set nocursorline
 " set cursorcolumn
 
 " Maintain undo history between sessions
@@ -141,7 +142,7 @@ hi cursorline cterm=bold ctermbg=black
 " current line number is in yellow (by default which is changed with
 " `CursorLineNr`) and relative lines are in Grey (maybe DarkGrey). Colorscheme
 " may overwrite this.
-hi LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 highlight CursorLineNr cterm=Bold,Italic ctermbg=15 ctermfg=8 gui=NONE guibg=#444444 guifg=#ffff00
 
 " Color setting for visually selected text.
@@ -159,6 +160,7 @@ nnoremap <silent> <leader>l :nohl<CR>
 
 " copy paste from/to + clipboard simplified
 vnoremap <C-c> "+y
+nnoremap YY V"+y
 nnoremap <C-p> "+p
 
 " shortcut for splitting screens/windows
@@ -189,7 +191,7 @@ command! EV e + ~/.vimrc
 nmap <BS> i<BS><ESC>l
 
 " saving files, saving files with/without tabs
-nnoremap <leader>wv :cs kill -1<CR><CR>:source $MYVIMRC<CR><CR>
+nnoremap <leader>wv :source $MYVIMRC<CR><CR>
 nnoremap <leader>w :w<CR>
 inoremap <leader>w <esc>:w<CR>
 
@@ -215,6 +217,11 @@ nnoremap <silent> <leader>f :bn<CR>zv
 nnoremap <silent> <leader>b :bp<CR>zv
 " nnoremap <leader>co :copen<CR>
 
+" Load this colorscheme when using `vimdiff`. This file needs to be in
+" ~/.vim/colors and not as a plugin or else add it in runtime path.
+if &diff
+    colorscheme apprentice
+endif
 " set syntax for every `.espconfig` file
 au BufNewFile,BufRead .espconfig call dist#ft#SetFileTypeSH("bash")
 
@@ -353,13 +360,8 @@ let g:indentLine_leadingSpaceEnabled = 1
 "show different indentation levels with different characters
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
-" set character for leading spaces. By default it is '˰'
+" " set character for leading spaces. By default it is '˰'
 let g:indentLine_leadingSpaceChar = '·'
-
-let g:indentLine_color_term = 239
-"
-" GVim
-let g:indentLine_color_gui = '#A4E57E'
 
 
 " ####################################
@@ -403,53 +405,19 @@ set tags=./tags;
 
 
 " ####################################
+"
+" cscope_maps
 
-" cscope
+let $CSCOPE_EDITOR="Vim"
+set nocsverb
+cs kill -1
+cs add /home/chinmay/esp/esp-idf/cscope.out
+set cscopetag
+set cscoperelative
 
-
-if has('cscope')
-
-    cs kill -1
-    cs add /home/chinmay/esp/esp-idf/cscope.out
-    cs add /home/chinmay/esp/esp-alexa/cscope.out
-    cs add /home/chinmay/esp/esp-jumpstart/cscope.out
-    cs add /home/chinmay/esp/smart-home/cscope.out
-    cs add /home/chinmay/esp/esp-audio-sdk/cscope.out
-    cs add /home/chinmay/esp/esp-azure/cscope.out
-
-    let $CSCOPE_EDITOR="Vim"
-
-    " Map F6 to build cscope and ctags for esp-idf ONLY and add in current file to
-    " update the line numbers when new lines are added
-    noremap <F6> :!cd ~/esp/esp-idf && cscope -Rb; ctags -R .<CR>:cs reset<CR>:set tags=./tags;<CR><CR>
-
-    "cscope path to be relative
-    set cscoperelative
-
-    " If 'cscopetag' is set, the commands ":tag" and CTRL-] as well as "vim -t"
-    " will always use :cstag instead of the default :tag behavior.  Effectively,
-    " by setting 'cst', you will always search your cscope databases as well as
-    " your tag files.  The default is off.  Examples:
-    set cscopetag
-
-    " this will search cscope database first, then search tags database.
-    " setting this to 1 will search tags first then cscope
-    set csto=0
-
-    set cscopeverbose
-
-    if has('quickfix')
-        set cscopequickfix=s0,c0,d0,i0,t0,e0
-    endif
-
-    cnoreabbrev csa cs add
-    cnoreabbrev csf cs find
-    cnoreabbrev csk cs kill
-    cnoreabbrev csr cs reset
-    cnoreabbrev css cs show
-    cnoreabbrev csh cs help
-
-endif
+" Map F6 to build cscope and ctags for esp-idf ONLY and add in current file to
+" update the line numbers when new lines are added.
+noremap <F6> :!cd ~/esp/esp-idf && cscope -Rb; ctags -R .<CR>:cs reset<CR>:set tags=./tags;<CR><CR>
 
 " ####################################
 
