@@ -128,3 +128,5 @@ POWERLINE_BASH_SELECT=1
 export CSCOPE_EDITOR=vim
 
 PROMPT_COMMAND="pwd > '${HOME}/.cwd'; $PROMPT_COMMAND"
+
+screenfetch

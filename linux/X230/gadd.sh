@@ -1,9 +1,10 @@
 #! /bin/bash
 
-cp -r ~/.config/i3 ~/.config/dunst ~/.config/compton ~/.config/gsimplecal ~/github/dot-files/linux/X230/.config/
-cp -r ~/.vimrc ~/gadd.sh ~/.profile ~/.bashrc ~/.alias ~/.fonts ~/github/dot-files/linux/X230/
+clear
 cd ~/github/dot-files/
-clear; git status
+cp -r ~/.config/i3 ~/.config/compton ~/.config/gsimplecal ~/github/dot-files/linux/X230/.config/
+cp -r ~/.vimrc ~/gadd.sh ~/.profile ~/.bashrc ~/.alias ~/.fonts ~/github/dot-files/linux/X230/
+git status
 echo "Copied
 ~/
     - .alias

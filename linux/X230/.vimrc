@@ -150,9 +150,6 @@ highlight Visual cterm=NONE ctermbg=0 ctermfg=NONE guibg=Grey40
 filetype indent on
 syntax enable
 
-" open new vim tab
-nnoremap <C-a> :tabnew<CR>
-"
 "<leader>l redraws the screen and removes any search highlighting.
 " nnoremap <silent> <leader>l :nohl<CR><leader>l
 nnoremap <silent> <leader>l :nohl<CR>
@@ -218,6 +215,19 @@ nnoremap <silent> <leader>b :bp<CR>zv
 
 " set syntax for every `.espconfig` file
 au BufNewFile,BufRead .espconfig call dist#ft#SetFileTypeSH("bash")
+"
+" Load this colorscheme when using `vimdiff`. This file needs to be in
+" ~/.vim/colors and not as a plugin or else add it in runtime path.
+if &diff
+    colorscheme apprentice
+endif
+
+" Append runtime path for powerline
+set rtp+=/usr/local/lib/python3.6/dist-packages/powerline/bindings/vim
+"
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ plugins ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -232,7 +242,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'itchyny/lightline.vim'
+" Plugin 'itchyny/lightline.vim'
 " Plugin 'tpope/vim-fugitive'
 " Plugin 'erig0/cscope_dynamic'
 Plugin 'scrooloose/nerdcommenter'
