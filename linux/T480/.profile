@@ -26,7 +26,7 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export TERMINAL="x-terminal-emulator"
+export TERMINAL="konsole"
 
 # dolphin, system settings and other KDE applications will not look ugly!
 export XDG_CURRENT_DESKTOP=KDE
@@ -37,3 +37,8 @@ export XDG_CURRENT_DESKTOP=KDE
 export LC_ALL=en_IN.UTF-8
 
 export PATH="$HOME/.config/i3/scripts:$PATH"
+export PATH="$HOME/scripts:$PATH"
+
+. ~/.espconfig
+. ~/.alias
+

@@ -18,7 +18,7 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
-export HISTTIMEFORMAT="%d-%m  %T    "
+export HISTTIMEFORMAT="%d/%m/%y  %T    "
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -117,7 +117,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 . ~/.espconfig
 . ~/.alias
 
@@ -150,7 +149,17 @@ export CSCOPE_EDITOR=vim
 # With username
 # export PS1="\[\033[1;31m\][\[\033[1;36m\]\u \[\033[1;33m\]\w\[\033[1;31m\]] \[\033[1;32m\]\$git_branch\[\033[1;36m\]$\[\033[0m\] "
 
-export PS1="\[\033[1;31m\][\[\033[1;33m\]\w \[\033[1;32m\]\$git_branch\[\033[1;31m\]]\[\033[0m\] $ "
+export PS1="\[\033[1;31m\][\[\033[1;33m\]\w \[\033[1;32m\]\$git_branch\[\033[1;31m\]]\[\033[0m\]$ "
+
+# Depth of `$PWD` is decided by this.
+PROMPT_DIRTRIM=2
+
+# Write path to current working directory in file `~/.cwd`. This file is used in
+# i3 config to open new terminal in same directory.
+PROMPT_COMMAND="pwd > '${HOME}/.cwd'; $PROMPT_COMMAND"
 
 # enable vi key bindings in shell
 # set -o vi
+
+# Show desktop information with logo in a facny way!
+# screenfetch
