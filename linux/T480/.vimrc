@@ -79,7 +79,7 @@ set linebreak
 " setting vim to wrap after 120 characters. Lines will get formatted
 " automatically. If set explicitly, select and use `gq` to format lines
 set wrap
-set textwidth=80
+set textwidth=90
 
 " When 'wildmenu' is on, command-line completion operates in an enhanced mode.
 set wildmenu
