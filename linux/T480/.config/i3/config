@@ -65,6 +65,10 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+bindsym $mod+KP_Left focus left
+bindsym $mod+KP_Down focus down
+bindsym $mod+KP_Up focus up
+bindsym $mod+KP_Right focus right
 
 # move focused and floating window
 bindsym $mod+Shift+h move left
@@ -187,7 +191,9 @@ for_window [class="^konsole$" title="^dropdown"] resize set 1200 650
 for_window [class="^konsole$" title="^dropdown"] scratchpad show
 
 # bindsym F12 scratchpad show; move position center
-bindsym F12 [class="^konsole$" title="^dropdown"] scratchpad show; move position center
+# bindsym F12 [class="^konsole$" title="^dropdown"] scratchpad show; move position center
+# bindsym F12 [class="^konsole$"] scratchpad show; move position center
+bindsym F12 [class="^konsole$"] scratchpad show
 bindsym $mod+F12 exec --no-startup-id konsole -p tabtitle="dropdown"; [class="^konsole$" title="^dropdown"] scratchpad show
 bindsym $mod+shift+minus move scratchpad
 # Do not toggle *every* konsole windows running on scratchpad!
@@ -346,7 +352,7 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 for_window [class=".*"] border pixel 4
 # Set inner/outer gaps
 gaps inner 15
-gaps outer 7
+gaps outer 15
 
 # Activate smart borders (always). No borders for single window but borders for
 # multiple windows
