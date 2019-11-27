@@ -136,6 +136,9 @@ hi SpellBad cterm=underline,bold  ctermfg=015      ctermbg=000
 hi vertsplit guifg=fg guibg=bg
 hi StatusLine guibg=White guifg=Black
 
+" Set color for keys mentioned in `listchars`
+" hi SpecialKey ctermfg=darkgrey guifg=grey70
+
 hi cursorline cterm=bold ctermbg=black
 
 " Changes colors for current line number and relativenumbers. After this,
@@ -206,7 +209,7 @@ nnoremap zk zt
 " As this is not used, currently, hence mapping it! If mapping is changed, then it I
 " started using `gh`! :P
 nnoremap gl gt
-nnoremap gh gT
+nnoremap gL gT
 
 "searching visually selected block with '//'
 vnoremap // y/<C-R>"<CR>
@@ -302,10 +305,10 @@ hi Comment cterm=italic gui=italic
 
 " cscope_dynamic
 "
-" nmap <F10> <Plug>CscopeDBInit
-" g:cscopedb_big_file="~/esp/cscope.out"
-" g:cscopedb_small_file="~/esp/cscope_small.db"
-" g:cscopedb_auto_init=1
+nmap <F10> <Plug>CscopeDBInit
+let g:cscopedb_big_file="~/esp/esp-idf/cscope.out"
+let g:cscopedb_small_file="~/esp/cscope_small.db"
+let g:cscopedb_auto_init=1
 
 " ####################################
 

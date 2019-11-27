@@ -238,7 +238,7 @@ bindsym $mod+r mode "resize"
 bar {
 
         position top
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
 }
 
 # Polybar
@@ -246,8 +246,8 @@ bar {
 
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +3% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -3% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
@@ -255,7 +255,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Touchpad controls
-bindsym XF86TouchpadToggle exec ~/.config/i3/toggletouchpad.sh # toggle touchpad
+bindsym XF86TouchpadToggle exec $HOME/.config/i3/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -283,7 +283,7 @@ set $black               #000000
 bindsym Control+q exec lock.sh
 # bindsym Control+q exec i3lock -ef --color "$bg-color" && xset dpms 5
 # bindsym Control+q exec i3lock -ei $(find /home/chinmay/Pictures/wallpapers -type f \(-iname \*.png \) | shuf -n1)       #Need to setup for different monitors. Also only .png, no other.
-# bindsym Control+q exec i3lock -ei $(find ~/Pictures/wallpapers -iname *.png | shuf -n1)
+# bindsym Control+q exec i3lock -ei $(find $HOME/Pictures/wallpapers -iname *.png | shuf -n1)
 
 # Suspend system to RAM and lock screen on wake up.
 bindsym Control+Shift+q exec lock.sh && echo mem > /sys/power/state
@@ -316,21 +316,21 @@ exec --no-startup-id xset dpms 600
 exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
 
 # compton - composite manager for i3
-exec --no-startup-id compton --config ~/.config/compton/compton.conf -b
+exec --no-startup-id compton --config $HOME/.config/compton/compton.conf -b
 
 
 # exec killall -q /usr/lib/cups/notifier/dbus
 # exec --no-startup-id dunst
 exec killall -q notify-osd
-exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 
 exec XDG_CURRENT_DESKTOP=KDE
 
 exec redshift -O 4500
 
 # wallpaper
-exec feh --recursive --randomize --bg-scale ~/Pictures/wallpapers/
-bindsym $mod+Shift+a exec feh --recursive --randomize --bg-scale ~/Pictures/wallpapers/
+exec feh --recursive --randomize --bg-scale $HOME/Pictures/wallpapers/
+bindsym $mod+Shift+a exec feh --recursive --randomize --bg-scale $HOME/Pictures/wallpapers/
 
 #interactive screenshot by pressing printscreen
 bindsym Print exec gnome-screenshot -i
@@ -352,7 +352,7 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 for_window [class=".*"] border pixel 4
 # Set inner/outer gaps
 gaps inner 15
-gaps outer 15
+gaps outer 8
 
 # Activate smart borders (always). No borders for single window but borders for
 # multiple windows
