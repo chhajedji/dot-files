@@ -1,6 +1,7 @@
 #! /bin/bash
 
 cd ~/pnl/github/dot-files/
+git checkout T480
 cp -r ~/.config/i3 ~/.config/dunst ~/.config/compton ~/.config/gsimplecal ~/pnl/github/dot-files/linux/T480/.config/
 cp -r  ~/.Xresources ~/.vimrc ~/gadd.sh ~/.profile ~/.bashrc ~/.alias ~/.fonts ~/pnl/github/dot-files/linux/T480/
 git status
