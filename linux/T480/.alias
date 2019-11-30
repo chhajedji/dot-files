@@ -88,3 +88,6 @@ alias s="git status"
 alias sub="git submodule update --init --recursive --progress"
 alias dinit="git submodule deinit --all -f"
 alias gcm="git checkout master"
+
+# Alias for opening files in less with default syntax hilighting. Run this alias to color files in less.
+alias lesc='LESS="-R" LESSOPEN="|pygmentize -g %s" less'

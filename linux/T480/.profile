@@ -1,5 +1,5 @@
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# $HOME/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if $HOME/.bash_profile or $HOME/.bash_login
 # exists.
 # see /usr/share/doc/bash/examples/startup-files for examples.
 # the files are located in the bash-doc package.
@@ -39,6 +39,6 @@ export LC_ALL=en_IN.UTF-8
 export PATH="$HOME/.config/i3/scripts:$PATH"
 export PATH="$HOME/scripts:$PATH"
 
-. ~/.espconfig
-. ~/.alias
+. $HOME/.espconfig
+. $HOME/.alias
 

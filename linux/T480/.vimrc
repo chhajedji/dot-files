@@ -79,7 +79,7 @@ set linebreak
 " setting vim to wrap after 120 characters. Lines will get formatted
 " automatically. If set explicitly, select and use `gq` to format lines
 set wrap
-set textwidth=90
+set textwidth=100
 
 " When 'wildmenu' is on, command-line completion operates in an enhanced mode.
 set wildmenu
@@ -91,7 +91,7 @@ set nocursorline
 
 " Maintain undo history between sessions
 "set undofile 
-"set undodir=~/.vim/undodir
+"set undodir=$HOME/.vim/undodir
 
 " This is required to highlight spedific parts like tab, space, eol. Specific parts can be set as done below 
 set list
@@ -119,6 +119,7 @@ set matchtime=3
 " When on, splitting a window will put the new window right of the
 " current one.
 set splitright
+set splitbelow
 
 "setting timeout for esc key as 0
 set timeoutlen=1000 ttimeoutlen=0
@@ -131,6 +132,10 @@ set so=4
 set spell
 hi clear SpellBad
 hi SpellBad cterm=underline,bold  ctermfg=015      ctermbg=000
+
+" Set the directory where the swap files are stored, so they don't clutter  normal directories.
+set swapfile
+set dir=$HOME/.tmp/
 
 " highlighting options in vsplit and gui
 hi vertsplit guifg=fg guibg=bg
@@ -184,7 +189,7 @@ command! F echo expand('%:p')
 " Command `PI` will install vim plugins with Vundle
 command! PI PluginInstall
 
-command! EV e + ~/.vimrc
+command! EV e + $HOME/.vimrc
 
 " To map Enter, backspace with new line in normal mode. Not a good idea to map
 " Enter key as it is used to cycle results in `grep`/`vimgrep`.
@@ -219,24 +224,40 @@ nnoremap <silent> <leader>f :bn<CR>zv
 nnoremap <silent> <leader>b :bp<CR>zv
 " nnoremap <leader>co :copen<CR>
 
+" Highlight all occurrences of current word without moving cursor. (Similar to *`` but better.)
+nnoremap <silent> <space><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
+" Select using visual mode and pressing F8 will highlight all occurances of that visually
+" selected text.
+set guioptions+=a
+function! MakePattern(text)
+  let pat = escape(a:text, '\')
+  let pat = substitute(pat, '\_s\+$', '\\s\\*', '')
+  let pat = substitute(pat, '^\_s\+', '\\s\\*', '')
+  let pat = substitute(pat, '\_s\+',  '\\_s\\+', 'g')
+  return '\\V' . escape(pat, '\"')
+endfunction
+vnoremap <silent> <space><space> :<C-U>let @/="<C-R>=MakePattern(@*)<CR>"<CR>:set hls<CR>
+
 " Load this colorscheme when using `vimdiff`. This file needs to be in
-" ~/.vim/colors and not as a plugin or else add it in runtime path.
+" $HOME/.vim/colors and not as a plugin or else add it in runtime path.
 if &diff
     colorscheme apprentice
 endif
 " set syntax for every `.espconfig` file
 au BufNewFile,BufRead .espconfig call dist#ft#SetFileTypeSH("bash")
 
+
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ plugins ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 " setup for Vundle Plugin manager
 "
 " set the runtime path to include Vundle and initialize"
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=$HOME/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+"call vundle#begin('$HOME/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -306,8 +327,8 @@ hi Comment cterm=italic gui=italic
 " cscope_dynamic
 "
 nmap <F10> <Plug>CscopeDBInit
-let g:cscopedb_big_file="~/esp/esp-idf/cscope.out"
-let g:cscopedb_small_file="~/esp/cscope_small.db"
+let g:cscopedb_big_file="$HOME/esp/esp-idf/cscope.out"
+let g:cscopedb_small_file="$HOME/esp/cscope_small.db"
 let g:cscopedb_auto_init=1
 
 " ####################################
@@ -414,13 +435,17 @@ set tags=./tags;
 let $CSCOPE_EDITOR="Vim"
 set nocsverb
 cs kill -1
-cs add /home/chinmay/esp/esp-idf/cscope.out
+" cs add $HOME/esp/esp-idf/cscope.out
+cs a $HOME/mynewt-nimble/cscope.out
 set cscopetag
 set cscoperelative
 
+" Search ctags database first! Useful in case of inline functions.
+set csto=1
+
 " Map F6 to build cscope and ctags for esp-idf ONLY and add in current file to
 " update the line numbers when new lines are added.
-noremap <F6> :!cd ~/esp/esp-idf && cscope -Rb; ctags -R .<CR>:cs reset<CR>:set tags=./tags;<CR><CR>
+noremap <F6> :!cd $HOME/esp/esp-idf && cscope -Rb; ctags -R .<CR>:cs reset<CR>:set tags=./tags;<CR><CR>
 
 " ####################################
 
