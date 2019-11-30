@@ -148,8 +148,7 @@ export CSCOPE_EDITOR=vim
 
 # With username
 # export PS1="\[\033[1;31m\][\[\033[1;36m\]\u \[\033[1;33m\]\w\[\033[1;31m\]] \[\033[1;32m\]\$git_branch\[\033[1;36m\]$\[\033[0m\] "
-
-export PS1="\[\033[1;31m\][\[\033[1;33m\]\w \[\033[1;32m\]\$git_branch\[\033[1;31m\]]\[\033[0m\]$ "
+export PS1="\[\033[1;31m\][\[\033[1;33m\]\w \[\033[1;32m\]\$git_branch \[\033[1;36m\]\A\[\033[1;31m\]]\[\033[0m\]$ "
 
 # Depth of `$PWD` is decided by this.
 PROMPT_DIRTRIM=2

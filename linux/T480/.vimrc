@@ -79,7 +79,7 @@ set linebreak
 " setting vim to wrap after 120 characters. Lines will get formatted
 " automatically. If set explicitly, select and use `gq` to format lines
 set wrap
-set textwidth=80
+set textwidth=90
 
 " When 'wildmenu' is on, command-line completion operates in an enhanced mode.
 set wildmenu
@@ -151,8 +151,6 @@ highlight Visual cterm=NONE ctermbg=0 ctermfg=NONE guibg=Grey40
 filetype indent on
 syntax enable
 
-" open new vim tab
-nnoremap <C-a> :tabnew<CR>
 "
 "<leader>l redraws the screen and removes any search highlighting.
 " nnoremap <silent> <leader>l :nohl<CR><leader>l
@@ -203,9 +201,10 @@ nnoremap <leader>nt :set expandtab<cr> <bar> w<cr>
 nnoremap zj zb
 nnoremap zk zt
 
-" Go to vim next tab with `gl` and previous with `gh`. Note that default
-" behaviour of `gh` is to go into `Select-mode`. As this is not used by me,
-" currently, hence mapping it!
+" Go to vim next tab with `gl` and previous with `gL`. Note that default
+" behaviour of `gh` is to go into `Select-mode` and when in `netrw`, toggle hidden files.
+" As this is not used, currently, hence mapping it! If mapping is changed, then it I
+" started using `gh`! :P
 nnoremap gl gt
 nnoremap gh gT
 
@@ -251,6 +250,7 @@ Plugin 'Yggdroot/indentLine'
 " Plugin 'severin-lemaignan/vim-minimap'
 " Plugin 'sheerun/vim-polyglot'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'blueyed/vim-diminactive'
 
 " Some good colorschemes
 " Plugin 'altercation/vim-colors-solarized'
@@ -454,3 +454,9 @@ noremap <F6> :!cd ~/esp/esp-idf && cscope -Rb; ctags -R .<CR>:cs reset<CR>:set t
 "         3 -- Wide          (Takes copious amounts of space)
 
 
+" ####################################
+
+" vim-diminactive
+
+highlight ColorColumn ctermbg=0 guibg=#081C23
+let g:diminactive_enable_focus = 1

@@ -10,7 +10,7 @@ alias ep="vim ~/.profile"
 alias eec="vim ~/.espconfig"
 alias SB="source ~/.profile"
 alias p2="python"
-alias p3="python3"
+alias p3="python3 -q"
 alias v="vim +"
 alias make="make -j32"
 # alias make="colormake"       # `sudo apt install colormake` if not installed. NOTE: menuconfig was not navigatable with colormake
@@ -40,10 +40,20 @@ meaning() { dict "$@" | less; }
 up-to-date() {
     if [ "$1" = -y ]
         then
-            sudo apt update; sudo apt full-upgrade -y; sudo apt autoclean; sudo apt clean; exit;
+            sudo apt update
+            sudo apt upgrade -y
+            sudo apt autoremove -y
+            sudo apt autoclean
+            sudo apt clean
+            exit
     else
-        sudo apt update; sudo apt full-upgrade; sudo apt autoclean; sudo apt clean; exit;
-    fi
+        sudo apt update
+            sudo apt upgrade
+            sudo apt autoremove
+            sudo apt autoclean
+            sudo apt clean
+            exit
+            fi
 }
 
 # combined mkdir and cd
