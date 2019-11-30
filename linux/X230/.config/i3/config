@@ -93,6 +93,7 @@ bindsym F11 fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
+bindsym $mod+shift+s exec screenkey_toggle.sh
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -182,11 +183,14 @@ for_window [class="^konsole$" title="^dropdown"] resize set 1200 650
 for_window [class="^konsole$" title="^dropdown"] scratchpad show
 
 # bindsym F12 scratchpad show; move position center
-bindsym F12 [class="^konsole$" title="^dropdown"] scratchpad show; move position center
+# bindsym F12 [class="^konsole$" title="^dropdown"] scratchpad show; move position center
+# bindsym F12 [class="^konsole$"] scratchpad show; move position center
+bindsym F12 [class="^konsole$"] scratchpad show
 bindsym $mod+F12 exec --no-startup-id konsole -p tabtitle="dropdown"; [class="^konsole$" title="^dropdown"] scratchpad show
 bindsym $mod+shift+minus move scratchpad
 # Do not toggle *every* konsole windows running on scratchpad!
 bindsym $mod+minus [class="^(?!konsole$)"] scratchpad show
+# bindsym $mod+minus [title="^(?!dropdown*$)"] scratchpad show
 
 
 # reload the configuration file
