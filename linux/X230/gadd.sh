@@ -16,4 +16,5 @@ echo "Copied
     - .config/
         - i3/
         - compton/
-        - gsimplecal/"
+        - gsimplecal/
+        - dunst/"
