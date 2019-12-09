@@ -152,7 +152,7 @@ export CSCOPE_EDITOR=vim
 # Options:
 #     - \A for time in HH:MM
 #     - \j for number of background jobs
-export PS1="\[\033[1;32m\]\$git_branch\[\033[1;31m\][\[\033[1;33m\]\w \[\033[1;36m\]\A\[\033[1;31m\]] \[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\033[0m\]$ "
+export PS1="\[\033[1;32m\]\$git_branch\[\033[1;31m\][\[\033[1;33m\]\w \[\033[1;36m\]\A\[\033[1;31m\]]\[\033[01;38;5;208m\] \$([ \j -gt 0 ] && echo [\j])\[\033[0m\]$ "
 
 # Depth of `$PWD` is decided by this.
 PROMPT_DIRTRIM=2

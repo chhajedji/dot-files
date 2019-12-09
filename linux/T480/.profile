@@ -39,6 +39,3 @@ export LC_ALL=en_IN.UTF-8
 export PATH="$HOME/.config/i3/scripts:$PATH"
 export PATH="$HOME/scripts:$PATH"
 
-. $HOME/.espconfig
-. $HOME/.alias
-
