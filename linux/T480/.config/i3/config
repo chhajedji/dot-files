@@ -238,6 +238,7 @@ bindsym $mod+r mode "resize"
 bar {
 
         position top
+        # separator_symbol "〉"
         status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
 }
 
