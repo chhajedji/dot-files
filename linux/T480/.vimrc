@@ -119,7 +119,7 @@ set matchtime=3
 " When on, splitting a window will put the new window right of the
 " current one.
 set splitright
-set splitbelow
+" set splitbelow
 
 "setting timeout for esc key as 0
 set timeoutlen=1000 ttimeoutlen=0
