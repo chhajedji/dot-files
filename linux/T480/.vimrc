@@ -436,7 +436,7 @@ let $CSCOPE_EDITOR="Vim"
 set nocsverb
 cs kill -1
 " cs add $HOME/esp/esp-idf/cscope.out
-cs a $HOME/mynewt-nimble/cscope.out
+cs a $HOME/nordic/proj/repos/cscope.out
 set cscopetag
 set cscoperelative
 

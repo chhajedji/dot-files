@@ -38,14 +38,14 @@
 *.color15: #fdf6e3
 
 !! URxvt Appearance
-URxvt.font: xft:Monaco for Powerline:size=10:antialias=true
-URxvt.boldFont: xft:Monaco for Powerline:size=10:bold:antialias=true
-URxvt.italicFont: xft:Monaco for Powerline:size=10:italic:antialias=true
-URxvt.boldItalicfont: xft:Monaco for Powerline:size=10:italic:bold:antialias=true
+URxvt.font: xft:Hack:size=9:antialias=true
+URxvt.boldFont: xft:Hack:size=9:bold:antialias=true
+URxvt.italicFont: xft:Hack:size=9:italic:antialias=true
+URxvt.boldItalicfont: xft:Hack:size=9:italic:bold:antialias=true
 URxvt.letterSpace: 0
-URxvt.lineSpace: 0
+URxvt.lineSpace: 5
 URxvt.geometry: 92x24
-URxvt.internalBorder: 24
+URxvt.internalBorder: 5
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
 URxvt.saveline: 2048

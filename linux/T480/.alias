@@ -1,7 +1,7 @@
 #! /bin/bash
 # This file includes all aliases and functions used regularly.
 
-# general alias
+# General alias
 
 alias ea="v ~/.alias"
 alias ev="v ~/.vimrc"
@@ -39,51 +39,45 @@ meaning() { dict "$@" | less; }
 
 # Update system smartly.
 up-to-date() {
-    if [ "$1" = -y ]
-        then
-            sudo apt update
+    sudo apt update
+        if [ "$1" = -y ]; then
             sudo apt upgrade -y
             sudo apt autoremove -y
-            sudo apt autoclean
-            sudo apt clean
             exit
-    else
-        sudo apt update
+        else
             sudo apt upgrade
             sudo apt autoremove
-            sudo apt autoclean
-            sudo apt clean
             exit
-            fi
+        fi
+        sudo apt autoclean
+        sudo apt clean
 }
 
-# combined mkdir and cd
+# Combined mkdir and cd
 mkcdir() { mkdir "$@" && cd "$@"; }
 
-# tree will open in less
+# Tree will open in less
 tr() { tree -C "$@" | less -R; }
 
-# modified git diff
+# Modified git diff
 gd() { git diff --color=always "$@" | less -R; }
 
 # Similarly modified git log
 gl() { git log --color=always "$@" | less -R; }
 
-# display size summary in human readable format.
+# Display size summary in human readable format.
 sz() { du -sh "$@"; }
 
-#default grep .c and .h files without list
+# Default grep .c and .h files without list
 cgrep() { grep --include='*.\.c' --include='*.\.h' "$@"; }
 
-# combined cd and ls for a directory or if file, open in Vim.
+# Combined cd and ls for a directory or if file, open in Vim.
 cds() {
-    if [ -d "$@" ]
-        then
-            cd "$@" && ls -CF;
-    elif [ -f "$@" ]
-        then
+    if [ "$@" ] && [ -a "$@" ]; then
         vim + "$@"
-        fi
+    else
+        cd "$@" && ls -CF;
+    fi
 }
 
 # Process tree in less
