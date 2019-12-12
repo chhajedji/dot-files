@@ -72,13 +72,7 @@ sz() { du -sh "$@"; }
 cgrep() { grep --include='*.\.c' --include='*.\.h' "$@"; }
 
 # Combined cd and ls for a directory or if file, open in Vim.
-cds() {
-    if [ "$@" ] && [ -a "$@" ]; then
-        vim + "$@"
-    else
-        cd "$@" && ls -CF;
-    fi
-}
+cds() { cd "$@" 2>/dev/null && ls -CF || vim + "$@"; }
 
 # Process tree in less
 ptr() { pstree "$@" | less; }

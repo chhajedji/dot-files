@@ -166,8 +166,9 @@ nnoremap <silent> <leader>l :nohl<CR>
 
 " copy paste from/to + clipboard simplified
 vnoremap <C-c> "+y
-nnoremap YY V"+y
+nnoremap <C-c> V"+y
 nnoremap <C-p> "+p
+vnoremap <C-p> xh"+p
 
 " shortcut for splitting screens/windows
 noremap <C-h> <C-w>h
