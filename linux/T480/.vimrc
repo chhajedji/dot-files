@@ -489,3 +489,7 @@ noremap <F6> :!cd $HOME/esp/esp-idf && cscope -Rb; ctags -R .<CR>:cs reset<CR>:s
 
 highlight ColorColumn ctermbg=0 guibg=#081C23
 let g:diminactive_enable_focus = 1
+
+
+" ####################################
+
