@@ -1,4 +1,6 @@
 # Change this file instead fo /etc/inputrc to change input settings.
+
+# Set vim mode in bash.
 set editing-mode vi
 
 # Set this to show current mode. By default string `ins` and `cmd` will distinguish them. Use next

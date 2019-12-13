@@ -26,7 +26,7 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export TERMINAL="konsole"
+export TERMINAL="urxvt"
 
 # dolphin, system settings and other KDE applications will not look ugly!
 export XDG_CURRENT_DESKTOP=KDE
