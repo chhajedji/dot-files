@@ -5,7 +5,7 @@
 cd $HOME/pnl/github/dot-files/
 git checkout T480
 cp -r $HOME/.config/i3 $HOME/.config/dunst $HOME/.config/compton $HOME/.config/gsimplecal $HOME/pnl/github/dot-files/linux/T480/.config/
-cp -r  $HOME/.inputrc $HOME/.Xresources $HOME/scripts/ $HOME/.vimrc $HOME/.profile $HOME/.bashrc $HOME/.alias $HOME/.fonts $HOME/pnl/github/dot-files/linux/T480/
+cp -r  $HOME/.Xresources $HOME/scripts/ $HOME/.vimrc $HOME/.profile $HOME/.bashrc $HOME/.alias $HOME/.fonts $HOME/pnl/github/dot-files/linux/T480/
 git status
 echo 'Copied
 ~/
@@ -18,7 +18,6 @@ echo 'Copied
         - dunst/
     - .fonts/
     - .gitconfig
-    - .inputrc
     - .profile
     - .vmirc
     - .Xresources
