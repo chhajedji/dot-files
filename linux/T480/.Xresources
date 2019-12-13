@@ -22,7 +22,8 @@
 *.color11: #d9a400
 
 ! blue
-*.color4: #2587cc
+! *.color4: #2587cc
+! *.color4: #00DDFF
 *.color12: #2ca2f5
 
 ! magenta
@@ -38,6 +39,8 @@
 *.color15: #fdf6e3
 
 !! URxvt Appearance
+URxvt.transparent: true
+URxvt.shading:  20
 URxvt.font: xft:Hack:size=9:antialias=true
 URxvt.boldFont: xft:Hack:size=9:bold:antialias=true
 URxvt.italicFont: xft:Hack:size=9:italic:antialias=true
