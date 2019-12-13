@@ -1,4 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+# $HOME/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
@@ -75,7 +75,7 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -99,11 +99,11 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
+# $HOME/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f $HOME/.bash_aliases ]; then
+    . $HOME/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -117,8 +117,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-. ~/.espconfig
-. ~/.alias
+. $HOME/.espconfig
+. $HOME/.alias
 
 # next 2 lines for git to auto change branch when switched to new directory
 source "$HOME/.bash/git-aware-prompt/colors.sh"
@@ -141,7 +141,7 @@ export CSCOPE_EDITOR=vim
 # sample: shows git branch, user, current working directory with colors in background
 # export PS1="\[\033[0m\]Chinmay \[\033[1;48;5;45;38;5;0m\] \w/ \[\033[1;48;5;227;38;5;0m\](\$(git branch 2>/dev/null|grep '^*'|colrm 1 2))$ \[\033[0m\] "
 
-# using `colors.sh` and `prompt.sh` from `~/.bash/git-aware-prompt/`
+# using `colors.sh` and `prompt.sh` from `$HOME/.bash/git-aware-prompt/`
 # export PS1="\[\$bldred\][\[\$bldcyn\]\u \[\$bldylw\]\w\[\$bldred\]] \[\$bldgrn\]\$git_branch\[\$txtrst\]$ "
 
 # reference for color: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
@@ -157,12 +157,9 @@ export PS1="\[\033[1;32m\]\$git_branch\[\033[1;31m\][\[\033[1;33m\]\w \[\033[1;3
 # Depth of `$PWD` is decided by this.
 PROMPT_DIRTRIM=2
 
-# Write path to current working directory in file `~/.cwd`. This file is used in
+# Write path to current working directory in file `$HOME/.cwd`. This file is used in
 # i3 config to open new terminal in same directory.
 PROMPT_COMMAND="pwd > '${HOME}/.cwd'; $PROMPT_COMMAND"
-
-# enable vi key bindings in shell
-# set -o vi
 
 # Show desktop information with logo in a facny way!
 # screenfetch
