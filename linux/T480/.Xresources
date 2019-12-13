@@ -41,10 +41,10 @@
 !! URxvt Appearance
 URxvt.transparent: true
 URxvt.shading:  20
-URxvt.font: xft:Hack:size=9:antialias=true
-URxvt.boldFont: xft:Hack:size=9:bold:antialias=true
-URxvt.italicFont: xft:Hack:size=9:italic:antialias=true
-URxvt.boldItalicfont: xft:Hack:size=9:italic:bold:antialias=true
+URxvt.font: xft:Hack:size=10:antialias=true
+URxvt.boldFont: xft:Hack:size=10:bold:antialias=true
+URxvt.italicFont: xft:Hack:size=10:italic:antialias=true
+URxvt.boldItalicfont: xft:Hack:size=10:italic:bold:antialias=true
 URxvt.letterSpace: 0
 URxvt.lineSpace: 5
 URxvt.geometry: 92x24
