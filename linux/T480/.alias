@@ -3,14 +3,15 @@
 
 # General alias
 
-alias ea="v $HOME/.alias"
-alias ev="v $HOME/.vimrc"
-alias ebp="v $HOME/.bashrc"
-alias ep="vim $HOME/.profile"
-alias eec="vim $HOME/.espconfig"
-alias exr="vim $HOME/.Xresources"
+alias ea="vim + $HOME/.alias"
+alias ev="vim + $HOME/.vimrc"
+alias ebp="vim + $HOME/.bashrc"
+alias ep="vim + $HOME/.profile"
+alias eec="vim + $HOME/.espconfig"
+alias exr="vim + $HOME/.Xresources"
 alias SX="xrdb $HOME/.Xresources"
 alias SB="source $HOME/.bashrc"
+alias SA="source $HOME/.alias"
 alias p2="python"
 alias p3="python3 -q"
 alias v="vim +"
@@ -19,8 +20,8 @@ alias make="make -j32"
 alias m="clear;echo 'make > /dev/null';make defconfig > /dev/null;make -j32 > /dev/null"
 alias :q="exit"
 alias pforce="git push --force-with-lease"    # force push with lease
-alias eic="v $HOME/.config/i3/config"
-alias eib="v $HOME/.config/i3/i3blocks.conf"
+alias eic="vim + $HOME/.config/i3/config"
+alias eib="vim + $HOME/.config/i3/i3blocks.conf"
 alias sdn="shutdown now"
 alias update="sudo apt update"
 alias upgrade="sudo apt upgrade"
@@ -79,8 +80,30 @@ cds() { cd "$@" 2>/dev/null && ls -CF || vim + "$@"; }
 # Process tree in less
 ptr() { pstree "$@" | less; }
 
-# Add colors to man pages.
+# # Build and move cscope and ctags database to $HOME/.cstags_dir
+# csb() {
+#     mkdir -p $HOME/.cstags_dir
+#     if [ $1 ]; then
+#         if [ $1 = '.' ]; then
+#             target_dir="`basename $PWD`"
+#         else
+#             target_dir="`basename $1`"
+#         fi
+#         cd $1
+#     else
+#         target_dir="`basename $PWD`"
+#     fi
+#     cscope -Rb
+#     ctags -R .
+#     if [ -d $HOME/.cstags_dir/$target_dir ]; then
+#         mv cscope.out tags $HOME/.cstags_dir/$target_dir/
+#     else
+#         mkdir -p $HOME/.cstags_dir/$target_dir
+#         mv cscope.out tags $HOME/.cstags_dir/$target_dir/
+#     fi
+# }
 
+# Add colors to man pages.
 man() {
 LESS_TERMCAP_md=$'\e[01;31m' \
 LESS_TERMCAP_me=$'\e[0m' \

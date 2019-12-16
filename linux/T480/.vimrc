@@ -155,10 +155,10 @@ hi cursorline cterm=bold ctermbg=black
 " `CursorLineNr`) and relative lines are in Grey (maybe DarkGrey). Colorscheme
 " may overwrite this.
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-highlight CursorLineNr cterm=Bold,Italic ctermbg=DarkGrey ctermfg=White gui=NONE guibg=#444444 guifg=#ffff00
+highlight CursorLineNr cterm=Bold,Italic ctermbg=Black ctermfg=Yellow gui=NONE guibg=#444444 guifg=#ffff00
 
 " Matching braces color.
-hi MatchParen cterm=none ctermbg=green ctermfg=blue
+hi MatchParen cterm=none ctermbg=Green ctermfg=Black
 
 " Color setting for visually selected text.
 highlight Visual cterm=NONE ctermbg=Darkgrey ctermfg=NONE guibg=Grey40
@@ -322,7 +322,7 @@ endif
 
 " make comments italic. Be sure to put this after setting colorscheme so that
 " colorscheme doesn't override this setting
-hi Comment cterm=italic gui=italic
+hi Comment cterm=italic ctermbg=NONE ctermfg=Blue gui=italic
 
 " ####################################
 
