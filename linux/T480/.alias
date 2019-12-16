@@ -9,7 +9,7 @@ alias ebp="v $HOME/.bashrc"
 alias ep="vim $HOME/.profile"
 alias eec="vim $HOME/.espconfig"
 alias exr="vim $HOME/.Xresources"
-alias sx="xrdb $HOME/.Xresources"
+alias SX="xrdb $HOME/.Xresources"
 alias SB="source $HOME/.bashrc"
 alias p2="python"
 alias p3="python3 -q"
@@ -78,6 +78,18 @@ cds() { cd "$@" 2>/dev/null && ls -CF || vim + "$@"; }
 
 # Process tree in less
 ptr() { pstree "$@" | less; }
+
+# Add colors to man pages.
+
+man() {
+LESS_TERMCAP_md=$'\e[01;31m' \
+LESS_TERMCAP_me=$'\e[0m' \
+LESS_TERMCAP_se=$'\e[0m' \
+LESS_TERMCAP_so=$'\e[01;44;33m' \
+LESS_TERMCAP_ue=$'\e[0m' \
+LESS_TERMCAP_us=$'\e[01;32m' \
+command man "$@"
+}
 
 # alias for git
 alias gitgraph="git log --graph --decorate --oneline --all"
