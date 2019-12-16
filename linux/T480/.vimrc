@@ -129,13 +129,17 @@ set timeoutlen=1000 ttimeoutlen=0
 set so=4
 
 " `set spell` highlights color with red, but now it will underline
-set spell
+set nospell
 hi clear SpellBad
 hi SpellBad cterm=underline,bold  ctermfg=015      ctermbg=000
 
 " Set the directory where the swap files are stored, so they don't clutter  normal directories.
 set swapfile
 set dir=$HOME/.tmp/
+
+" URxvt requires these settings to render color in vim properly for some reason!
+set notermguicolors
+set t_Co=256
 
 " highlighting options in vsplit and gui
 hi vertsplit guifg=fg guibg=bg
@@ -151,10 +155,13 @@ hi cursorline cterm=bold ctermbg=black
 " `CursorLineNr`) and relative lines are in Grey (maybe DarkGrey). Colorscheme
 " may overwrite this.
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-highlight CursorLineNr cterm=Bold,Italic ctermbg=15 ctermfg=8 gui=NONE guibg=#444444 guifg=#ffff00
+highlight CursorLineNr cterm=Bold,Italic ctermbg=DarkGrey ctermfg=White gui=NONE guibg=#444444 guifg=#ffff00
+
+" Matching braces color.
+hi MatchParen cterm=none ctermbg=green ctermfg=blue
 
 " Color setting for visually selected text.
-highlight Visual cterm=NONE ctermbg=0 ctermfg=NONE guibg=Grey40
+highlight Visual cterm=NONE ctermbg=Darkgrey ctermfg=NONE guibg=Grey40
 
 filetype indent on
 syntax enable
@@ -304,12 +311,6 @@ if (empty($TMUX))
     "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
 endif
 
 " colorscheme rigel
@@ -326,7 +327,7 @@ hi Comment cterm=italic gui=italic
 " ####################################
 
 " cscope_dynamic
-"
+
 nmap <F10> <Plug>CscopeDBInit
 let g:cscopedb_big_file="$HOME/esp/esp-idf/cscope.out"
 let g:cscopedb_small_file="$HOME/esp/cscope_small.db"
@@ -394,7 +395,7 @@ let g:indentLine_leadingSpaceChar = '·'
 " lightline.vim
 " (https://github.com/itchyny/lightline.vim)
 
-" for showing 2 status line (for lightline plugin)
+" for showing 2 status line (for lightline)
 set laststatus=2
 
 " for not showing modes (eg: -- INSERT --) in status line 
@@ -436,8 +437,8 @@ set tags=./tags;
 let $CSCOPE_EDITOR="Vim"
 set nocsverb
 cs kill -1
-" cs add $HOME/esp/esp-idf/cscope.out
-cs a $HOME/nordic/proj/repos/cscope.out
+cs add $HOME/esp/esp-idf/cscope.out
+" cs add $HOME/nordic/proj/repos/cscope.out
 set cscopetag
 set cscoperelative
 
@@ -471,9 +472,6 @@ noremap <F6> :!cd $HOME/esp/esp-idf && cscope -Rb; ctags -R .<CR>:cs reset<CR>:s
 " let g:CCTreeKeyDepthPlus = '<C-\>='
 " let g:CCTreeKeyDepthMinus = '<C-\>-'
 " 
-" " Settings
-" let g:CCTreeCscopeDb = "cscope.out"
-" let g:CCTreeOrientation = "rightabove"
 " let g:CCTreeWindowVertical = 1
 " 
 " let g:CCTreeDisplayMode = 1
