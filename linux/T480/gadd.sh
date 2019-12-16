@@ -1,22 +1,10 @@
-#! /bin/bash
+#! /bin/sh
 
-cd ~/pnl/github/dot-files/
+# If this file executable, then `cd` will not actually change the current directory. So always run
+# this script with relative to current path (eg: `. ~/scripts/gadd.sh`).
+cd $HOME/pnl/github/dot-files/
 git checkout T480
-cp -r ~/.config/i3 ~/.config/dunst ~/.config/compton ~/.config/gsimplecal ~/pnl/github/dot-files/linux/T480/.config/
-cp -r  ~/.Xresources ~/.vimrc ~/gadd.sh ~/.profile ~/.bashrc ~/.alias ~/.fonts ~/pnl/github/dot-files/linux/T480/
+cd $HOME/pnl/github/dot-files/linux/T480/
+cp -r $HOME/.config/i3 $HOME/.config/dunst $HOME/.config/compton $HOME/.config/gsimplecal $HOME/pnl/github/dot-files/linux/T480/.config/
+cp -r  $HOME/.inputrc $HOME/.Xresources $HOME/scripts/ $HOME/gadd.sh $HOME/.vimrc $HOME/.profile $HOME/.bashrc $HOME/.alias $HOME/.fonts $HOME/pnl/github/dot-files/linux/T480/
 git status
-echo "Copied
-~/
-    - .alias
-    - .bashrc
-    - .config/
-        - i3/
-        - compton/
-        - gsimplecal/
-        - dunst/
-    - .fonts/
-    - .gitconfig
-    - .profile
-    - .vmirc
-    - .Xresources
-    - gadd.sh"
