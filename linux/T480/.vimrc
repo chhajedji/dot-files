@@ -423,7 +423,7 @@ let g:lightline = {
 " ####################################
 
 " ctags
-set tags=./tags;
+set tags=$HOME/.cstags_dir/*/tags;
 
 " ####################################
 
@@ -436,18 +436,20 @@ set tags=./tags;
 
 let $CSCOPE_EDITOR="Vim"
 set nocsverb
-cs kill -1
-cs add $HOME/esp/esp-idf/cscope.out
-" cs add $HOME/nordic/proj/repos/cscope.out
+" cs kill -1
+" cs add $HOME/.cstags_dir/esp-idf/cscope.out
+" cs add $HOME/.cstags_dir/repos/cscope.out
 set cscopetag
-set cscoperelative
+
+" Do not set `cscoperelative` if using a database not stored in the root directory of a project. 
+" set cscoperelative
 
 " Search ctags database first! Useful in case of inline functions.
-set csto=1
+set csto=0
 
 " Map F6 to build cscope and ctags for esp-idf ONLY and add in current file to
 " update the line numbers when new lines are added.
-noremap <F6> :!cd $HOME/esp/esp-idf && cscope -Rb; ctags -R .<CR>:cs reset<CR>:set tags=./tags;<CR><CR>
+noremap <F6> :!csb $HOME/esp/esp-idf<CR>:cs reset<CR>:set tags=$HOME/.cstags_dir/*/tags;<CR><CR>
 
 " ####################################
 
