@@ -4,15 +4,13 @@
 
 # Always use `set nocscoperelative` in vim as this script changes path of cscope
 # database and absolute path is needed.
+#
 # Usage:
 #
-#    `csb $HOME/esp/esp-idf`    or    `csb`
+#    `csb ~/esp/esp-idf/`    or    `csb` (build from current directory)
 #
-# First command will create a cscope database for `esp-idf` and place it in
-# `$HOME/.cstags_dir/esp-idf/cscope.out`. If you want to create database from
-# current directory, just use `csb`.
-# Use `cs add $HOME/.cstags_dir/esp-idf/cscope.out` to add cscope database and
-# `set tags+=$HOME/.cstags_dir/esp-idf/tags` to append tags for ctags.
+# This will create a cscope database for esp-idf and place it in
+# `$HOME/.cstags_dir/`.
 
 mkdir -p $HOME/.cstags_dir
 if [ $1 ]; then

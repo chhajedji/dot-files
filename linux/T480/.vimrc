@@ -171,11 +171,11 @@ syntax enable
 " nnoremap <silent> <leader>l :nohl<CR><leader>l
 nnoremap <silent> <leader>l :nohl<CR>
 
-" copy paste from/to + clipboard simplified
+" copy  from/to + clipboard simplified
 vnoremap <C-c> "+y
 nnoremap <C-c> V"+y
-nnoremap <C-p> "+p
-vnoremap <C-p> xh"+p
+nnoremap <C-p> "*p
+vnoremap <C-p> xh"*p
 
 " shortcut for splitting screens/windows
 noremap <C-h> <C-w>h
@@ -197,7 +197,12 @@ command! F echo expand('%:p')
 " Command `PI` will install vim plugins with Vundle
 command! PI PluginInstall
 
+" Open `$HOME/.vimrc`
 command! EV e + $HOME/.vimrc
+
+" Enable and disable mouse.
+command! ME set mouse+=a
+command! MD set mouse-=a
 
 " To map Enter, backspace with new line in normal mode. Not a good idea to map
 " Enter key as it is used to cycle results in `grep`/`vimgrep`.
@@ -229,11 +234,17 @@ vnoremap // y/<C-R>"<CR>
 
 " Cycle through grep results
 nnoremap <silent> <leader>f :bn<CR>zv
-nnoremap <silent> <leader>b :bp<CR>zv
+nnoremap <silent> <leader>F :bp<CR>zv
 " nnoremap <leader>co :copen<CR>
 
 " Highlight all occurrences of current word without moving cursor. (Similar to *`` but better.)
 nnoremap <silent> <space><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
+" Get current function name. Source: https://vim.fandom.com/wiki/Getting_name_of_the_function
+nnoremap _F ma][%b%b"xy$`a:echo @x<CR>
+
+" Debug logs in C below current line.
+nnoremap _Q oprintf("@@@@@@@@@@@@@@@@@ Here @@@@@@@@@@@@@@@@@\n");<esc>4bcw
 
 " Select using visual mode and pressing F8 will highlight all occurances of that visually
 " selected text.
@@ -437,15 +448,16 @@ set tags=$HOME/.cstags_dir/*/tags;
 let $CSCOPE_EDITOR="Vim"
 set nocsverb
 " cs kill -1
-" cs add $HOME/.cstags_dir/esp-idf/cscope.out
+cs add $HOME/.cstags_dir/esp-idf/cscope.out
 " cs add $HOME/.cstags_dir/repos/cscope.out
 set cscopetag
 
 " Do not set `cscoperelative` if using a database not stored in the root directory of a project. 
 " set cscoperelative
+set nocscoperelative
 
-" Search ctags database first! Useful in case of inline functions.
-set csto=0
+" Search ctags database first. Useful in case of inline functions.
+set csto=1
 
 " Map F6 to build cscope and ctags for esp-idf ONLY and add in current file to
 " update the line numbers when new lines are added.
