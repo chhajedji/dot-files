@@ -1,21 +1,7 @@
-#! /bin/bash
+#! /bin/sh
 
-cd ~/github/dot-files/
+cd $HOME/github/dot-files/linux/X230
 git checkout X230
-cp -r ~/.config/i3 ~/.config/dunst ~/.config/compton ~/.config/gsimplecal ~/github/dot-files/linux/X230/.config/
-cp -r ~/.vimrc ~/gadd.sh ~/.profile ~/.bashrc ~/.alias ~/.fonts ~/github/dot-files/linux/X230/
+cp -r $HOME/.config/i3 $HOME/.config/dunst $HOME/.config/compton $HOME/.config/gsimplecal $HOME/github/dot-files/linux/X230/.config/
+cp -r $HOME/.inputrc $HOME/.Xresources $HOME/.vimrc $HOME/gadd.sh $HOME/.profile $HOME/.bashrc $HOME/.alias $HOME/.fonts $HOME/github/dot-files/linux/X230/
 git status
-echo "Copied
-~/
-    - .alias
-    - .vmirc
-    - gadd.sh
-    - .bashrc
-    - .profile
-    - .fonts/
-    - .config/
-        - i3/
-        - compton/
-        - dunst/
-        - gsimplecal/
-        - dunst/"

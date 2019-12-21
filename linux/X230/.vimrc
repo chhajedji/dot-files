@@ -58,7 +58,7 @@ set confirm
 
 " Set the command window height to 2 lines, to avoid many cases of having to
 " 'press <Enter> to continue'
-" set cmdheight=2
+" set cmdheight=1
 
 " features in vertical split
 " set fillchars+=vert:\┊
@@ -126,10 +126,21 @@ set timeoutlen=1000 ttimeoutlen=0
 "short for set scrolloff=999  also zk/zj won't work in this mode. use ':set so=0' to exit this mode
 set so=4
 
+
 " `set spell` highlights color with red, but now it will underline
-set spell
+set nospell
 hi clear SpellBad
 hi SpellBad cterm=underline,bold  ctermfg=015      ctermbg=000
+
+" Append runtime path for powerline
+set rtp+=/usr/local/lib/python3.6/dist-packages/powerline/bindings/vim
+"
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+
+" Set the directory where the swap files are stored, so they don't clutter  normal directories.
+set swapfile
+set dir=$HOME/.tmp/
 
 " highlighting options in vsplit and gui
 hi vertsplit guifg=fg guibg=bg
@@ -156,8 +167,9 @@ nnoremap <silent> <leader>l :nohl<CR>
 
 " copy paste from/to + clipboard simplified
 vnoremap <C-c> "+y
-nnoremap YY V"+y
-nnoremap <C-p> "+p
+nnoremap <C-c> V"+y
+nnoremap <C-p> "*p
+vnoremap <C-p> xh"*p
 
 " shortcut for splitting screens/windows
 noremap <C-h> <C-w>h
@@ -173,19 +185,6 @@ nmap ,cs :let @+=expand("%")<CR>
 " copy file path to + clipboard (system clipboard)
 nmap ,cp :let @+=expand("%:p")<CR>
 
-" Command 'F' (`:F`) will show full file path
-command! F echo expand('%:p')
-
-" Command `PI` will install vim plugins with Vundle
-command! PI PluginInstall
-
-command! EV e + ~/.vimrc
-
-" To map Enter, backspace with new line in normal mode. Not a good idea to map
-" Enter key as it is used to cycle results in `grep`/`vimgrep`.
-" nmap <CR> o<Esc>
-nmap <BS> i<BS><ESC>l
-
 " saving files, saving files with/without tabs
 nnoremap <leader>wv :cs kill -1<CR><CR>:source $MYVIMRC<CR><CR>
 nnoremap <leader>w :w<CR>
@@ -199,11 +198,10 @@ nnoremap <leader>nt :set expandtab<cr> <bar> w<cr>
 nnoremap zj zb
 nnoremap zk zt
 
-" Go to vim next tab with `gl` and previous with `gh`. Note that default
-" behaviour of `gh` is to go into `Select-mode`. As this is not used by me,
-" currently, hence mapping it!
+" Navigate through vim tabs. Note that default " behaviour of `gh` is to go into
+" `Select-mode`. As this is not used by me, " currently, hence mapping it!
 nnoremap gl gt
-nnoremap gh gT
+nnoremap gL gT
 
 "searching visually selected block with '//'
 vnoremap // y/<C-R>"<CR>
@@ -213,20 +211,40 @@ nnoremap <silent> <leader>f :bn<CR>zv
 nnoremap <silent> <leader>b :bp<CR>zv
 " nnoremap <leader>co :copen<CR>
 
-" set syntax for every `.espconfig` file
-au BufNewFile,BufRead .espconfig call dist#ft#SetFileTypeSH("bash")
-"
+" Highlight all occurrences of current word without moving cursor. (Similar to *`` but better.)
+nnoremap <silent> <space><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
+" Get current function name. Source: https://vim.fandom.com/wiki/Getting_name_of_the_function
+nnoremap _F ma][%b%b"xy$`a:echo @x<CR>
+
+" Debug logs in C below current line.
+nnoremap _Q oprintf("@@@@@@@@@@@@@@@@@ Here @@@@@@@@@@@@@@@@@\n");<esc>4bcw
+
+" Select using visual mode and pressing F8 will highlight all occurances of that visually
+" selected text.
+set guioptions+=a
+function! MakePattern(text)
+  let pat = escape(a:text, '\')
+  let pat = substitute(pat, '\_s\+$', '\\s\\*', '')
+  let pat = substitute(pat, '^\_s\+', '\\s\\*', '')
+  let pat = substitute(pat, '\_s\+',  '\\_s\\+', 'g')
+  return '\\V' . escape(pat, '\"')
+endfunction
+vnoremap <silent> <space><space> :<C-U>let @/="<C-R>=MakePattern(@*)<CR>"<CR>:set hls<CR>
+
 " Load this colorscheme when using `vimdiff`. This file needs to be in
 " ~/.vim/colors and not as a plugin or else add it in runtime path.
 if &diff
     colorscheme apprentice
 endif
 
-" Append runtime path for powerline
-set rtp+=/usr/local/lib/python3.6/dist-packages/powerline/bindings/vim
-"
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
+" Command 'F' (`:F`) will show full file path
+command! F echo expand('%:p')
+
+" Command `PI` will install vim plugins with Vundle
+command! PI PluginInstall
+
+command! EV e + ~/.vimrc
 
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ plugins ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -286,9 +304,6 @@ if (empty($TMUX))
   "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
   "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
   " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
 endif
 
 " colorscheme rigel
