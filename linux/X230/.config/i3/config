@@ -170,6 +170,9 @@ workspace $ws0 output HDMI2
 exec --no-startup-id parcellite
 # open applications on startup. Find class of an application with `xprop`
 for_window [class="Gsimplecal"] floating enable, move down 10 px
+for_window [class="dolphin"] floating enable, resize set 1200 550, move position center
+for_window [class="Thunderbird"] move to workspace $ws0
+
 
 # Scratchpad with dropdown terminal. Not a very good choice to use `konsole` for
 # this purpose. Order may matter, although not tested.
@@ -179,19 +182,24 @@ exec --no-startup-id konsole -p tabtitle="dropdown"
 for_window [class="^konsole$" title="^dropdown"] floating enable
 for_window [class="^konsole$" title="^dropdown"] move scratchpad
 for_window [class="^konsole$" title="^dropdown"] scratchpad show
-for_window [class="^konsole$" title="^dropdown"] resize set 1200 650
+for_window [class="^konsole$" title="^dropdown"] resize set 1000 650
 for_window [class="^konsole$" title="^dropdown"] scratchpad show
 
 # bindsym F12 scratchpad show; move position center
 # bindsym F12 [class="^konsole$" title="^dropdown"] scratchpad show; move position center
 # bindsym F12 [class="^konsole$"] scratchpad show; move position center
 bindsym F12 [class="^konsole$"] scratchpad show
-bindsym $mod+F12 exec --no-startup-id konsole -p tabtitle="dropdown"; [class="^konsole$" title="^dropdown"] scratchpad show
+bindsym $mod+F12 exec --no-startup-id konsole -p tabtitle="dropdown"; [class="^konsole$" title="^dropdown"] scratchpad show; move position center
+
 bindsym $mod+shift+minus move scratchpad
 # Do not toggle *every* konsole windows running on scratchpad!
 bindsym $mod+minus [class="^(?!konsole$)"] scratchpad show
 # bindsym $mod+minus [title="^(?!dropdown*$)"] scratchpad show
 
+# Toggle wifi on and off
+bindsym $mod+Escape exec wifi_toggle.sh
+
+bindsym $mod+grave exec focus_window.sh
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -224,6 +232,12 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# Alternate to resize without using resize mode.
+bindsym $mod+y resize shrink width 10 px or 10 ppt
+bindsym $mod+u resize grow height 10 px or 10 ppt
+bindsym $mod+i resize shrink height 10 px or 10 ppt
+bindsym $mod+o resize grow width 10 px or 10 ppt
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -334,7 +348,7 @@ exec XDG_CURRENT_DESKTOP=KDE
 exec redshift -O 4500
 
 # wallpaper
-exec_always feh  --bg-scale ~/Pictures/wallpaper.png
+exec_always feh  --bg-scale ~/Pictures/wallpaper.jpg
 
 #interactive screenshot by pressing printscreen
 bindsym Print exec gnome-screenshot -i
@@ -345,3 +359,7 @@ bindsym $mod+Print exec gnome-screenshot -a
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
+hide_edge_borders smart
+
+# Hide window name.
+for_window [class=".*"] border pixel 4

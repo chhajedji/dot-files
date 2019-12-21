@@ -3,12 +3,14 @@
 
 # general alias
 
-alias ea="v ~/.alias"
-alias ev="v ~/.vimrc"
-alias ebp="v ~/.bashrc"
-alias ep="vim ~/.profile"
-alias eec="vim ~/.espconfig"
-alias SB="source ~/.profile"
+alias ea="vim + $HOME/.alias"
+alias ev="vim + $HOME/.vimrc"
+alias ebp="vim + $HOME/.bashrc"
+alias ep="vim + $HOME/.profile"
+alias eec="vim + $HOME/.espconfig"
+alias exr="vim + $HOME/.Xresources"
+alias SB="source $HOME/.profile"
+alias SX="xrdb $HOME/.Xresources"
 alias p2="python"
 alias p3="python3"
 alias v="vim +"
@@ -16,8 +18,8 @@ alias make="make -j32"
 # alias make="colormake"       # `sudo apt install colormake` if not installed. NOTE: menuconfig was not navigatable with colormake
 alias :q="exit"
 alias pforce="git push --force-with-lease"    # force push with lease
-alias eic="v ~/.config/i3/config"
-alias eib="v ~/.config/i3/i3blocks.conf"
+alias eic="vim + $HOME/.config/i3/config"
+alias eib="vim + $HOME/.config/i3/i3blocks.conf"
 alias sdn="shutdown now"
 alias update="sudo apt update"
 alias upgrade="sudo apt upgrade"
@@ -65,15 +67,7 @@ sz() { du -sh "$@"; }
 cgrep() { grep --include='*.\.c' --include='*.\.h' "$@"; }
 
 # combined cd and ls for a directory or if file, open in Vim.
-cds() {
-    if [ -d "$@" ]
-        then
-            cd "$@" && ls -CF;
-    elif [ -f "$@" ]
-        then
-        vim + "$@"
-        fi
-}
+cds() { cd "$@" 2>/dev/null && ls -CF || vim + "$@"; }
 
 # Process tree in less
 ptr() { pstree "$@" | less; }
