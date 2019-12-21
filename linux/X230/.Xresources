@@ -1,0 +1,216 @@
+!!!! URxvt*cursorColor:                    #d6d6d6
+!!!! 
+!!!! ! URxvt*colorBD:                        color
+!!!! ! URxvt*colorIT:                        color
+!!!! ! URxvt*colorUL:                        color
+!!!! ! URxvt*colorRV:                        color
+!!!! ! URxvt*underlineColor:                 color
+!!!! URxvt*scrollColor:                    #d6d6d6
+!!!! ! URxvt*troughColor:                    color
+!!!! URxvt*highlightColor:                 #3B758C
+!!!! URxvt*highlightTextColor:             #43a5d5
+!!!! ! URxvt*cursorColor2:                   color
+!!!! ! URxvt*pointerColor:                   color
+!!!! ! URxvt*pointerColor2:                  color
+!!!! ! URxvt*borderColor:                    color
+!!!! ! URxvt*tab-bg:                         colour
+!!!! ! URxvt*tab-fg:                         colour
+!!!! ! URxvt*tabbar-bg:                      colour
+!!!! ! URxvt*tabbar-fg:                      colour
+!!!! 
+!!!! ! Colors
+!!!! URxvt*background: #000000
+!!!! URxvt*foreground: #B2B2B2
+!!!! ! black
+!!!! URxvt*color0:  #000000
+!!!! URxvt*color8:  #686868
+!!!! ! red
+!!!! URxvt*color1:  #B21818
+!!!! URxvt*color9:  #FF5454
+!!!! ! green
+!!!! URxvt*color2:  #18B218
+!!!! URxvt*color10: #54FF54
+!!!! ! yellow
+!!!! URxvt*color3:  #B26818
+!!!! URxvt*color11: #FFFF54
+!!!! ! blue
+!!!! URxvt*color4:  #1818B2
+!!!! URxvt*color12: #5454FF
+!!!! ! purple
+!!!! URxvt*color5:  #B218B2
+!!!! URxvt*color13: #FF54FF
+!!!! ! cyan
+!!!! URxvt*color6:  #18B2B2
+!!!! URxvt*color14: #54FFFF
+!!!! ! white
+!!!! URxvt*color7:  #B2B2B2
+!!!! URxvt*color15: #FFFFFF
+!!!! 
+!!!! ! 256 color space
+!!!! URxvt*color16:                        #db7b55
+!!!! URxvt*color17:                        #8a553f
+!!!! URxvt*color18:                        #8ec43d
+!!!! URxvt*color19:                        #3B758C
+!!!! URxvt*color20:                        #43a5d5
+!!!! URxvt*color21:                        #eeeeee
+!!!! 
+!!!! Xcursor.size: 16W
+!!!! ! URxvt.font: xft:hack:size=9
+!!!! URxvt.url-launcher: /usr/bin/firefox
+!!!! URxvt.matcher.button: 1
+!!!! 
+!!!! ! To increase the font size press Ctrl++, to decrease the font size press
+!!!! ! Ctrl+-. To reset to the default font size press Ctrl+0.
+!!!! URxvt.keysym.C-Up:     font-size:increase
+!!!! URxvt.keysym.C-Down:   font-size:decrease
+!!!! URxvt.keysym.C-S-Up:   font-size:incglobal
+!!!! URxvt.keysym.C-S-Down: font-size:decglobal
+!!!! URxvt.keysym.C-equal:  font-size:reset
+!!!! URxvt.keysym.C-slash:  font-size:show
+!!!! 
+!!!! !! URxvt Appearance
+!!!! URxvt.font: xft:Hack:size=9:antialias=true
+!!!! URxvt.boldFont: xft:Hack:size=9:bold:antialias=true
+!!!! URxvt.italicFont: xft:Hack:size=9:italic:antialias=true
+!!!! URxvt.boldItalicfont: xft:Hack:size=9:italic:bold:antialias=true
+!!!! URxvt.letterSpace: 0
+!!!! URxvt.geometry: 92x24
+!!!! URxvt.internalBorder: 5
+!!!! URxvt.cursorBlink: true
+!!!! URxvt.cursorUnderline: false
+!!!! URxvt.saveline: 2048
+!!!! URxvt.scrollBar: false
+!!!! URxvt.scrollBar_right: false
+!!!! URxvt.urgentOnBell: true
+!!!! URxvt.depth: 24
+!!!! URxvt.iso14755: false
+!!!! 
+!!!! !! Common Keybinds for Navigations
+!!!! URxvt.keysym.Shift-Up: command:\033]720;1\007
+!!!! URxvt.keysym.Shift-Down: command:\033]721;1\007
+!!!! URxvt.keysym.Control-Up: \033[1;5A
+!!!! URxvt.keysym.Control-Down: \033[1;5B
+!!!! URxvt.keysym.Control-Right: \033[1;5C
+!!!! URxvt.keysym.Control-Left: \033[1;5D
+!!!! 
+!!!! !! Copy Paste & Other Extensions
+!!!! URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+!!!! URxvt.copyCommand: xclip -i -selection clipboard
+!!!! URxvt.pasteCommand: xclip -o -selection clipboard
+!!!! URxvt.keysym.M-c: perl:clipboard:copy
+!!!! URxvt.keysym.M-v: perl:clipboard:paste
+!!!! URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+!!!! URxvt.keysym.M-Escape: perl:keyboard-select:activate
+!!!! URxvt.keysym.M-s: perl:keyboard-select:search
+!!!! URxvt.keysym.M-u: perl:url-select:select_next
+!!!! URxvt.urlLauncher: firefox
+!!!! URxvt.underlineURLs: true
+!!!! URxvt.urlButton: 1
+
+
+
+
+
+!! Colorscheme
+
+! special
+*.foreground: #93a1a1
+*.background: #141c21
+*.cursorColor: #ff00fF
+
+! black
+*.color0: #263640
+*.color8: #4a697d
+
+! red
+*.color1: #d12f2c
+*.color9: #fa3935
+
+! green
+*.color2: #819400
+*.color10: #a4bd00
+
+! yellow
+*.color3: #b08500
+*.color11: #d9a400
+
+! blue
+*.color4: #2587cc
+! *.color4: #00DDFF
+*.color12: #2ca2f5
+
+! magenta
+*.color5: #696ebf
+*.color13: #8086e8
+
+! cyan
+*.color6: #289c93
+*.color14: #33c5ba
+
+! white
+*.color7: #bfbaac
+*.color15: #fdf6e3
+
+!! URxvt Appearance
+URxvt.transparent: true
+URxvt.shading:  15
+URxvt.font: xft:Hack:size=10:antialias=true
+URxvt.boldFont: xft:Hack:size=10:bold:antialias=true
+URxvt.italicFont: xft:Hack:size=10:italic:antialias=true
+URxvt.boldItalicfont: xft:Hack:size=10:italic:bold:antialias=true
+URxvt.letterSpace: -1
+URxvt.lineSpace: 0
+URxvt.geometry: 92x24
+URxvt.internalBorder: 5
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.saveline: 32768
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.urgentOnBell: true
+URxvt.depth: 24
+URxvt.iso14755: false
+
+! Turn off cursor while typing.
+URxvt*pointerBlank: true
+
+!! Common Keybinds for Navigations
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Right: \033[1;5C
+URxvt.keysym.Control-Left: \033[1;5D
+
+!! Copy Paste & Other Extensions
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,resize-font,clear,scroll
+URxvt.copyCommand: xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.keyboard-select.clipboard: true
+URxvt.urlLauncher: firefox
+URxvt.underlineURLs: true
+URxvt.urlButton: 1
+
+! resize-font
+URxvt.resize-font.smaller: C-minus
+URxvt.resize-font.reset: C-0
+URxvt.resize-font.bigger: C-equal
+URxvt.resize-font.step: 1
+
+!!! ! tabbed
+!!! 
+!!! ! Disable the `NEW` button.
+!!! URxvt.tabbed.new-button: false
+!!! URxvt.tabbed.disable-shift-down: true
+!
+!! Scroll
+URxvt.keysym.M-Page_Up:   perl:scroll:up-halfpage
+URxvt.keysym.M-Page_Down: perl:scroll:down-halfpage
+URxvt.keysym.Home:        perl:scroll:top
+URxvt.keysym.End:         perl:scroll:bottom
