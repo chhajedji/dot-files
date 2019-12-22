@@ -177,19 +177,19 @@ for_window [class="Thunderbird"] move to workspace $ws0
 # Scratchpad with dropdown terminal. Not a very good choice to use `konsole` for
 # this purpose. Order may matter, although not tested.
 
-for_window [class="^konsole$" title="^dropdown"] move scratchpad
-exec --no-startup-id konsole -p tabtitle="dropdown"
-for_window [class="^konsole$" title="^dropdown"] floating enable
-for_window [class="^konsole$" title="^dropdown"] move scratchpad
-for_window [class="^konsole$" title="^dropdown"] scratchpad show
-for_window [class="^konsole$" title="^dropdown"] resize set 1000 650
-for_window [class="^konsole$" title="^dropdown"] scratchpad show
+for_window [class="^URxvt$" title="^dropdown"] move scratchpad
+exec --no-startup-id urxvt -name dropdown
+for_window [class="^URxvt$" title="^dropdown"] floating enable
+for_window [class="^URxvt$" title="^dropdown"] move scratchpad
+for_window [class="^URxvt$" title="^dropdown"] scratchpad show
+for_window [class="^URxvt$" title="^dropdown"] resize set 1000 650
+for_window [class="^URxvt$" title="^dropdown"] scratchpad show
 
-# bindsym F12 scratchpad show; move position center
-# bindsym F12 [class="^konsole$" title="^dropdown"] scratchpad show; move position center
-# bindsym F12 [class="^konsole$"] scratchpad show; move position center
-bindsym F12 [class="^konsole$"] scratchpad show
-bindsym $mod+F12 exec --no-startup-id konsole -p tabtitle="dropdown"; [class="^konsole$" title="^dropdown"] scratchpad show; move position center
+bindsym F12 [class="^URxvt$"] scratchpad show
+bindsym $mod+F12 exec --no-startup-id urxvt -name dropdown; [class="^urxvt$" title="^dropdown"] scratchpad show; move position center
+
+# bindsym $mod+F12 exec --no-startup-id konsole -p tabtitle="dropdown"; [class="^konsole$" title="^dropdown"] scratchpad show; move position center
+
 
 bindsym $mod+shift+minus move scratchpad
 # Do not toggle *every* konsole windows running on scratchpad!
