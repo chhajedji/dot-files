@@ -39,8 +39,14 @@
 *.color15: #fdf6e3
 
 !! URxvt Appearance
-URxvt.transparent: true
-URxvt.shading:  20
+
+! For fake transparency.
+! URxvt.transparent: true
+! URxvt.shading:  20
+
+! For true transparency.
+URxvt.background: [80]#000000
+
 URxvt.font: xft:Hack:size=10:antialias=true
 URxvt.boldFont: xft:Hack:size=10:bold:antialias=true
 URxvt.italicFont: xft:Hack:size=10:italic:antialias=true
@@ -55,8 +61,8 @@ URxvt.saveline: 32768
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.urgentOnBell: true
-URxvt.depth: 24
-URxvt.iso14755: false
+URxvt.depth: 32
+URxvt.iso14757: false
 
 ! Turn off cursor while typing.
 URxvt*pointerBlank: true
