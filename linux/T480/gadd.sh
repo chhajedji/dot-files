@@ -2,6 +2,9 @@
 
 # If this file executable, then `cd` will not actually change the current directory. So always run
 # this script with relative to current path (eg: `. ~/scripts/gadd.sh`).
+
+### Add confidential files (like .gitconfig) manually and not in this script.
+
 cd $HOME/pnl/github/dot-files/
 git checkout T480
 cd $HOME/pnl/github/dot-files/linux/T480/

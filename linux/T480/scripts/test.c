@@ -335,11 +335,19 @@
  * }
  */
 
-typedef struct {
-    int n;
-} in;
+/*
+ * typedef struct {
+ *     int n;
+ * } in;
+ * 
+ * int main() {
+ *     in foo;
+ *     (foo.n == NULL) ? printf("NULL is true\n") : printf("not NULL\n");
+ * }
+ */
 
+
+_Bool a;
 int main() {
-    in foo;
-    (foo.n == NULL) ? printf("NULL is true\n") : printf("not NULL\n");
+    printf("a: %d\n", a);
 }

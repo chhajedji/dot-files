@@ -81,6 +81,9 @@ set linebreak
 set wrap
 set textwidth=100
 
+" Continue searching a file when reached start/end while searching (on by default).
+set wrapscan
+
 " When 'wildmenu' is on, command-line completion operates in an enhanced mode.
 set wildmenu
 
@@ -137,7 +140,7 @@ hi SpellBad cterm=underline,bold  ctermfg=015      ctermbg=000
 set swapfile
 set dir=$HOME/.tmp/
 
-" URxvt requires these settings to render color in vim properly for some reason!
+" URxvt requires these settings to render color in vim properly.
 set notermguicolors
 set t_Co=256
 
@@ -198,7 +201,7 @@ command! F echo expand('%:p')
 command! PI PluginInstall
 
 " Open `$HOME/.vimrc`
-command! EV e + $HOME/.vimrc
+command! EV tabe + $HOME/.vimrc
 
 " Enable and disable mouse.
 command! ME set mouse+=a
@@ -244,7 +247,7 @@ nnoremap <silent> <space><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:s
 nnoremap _F ma][%b%b"xy$`a:echo @x<CR>
 
 " Debug logs in C below current line.
-nnoremap _Q oprintf("@@@@@@@@@@@@@@@@@ Here @@@@@@@@@@@@@@@@@\n");<esc>4bcw
+nnoremap _Q oprintf("\n\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@\n\n\n");<esc>7bhi
 
 " Select using visual mode and pressing F8 will highlight all occurances of that visually
 " selected text.
@@ -257,6 +260,14 @@ function! MakePattern(text)
   return '\\V' . escape(pat, '\"')
 endfunction
 vnoremap <silent> <space><space> :<C-U>let @/="<C-R>=MakePattern(@*)<CR>"<CR>:set hls<CR>
+
+inoremap { {<esc>o}<esc>O
+inoremap ( ()<esc>i
+inoremap [ []<esc>i
+inoremap {} {}
+inoremap () ()
+inoremap [] []
+
 
 " Load this colorscheme when using `vimdiff`. This file needs to be in
 " $HOME/.vim/colors and not as a plugin or else add it in runtime path.
@@ -448,8 +459,8 @@ set tags=$HOME/.cstags_dir/*/tags;
 let $CSCOPE_EDITOR="Vim"
 set nocsverb
 " cs kill -1
-cs add $HOME/.cstags_dir/esp-idf/cscope.out
-" cs add $HOME/.cstags_dir/repos/cscope.out
+cs a $HOME/.cstags_dir/esp-idf/cscope.out
+" cs a $HOME/.cstags_dir/repos/cscope.out
 set cscopetag
 
 " Do not set `cscoperelative` if using a database not stored in the root directory of a project. 
