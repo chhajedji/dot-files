@@ -183,22 +183,22 @@ for_window [class="dolphin"] floating enable, resize set 1400 750, move position
 # Scratchpad with dropdown terminal. Not a very good choice to use `konsole` for
 # this purpose. Order may matter, although not tested.
 
-for_window [class="^konsole$" title="^dropdown"] move scratchpad
-exec --no-startup-id konsole -p tabtitle="dropdown"
-for_window [class="^konsole$" title="^dropdown"] floating enable
-for_window [class="^konsole$" title="^dropdown"] move scratchpad
-for_window [class="^konsole$" title="^dropdown"] scratchpad show
-for_window [class="^konsole$" title="^dropdown"] resize set 1200 650
-for_window [class="^konsole$" title="^dropdown"] scratchpad show
+for_window [class="^URxvt$" title="^dropdown"] move scratchpad
+exec --no-startup-id urxvt -name dropdown
+for_window [class="^URxvt$" title="^dropdown"] floating enable
+for_window [class="^URxvt$" title="^dropdown"] move scratchpad
+for_window [class="^URxvt$" title="^dropdown"] scratchpad show
+for_window [class="^URxvt$" title="^dropdown"] resize set 1200 650
+for_window [class="^URxvt$" title="^dropdown"] scratchpad show
 
 # bindsym F12 scratchpad show; move position center
 # bindsym F12 [class="^konsole$" title="^dropdown"] scratchpad show; move position center
 # bindsym F12 [class="^konsole$"] scratchpad show; move position center
-bindsym F12 [class="^konsole$"] scratchpad show
-bindsym $mod+F12 exec --no-startup-id konsole -p tabtitle="dropdown"; [class="^konsole$" title="^dropdown"] scratchpad show
+bindsym F12 [class="^URxvt$" title="^dropdown"] scratchpad show
+bindsym $mod+F12 exec --no-startup-id urxvt -name dropdown; [class="^URxvt$" title="^dropdown"] scratchpad show
 bindsym $mod+shift+minus move scratchpad
 # Do not toggle *every* konsole windows running on scratchpad!
-bindsym $mod+minus [class="^(?!konsole$)"] scratchpad show
+bindsym $mod+minus [title="^(?!dropdown$)"] scratchpad show
 # bindsym $mod+minus [title="^(?!dropdown*$)"] scratchpad show
 
 # Toggle wifi on and off
