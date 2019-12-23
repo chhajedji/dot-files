@@ -54,12 +54,6 @@ mkcdir() { mkdir "$@" && cd "$@"; }
 # tree will open in less
 tr() { tree -C "$@" | less -R; }
 
-# modified git diff
-gd() { git diff --color=always "$@" | less -R; }
-
-# Similarly modified git log
-gl() { git log --color=always "$@" | less -R; }
-
 # display size summary in human readable format.
 sz() { du -sh "$@"; }
 
