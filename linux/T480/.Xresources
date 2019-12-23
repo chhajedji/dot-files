@@ -47,6 +47,7 @@
 ! For true transparency.
 URxvt.background: [80]#000000
 
+URxvt.visualBell: true
 URxvt.font: xft:Hack:size=10:antialias=true
 URxvt.boldFont: xft:Hack:size=10:bold:antialias=true
 URxvt.italicFont: xft:Hack:size=10:italic:antialias=true
@@ -57,7 +58,7 @@ URxvt.geometry: 92x24
 URxvt.internalBorder: 5
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
-URxvt.saveline: 32768
+URxvt.saveline: 999999999
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.urgentOnBell: true

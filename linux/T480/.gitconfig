@@ -1,6 +1,3 @@
-[user]
-	name = Chinmay Chhajed
-	email = ; Add email id here!
 [diff]
     tool = meld
 [difftool]
@@ -16,10 +13,12 @@
   trustExitCode = true
   cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
 [alias]
-    l = "!log_in_less() { git log --color=always "$@" | less -R; }; log_in_less"
+    l = "!log_in_less() { git log --color=always \"$@\" | less -R; }; log_in_less"
     lo = "log --oneline"
-    d = "!diff_in_less() { git diff --color=always "$@" | less -R; }; diff_in_less"
+    d = "!diff_in_less() { git diff --color=always \"$@\" | less -R; }; diff_in_less"
     s = "status"
+    b = "!blame_in_less() { git blame --color=always \"$@\" | less -R; }; blame_in_less"
     sub = "submodule update --init --recursive --progress"
+    pulll = "!pull_with_progress() { git pull --progress \"$@\"; }; pull_with_progress"
 [credential]
 	helper = cache --timeout=99999999999999999
