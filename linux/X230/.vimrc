@@ -146,17 +146,17 @@ set dir=$HOME/.tmp/
 hi vertsplit guifg=fg guibg=bg
 hi StatusLine guibg=White guifg=Black
 
-hi cursorline cterm=bold ctermbg=black
+" hi cursorline cterm=bold ctermbg=black
 
 " Changes colors for current line number and relativenumbers. After this,
 " current line number is in yellow (by default which is changed with
 " `CursorLineNr`) and relative lines are in Grey (maybe DarkGrey). Colorscheme
 " may overwrite this.
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-highlight CursorLineNr cterm=Bold,Italic ctermbg=15 ctermfg=8 gui=NONE guibg=#444444 guifg=#ffff00
+" highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+" highlight CursorLineNr cterm=Bold,Italic ctermbg=15 ctermfg=8 gui=NONE guibg=#444444 guifg=#ffff00
 
 " Color setting for visually selected text.
-highlight Visual cterm=NONE ctermbg=0 ctermfg=NONE guibg=Grey40
+highlight Visual cterm=NONE ctermbg=darkblue ctermfg=NONE guibg=Grey40
 
 filetype indent on
 syntax enable
@@ -186,9 +186,9 @@ nmap ,cs :let @+=expand("%")<CR>
 nmap ,cp :let @+=expand("%:p")<CR>
 
 " saving files, saving files with/without tabs
-nnoremap <leader>wv :cs kill -1<CR><CR>:source $MYVIMRC<CR><CR>
-nnoremap <leader>w :w<CR>
-inoremap <leader>w <esc>:w<CR>
+nnoremap <silent> <leader>wv :cs kill -1<CR><CR>:source $MYVIMRC<CR><CR>
+nnoremap <silent> <leader>w :w<CR>
+inoremap <silent> <leader>w <esc>:w<CR>
 
 " tabs to spaces and spaces to tabs
 nnoremap <leader>t :set expandtab!<cr> <bar> w<cr>
@@ -244,7 +244,7 @@ command! F echo expand('%:p')
 " Command `PI` will install vim plugins with Vundle
 command! PI PluginInstall
 
-command! EV e + ~/.vimrc
+command! EV tabe + ~/.vimrc
 
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ plugins ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -2,11 +2,12 @@
 
 ! special
 *.foreground: #93a1a1
-*.background: [90]#000000
+*.background: #141c21
+! URxvt.background: rgba:0000/0000/0200/c800
 *.cursorColor: #ff00fF
 
 ! black
-*.color0: #263640
+*.color0: #141c21
 *.color8: #4a697d
 
 ! red
@@ -40,7 +41,7 @@
 
 !! URxvt Appearance
 
-! Disable transparent and shading for real transparency and disable for fake.
+! Disable transparent and shading for real transparency and enable for fake.
 ! URxvt.transparent: true
 ! URxvt.shading:  15
 URxvt.font: xft:Hack:size=10:antialias=true
@@ -53,7 +54,7 @@ URxvt.geometry: 92x24
 URxvt.internalBorder: 5
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
-URxvt.saveline: 32768
+URxvt.saveline: 999999999
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.urgentOnBell: true
