@@ -2,7 +2,7 @@
 
 ! special
 *.foreground: #93a1a1
-*.background: #141c21
+*.background: [90]#000000
 *.cursorColor: #ff00fF
 
 ! black
@@ -39,8 +39,10 @@
 *.color15: #fdf6e3
 
 !! URxvt Appearance
-URxvt.transparent: true
-URxvt.shading:  15
+
+! Disable transparent and shading for real transparency and disable for fake.
+! URxvt.transparent: true
+! URxvt.shading:  15
 URxvt.font: xft:Hack:size=10:antialias=true
 URxvt.boldFont: xft:Hack:size=10:bold:antialias=true
 URxvt.italicFont: xft:Hack:size=10:italic:antialias=true
@@ -55,7 +57,8 @@ URxvt.saveline: 32768
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.urgentOnBell: true
-URxvt.depth: 24
+! Keep depth 32 for real and 24 for fake transparency.
+URxvt.depth: 32
 URxvt.iso14755: false
 
 ! URxvt.perl-lib: /usr/lib/urxvt/perl/
