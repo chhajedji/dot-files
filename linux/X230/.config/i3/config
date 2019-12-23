@@ -193,7 +193,7 @@ bindsym $mod+F12 exec --no-startup-id urxvt -name dropdown; [class="^urxvt$" tit
 
 bindsym $mod+shift+minus move scratchpad
 # Do not toggle *every* konsole windows running on scratchpad!
-bindsym $mod+minus [class="^(?!konsole$)"] scratchpad show
+bindsym $mod+minus [class="^(?!URxvt$)"] scratchpad show
 # bindsym $mod+minus [title="^(?!dropdown*$)"] scratchpad show
 
 # Toggle wifi on and off
