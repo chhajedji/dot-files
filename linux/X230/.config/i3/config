@@ -172,6 +172,7 @@ exec --no-startup-id parcellite
 for_window [class="Gsimplecal"] floating enable, move down 10 px
 for_window [class="dolphin"] floating enable, resize set 1200 550, move position center
 for_window [class="Thunderbird"] move to workspace $ws0
+exec thunderbird
 
 
 # Scratchpad with dropdown terminal. Not a very good choice to use `konsole` for
