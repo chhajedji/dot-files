@@ -131,6 +131,9 @@ set timeoutlen=1000 ttimeoutlen=0
 "short for set scrolloff=999  also zk/zj won't work in this mode. use ':set so=0' to exit this mode
 set so=4
 
+" Autoload files when changed externally.
+set autoread
+
 " `set spell` highlights color with red, but now it will underline
 set nospell
 hi clear SpellBad
@@ -179,6 +182,8 @@ vnoremap <C-c> "+y
 nnoremap <C-c> V"+y
 nnoremap <C-p> "*p
 vnoremap <C-p> xh"*p
+nnoremap <C-P> "+p
+vnoremap <C-P> xh"+p
 
 " shortcut for splitting screens/windows
 noremap <C-h> <C-w>h
@@ -188,11 +193,13 @@ noremap <C-j> <C-w>j
 " noremap <C-o> <C-w>o
 " noremap <C-s> <C-w>s
 " noremap <C-v> <C-w>v
+noremap <silent> <C-y> :vertical resize -3<CR>
+noremap <silent> <C-o> :vertical resize +3<CR>
+noremap <silent> <C-u> :resize +3<CR>
+noremap <silent> <C-i> :resize -3<CR>
 
-" copy file name to + clipboard (system clipboard)
-nmap ,cs :let @+=expand("%")<CR>
 " copy file path to + clipboard (system clipboard)
-nmap ,cp :let @+=expand("%:p")<CR>
+nmap <silent>,cp :let @+=expand("%:p")<CR>:echo "File path copied"<CR>
 
 " Command 'F' (`:F`) will show full file path
 command! F echo expand('%:p')
@@ -210,7 +217,7 @@ command! MD set mouse-=a
 " To map Enter, backspace with new line in normal mode. Not a good idea to map
 " Enter key as it is used to cycle results in `grep`/`vimgrep`.
 " nmap <CR> o<Esc>
-nmap <BS> i<BS><ESC>l
+" nmap <BS> i<BS><ESC>l
 
 " saving files, saving files with/without tabs
 nnoremap <leader>wv :source $MYVIMRC<CR><CR>
@@ -232,25 +239,23 @@ nnoremap zk zt
 nnoremap gl gt
 nnoremap gL gT
 
-"searching visually selected block with '//'
-vnoremap // y/<C-R>"<CR>
-
 " Cycle through grep results
 nnoremap <silent> <leader>f :bn<CR>zv
 nnoremap <silent> <leader>F :bp<CR>zv
 " nnoremap <leader>co :copen<CR>
 
-" Highlight all occurrences of current word without moving cursor. (Similar to *`` but better.)
-nnoremap <silent> <space><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
-
-" Get current function name. Source: https://vim.fandom.com/wiki/Getting_name_of_the_function
-nnoremap _F ma][%b%b"xy$`a:echo @x<CR>
+" Get current function name.
+nnoremap _F ``mQ``mW[[b%^"xy$`Q`W:echo @x<CR>
 
 " Debug logs in C below current line.
 nnoremap _Q oprintf("\n\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@\n\n\n");<esc>7bhi
 
+" Highlight all occurrences of current word without moving cursor and show number of occurances. (Similar to *`` but better.)
+nnoremap <silent> <space><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+nnoremap ,cc :%s///gn<CR>
+
 " Select using visual mode and pressing F8 will highlight all occurances of that visually
-" selected text.
+" selected text and show number of occurances.
 set guioptions+=a
 function! MakePattern(text)
   let pat = escape(a:text, '\')
@@ -267,6 +272,13 @@ inoremap [ []<esc>i
 inoremap {} {}
 inoremap () ()
 inoremap [] []
+
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+
+tnoremap <esc> <C-\><C-n>
 
 
 " Load this colorscheme when using `vimdiff`. This file needs to be in
@@ -445,7 +457,7 @@ let g:lightline = {
 " ####################################
 
 " ctags
-set tags=$HOME/.cstags_dir/*/tags;
+set tags=$HOME/.cstags_dir/esp-idf/tags;
 
 " ####################################
 
@@ -472,7 +484,7 @@ set csto=1
 
 " Map F6 to build cscope and ctags for esp-idf ONLY and add in current file to
 " update the line numbers when new lines are added.
-noremap <F6> :!csb $HOME/esp/esp-idf<CR>:cs reset<CR>:set tags=$HOME/.cstags_dir/*/tags;<CR><CR>
+noremap <F6> :!csb $HOME/esp/esp-idf<CR>:cs reset<CR><CR>
 
 " ####################################
 

@@ -45,9 +45,9 @@
 ! URxvt.shading:  20
 
 ! For true transparency.
-URxvt.background: [80]#000000
+URxvt.background: [82]#000000
 
-URxvt.visualBell: true
+! URxvt.visualBell: true
 URxvt.font: xft:Hack:size=10:antialias=true
 URxvt.boldFont: xft:Hack:size=10:bold:antialias=true
 URxvt.italicFont: xft:Hack:size=10:italic:antialias=true
@@ -58,7 +58,7 @@ URxvt.geometry: 92x24
 URxvt.internalBorder: 5
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
-URxvt.saveline: 999999999
+URxvt.saveline: 999999999999999999
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.urgentOnBell: true
@@ -75,6 +75,11 @@ URxvt.keysym.Control-Up: \033[1;5A
 URxvt.keysym.Control-Down: \033[1;5B
 URxvt.keysym.Control-Right: \033[1;5C
 URxvt.keysym.Control-Left: \033[1;5D
+
+! FIXME Allows to scroll when terminal is loading.
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
 
 !! Copy Paste & Other Extensions
 URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,resize-font,clear,scroll
@@ -94,7 +99,7 @@ URxvt.urlButton: 1
 ! resize-font
 URxvt.resize-font.smaller: C-minus
 URxvt.resize-font.reset: C-0
-URxvt.resize-font.bigger: C-equal
+URxvt.resize-font.bigger: C-plus
 URxvt.resize-font.step: 1
 
 !!! ! tabbed

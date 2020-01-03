@@ -1,3 +1,5 @@
+/* This file is intended to check some basic C concepts which indeed can be used as interview questions. */
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -347,7 +349,37 @@
  */
 
 
-_Bool a;
-int main() {
-    printf("a: %d\n", a);
-}
+/*
+ * _Bool a;
+ * int main() {
+ *     printf("a: %d\n", a);
+ * }
+ */
+
+
+
+
+/*
+ * int main() {
+ *     u_int16_t w = 0xaaaa;
+ *     u_int16_t start = 4;
+ *     u_int16_t width = 8;
+ *     u_int16_t data = 0x56;
+ *     u_int16_t c = (1 << (width)) - 1;
+ *     w &= ~(c << start);
+ *     w |= data << start;
+ * 
+ *     printf("w: 0x%04x\n", w);
+ * }
+ */
+
+
+/*
+ * #include "assert.h"
+ * int main() {
+ *     printf("\n\n@@@@@@@@@@@@@@@@@ Hello World @@@@@@@@@@@@@@@@@\n\n\n");
+ *     assert(0);
+ *     printf("\n\n@@@@@@@@@@@@@@@@@ Hi @@@@@@@@@@@@@@@@@\n\n\n");
+ * }
+ */
+
