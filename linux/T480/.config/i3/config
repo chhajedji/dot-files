@@ -164,7 +164,7 @@ workspace $ws1 output eDP1
 workspace $ws2 output eDP1
 workspace $ws3 output eDP1
 workspace $ws4 output eDP1
-workspace $ws5 output eDP1
+workspace $ws5 output HDMI2
 workspace $ws6 output HDMI2
 workspace $ws7 output HDMI2
 workspace $ws8 output HDMI2
@@ -179,6 +179,7 @@ exec thunderbird
 for_window [class="Gsimplecal"] floating enable, move down 10 px
 for_window [class="SystemView"] move to workspace $ws6
 for_window [class="dolphin"] floating enable, resize set 1400 750, move position center
+for_window [class="realvnc-vncviewer"] move to workspace $ws5
 
 # Scratchpad with dropdown terminal. Not a very good choice to use `konsole` for
 # this purpose. Order may matter, although not tested.
@@ -237,10 +238,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Alternate to resize without using resize mode.
-bindsym $mod+y resize shrink width 10 px or 10 ppt
-bindsym $mod+u resize grow height 10 px or 10 ppt
-bindsym $mod+i resize shrink height 10 px or 10 ppt
-bindsym $mod+o resize grow width 10 px or 10 ppt
+bindsym $mod+y resize shrink width 7 px or 7 ppt
+bindsym $mod+u resize grow height 7 px or 7 ppt
+bindsym $mod+i resize shrink height 7 px or 7 ppt
+bindsym $mod+o resize grow width 7 px or 7 ppt
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -256,8 +257,8 @@ bar {
 
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3% #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # Sreen brightness controls
@@ -364,7 +365,7 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 for_window [class=".*"] border pixel 4
 # Set inner/outer gaps
 gaps inner 20
-gaps outer 5
+gaps outer 10
 
 # Activate smart borders (always). No borders for single window but borders for
 # multiple windows
@@ -379,4 +380,4 @@ bindsym $mod+Shift+x		gaps inner current minus 5
 
 # No gaps (almost fullscreen) and set to default gaps.
 bindsym $mod+f		gaps inner current set 0; gaps outer current set 0
-bindsym $mod+Shift+f		gaps inner current set 20; gaps outer current set 5
+bindsym $mod+Shift+f		gaps inner current set 20; gaps outer current set 10
