@@ -1,8 +1,9 @@
-#!/bin/bash
-# PROMPT_COMMAND="pwd > '${HOME}/.cwd'; $PROMPT_COMMAND"
-# source: i3 forums, http://blog.soulshake.net/2016/03/i3-new-terminals-in-pwd/
-
-
-# Change to saved working dir
-# pwd > '${HOME}/.cwd'
-[[ -f "${HOME}/.cwd" ]] && cd "$(< ${HOME}/.cwd)" && $TERMINAL
+#!/bin/sh
+ID=$(xdpyinfo | grep focus | cut -f4 -d " ")
+PID=$(($(xprop -id $ID | grep -m 1 PID | cut -d " " -f 3) + 2))
+if [ -e "/proc/$PID/cwd" ]
+then
+    urxvt -cd $(readlink /proc/$PID/cwd) &
+else
+    urxvt
+fi
