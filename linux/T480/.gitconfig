@@ -1,17 +1,20 @@
+[user]
+    name = Chinmay Chhajed
+    email = chinmay.chhajed@espressif.com
 [diff]
     tool = meld
 [difftool]
-  prompt = false
+    prompt = false
 [difftool "meld"]
-  trustExitCode = true
-  cmd = meld "$LOCAL" "$REMOTE"
+    trustExitCode = true
+    cmd = meld "$LOCAL" "$REMOTE"
 [merge]
-  tool = meld
+    tool = meld
 [mergetool]
-  prompt = false
+    prompt = false
 [mergetool "meld"]
-  trustExitCode = true
-  cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
+    trustExitCode = true
+    cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
 [alias]
     l = "!log_in_less() { git log --color=always \"$@\" | less -R; }; log_in_less"
     lo = "log --oneline"
@@ -21,4 +24,4 @@
     sub = "submodule update --init --recursive --progress"
     pulll = "!pull_with_progress() { git pull --progress \"$@\"; }; pull_with_progress"
 [credential]
-	helper = cache --timeout=99999999999999999
+    helper = cache --timeout=99999999999999999
