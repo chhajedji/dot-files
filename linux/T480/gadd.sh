@@ -9,5 +9,5 @@ cd $HOME/pnl/github/dot-files/
 git checkout T480
 cd $HOME/pnl/github/dot-files/linux/T480/
 cp -r $HOME/.config/i3 $HOME/.config/dunst $HOME/.config/compton $HOME/.config/gsimplecal $HOME/pnl/github/dot-files/linux/T480/.config/
-cp -r  $HOME/.bash $HOME/.inputrc $HOME/.Xresources $HOME/scripts/ $HOME/gadd.sh $HOME/.vimrc $HOME/.profile $HOME/.bashrc $HOME/.alias $HOME/.fonts $HOME/pnl/github/dot-files/linux/T480/
+cp -r  $HOME/.gitconfig $HOME/.bash $HOME/.inputrc $HOME/.Xresources $HOME/scripts/ $HOME/gadd.sh $HOME/.vimrc $HOME/.profile $HOME/.bashrc $HOME/.alias $HOME/.fonts $HOME/pnl/github/dot-files/linux/T480/
 git status
