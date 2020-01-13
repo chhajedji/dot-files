@@ -160,8 +160,8 @@ hi cursorline cterm=bold ctermbg=black
 " current line number is in yellow (by default which is changed with
 " `CursorLineNr`) and relative lines are in Grey (maybe DarkGrey). Colorscheme
 " may overwrite this.
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-highlight CursorLineNr cterm=Bold,Italic ctermbg=Black ctermfg=Yellow gui=NONE guibg=#444444 guifg=#ffff00
+" highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+" highlight CursorLineNr cterm=Bold,Italic ctermbg=Black ctermfg=Yellow gui=NONE guibg=#444444 guifg=#ffff00
 
 " Matching braces color.
 hi MatchParen cterm=none ctermbg=Green ctermfg=Black
@@ -184,6 +184,7 @@ nnoremap <C-p> "*p
 vnoremap <C-p> xh"*p
 nnoremap <C-P> "+p
 vnoremap <C-P> xh"+p
+nnoremap YY <esc>V"+y
 
 " shortcut for splitting screens/windows
 noremap <C-h> <C-w>h
@@ -193,10 +194,10 @@ noremap <C-j> <C-w>j
 " noremap <C-o> <C-w>o
 " noremap <C-s> <C-w>s
 " noremap <C-v> <C-w>v
-noremap <silent> <C-y> :vertical resize -3<CR>
-noremap <silent> <C-o> :vertical resize +3<CR>
-noremap <silent> <C-u> :resize +3<CR>
-noremap <silent> <C-i> :resize -3<CR>
+noremap <silent> - :vertical resize -3<CR>
+noremap <silent> = :vertical resize +3<CR>
+noremap <silent> + :resize +3<CR>
+noremap <silent> _ :resize -3<CR>
 
 " copy file path to + clipboard (system clipboard)
 nmap <silent>,cp :let @+=expand("%:p")<CR>:echo "File path copied"<CR>
@@ -273,10 +274,10 @@ inoremap {} {}
 inoremap () ()
 inoremap [] []
 
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
+" noremap j gj
+" noremap k gk
+" noremap gj j
+" noremap gk k
 
 tnoremap <esc> <C-\><C-n>
 
