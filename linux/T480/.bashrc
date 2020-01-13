@@ -142,6 +142,7 @@ export CSCOPE_EDITOR=vim
 # export PS1="\[\033[0m\]Chinmay \[\033[1;48;5;45;38;5;0m\] \w/ \[\033[1;48;5;227;38;5;0m\](\$(git branch 2>/dev/null|grep '^*'|colrm 1 2))$ \[\033[0m\] "
 
 # using `colors.sh` and `prompt.sh` from `$HOME/.bash/git-aware-prompt/`
+
 # export PS1="\[\$bldred\][\[\$bldcyn\]\u \[\$bldylw\]\w\[\$bldred\]] \[\$bldgrn\]\$git_branch\[\$txtrst\]$ "
 
 # reference for color: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
@@ -153,8 +154,8 @@ export CSCOPE_EDITOR=vim
 #     - \A for time in HH:MM
 #     - \j for number of background jobs
 # export PS1="\[\033[1;32m\]\$git_branch\[\033[1;31m\][\[\033[1;33m\]\w \[\033[1;36m\]\A\[\033[1;31m\]]\[\033[01;38;5;208m\] \$([ \j -gt 0 ] && echo [\j])\[\033[0m\]$ "
-export PS1="\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$bldred\][\[\$bldylw\]\w \[\$bldcyn\]\A\[\$bldred\]]\[\$bldgrn\]\$git_branch\[\$txtrst\] $ "
-
+export PS1="\[\$bldgrn\]\$git_branch\[\$bldred\][\[\$bldylw\]\w \[\$bldcyn\]\A\[\$bldred\]]\[\$bldblu\] \$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
+# export PS1="\[\$bldgrn\]\$(__git_ps1)\[\$bldred\][\[\$bldylw\]\w \[\$bldcyn\]\A\[\$bldred\]]\[\$bldblu\] \$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
 # Depth of `$PWD` is decided by this.
 PROMPT_DIRTRIM=2
 
