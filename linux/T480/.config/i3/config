@@ -198,8 +198,10 @@ for_window [class="^URxvt$" title="^dropdown"] scratchpad show
 bindsym F12 [class="^URxvt$" title="^dropdown"] scratchpad show
 bindsym $mod+F12 exec --no-startup-id urxvt -name dropdown; [class="^URxvt$" title="^dropdown"] scratchpad show
 bindsym $mod+shift+minus move scratchpad
-# Do not toggle *every* konsole windows running on scratchpad!
-bindsym $mod+minus [title="^(?!dropdown$)"] scratchpad show
+# Show every scratchpad window but URxvt.
+bindsym $mod+minus [class="^(?!URxvt$)" title="^(?!dropdown$)"] scratchpad show
+# Show every URxvt scratchpad window other than scratchpad.
+bindsym $mod+shift+i [class="^URxvt$" title="^(?!dropdown$)"] scratchpad show
 # bindsym $mod+minus [title="^(?!dropdown*$)"] scratchpad show
 
 # Toggle wifi on and off
