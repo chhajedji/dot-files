@@ -25,3 +25,6 @@
     pulll = "!pull_with_progress() { git pull --progress \"$@\"; }; pull_with_progress"
 [credential]
     helper = cache --timeout=99999999999999999
+[core]
+        ; Don't use `$HOME` here!
+	excludesfile = ~/.gitignore
