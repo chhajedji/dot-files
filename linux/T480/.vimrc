@@ -246,7 +246,7 @@ nnoremap <silent> <leader>F :bp<CR>zv
 " nnoremap <leader>co :copen<CR>
 
 " Get current function name.
-nnoremap _F ``mQ``mW[[b%^"xy$`Q`W:echo @x<CR>
+nnoremap _F ``mQ``mW[[b%b"xy$`Q`W:echo @x<CR>
 
 " Debug logs in C below current line.
 nnoremap _Q oprintf("\n\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@\n\n\n");<esc>7bhi
