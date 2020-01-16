@@ -19,7 +19,7 @@
     l = "!log_in_less() { git log --color=always \"$@\" | less -R; }; log_in_less"
     lo = "log --oneline"
     d = "!diff_in_less() { git diff --color=always \"$@\" | less -R; }; diff_in_less"
-    s = "status"
+    s = "!status_and_show() { if [ $@ ]; then git show $@ --color=always |less -R;else git status;fi; }; status_and_show"
     b = "!blame_in_less() { git blame --color=always \"$@\" | less -R; }; blame_in_less"
     sub = "submodule update --init --recursive --progress"
     pulll = "!pull_with_progress() { git pull --progress \"$@\"; }; pull_with_progress"
