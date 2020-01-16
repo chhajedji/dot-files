@@ -359,19 +359,18 @@
 
 
 
-/*
- * int main() {
- *     u_int16_t w = 0xaaaa;
- *     u_int16_t start = 4;
- *     u_int16_t width = 8;
- *     u_int16_t data = 0x56;
- *     u_int16_t c = (1 << (width)) - 1;
- *     w &= ~(c << start);
- *     w |= data << start;
- * 
- *     printf("w: 0x%04x\n", w);
- * }
- */
+int main() {
+    u_int16_t w = 0xaaaa;
+    u_int16_t start = 4;
+    u_int16_t width = 8;
+    u_int16_t data = 0x56;
+
+    u_int16_t c = (1 << (width)) - 1;
+    w &= ~(c << start);
+    w |= data << start;
+
+    printf("w: 0x%04x\n", w);
+}
 
 
 /*
@@ -383,3 +382,8 @@
  * }
  */
 
+int main() {
+    printf("Hello world \
+            how are you \
+            /*commented yes*/I'm good\n");
+}
