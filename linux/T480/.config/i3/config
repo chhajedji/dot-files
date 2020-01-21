@@ -344,8 +344,8 @@ exec XDG_CURRENT_DESKTOP=KDE
 exec redshift -O 3700
 
 # wallpaper
-exec feh --recursive --randomize --bg-scale $HOME/Pictures/wallpapers/
-bindsym $mod+Shift+a exec feh --recursive --randomize --bg-scale $HOME/Pictures/wallpapers/
+exec new_wall.sh
+bindsym $mod+Shift+a exec new_wall.sh
 
 #interactive screenshot by pressing printscreen
 bindsym Print exec gnome-screenshot -i
