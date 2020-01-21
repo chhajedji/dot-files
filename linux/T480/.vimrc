@@ -194,10 +194,10 @@ noremap <C-j> <C-w>j
 " noremap <C-o> <C-w>o
 " noremap <C-s> <C-w>s
 " noremap <C-v> <C-w>v
-noremap <silent> - :vertical resize -3<CR>
-noremap <silent> = :vertical resize +3<CR>
-noremap <silent> + :resize +3<CR>
-noremap <silent> _ :resize -3<CR>
+nnoremap <silent> - :vertical resize -3<CR>
+nnoremap <silent> = :vertical resize +3<CR>
+nnoremap <silent> + :resize +3<CR>
+nnoremap <silent> _ :resize -3<CR>
 
 " copy file path to + clipboard (system clipboard)
 nmap <silent>,cp :let @+=expand("%:p")<CR>:echo "File path copied"<CR>
