@@ -58,12 +58,12 @@ URxvt.geometry: 92x24
 URxvt.internalBorder: 5
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
-URxvt.saveline: 999999999999999999
+URxvt.saveLines: 1048576
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.urgentOnBell: true
 URxvt.depth: 32
-URxvt.iso14757: false
+! URxvt.iso14757: false
 
 ! Turn off cursor while typing.
 URxvt*pointerBlank: true
