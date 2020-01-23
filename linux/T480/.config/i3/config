@@ -205,7 +205,7 @@ bindsym $mod+shift+i [class="^URxvt$" title="^(?!dropdown$)"] scratchpad show
 # bindsym $mod+minus [title="^(?!dropdown*$)"] scratchpad show
 
 # Toggle wifi on and off
-bindsym $mod+Escape exec wifi_toggle.sh
+bindsym $mod+Shift+Escape exec wifi_toggle.sh
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart

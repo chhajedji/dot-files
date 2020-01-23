@@ -253,7 +253,7 @@ nnoremap _Q oprintf("\n\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@\n\n\n");<esc>7bhi
 
 " Highlight all occurrences of current word without moving cursor and show number of occurances. (Similar to *`` but better.)
 nnoremap <silent> <space><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
-nnoremap ,cc :%s///gn<CR>
+nnoremap ,cc :%s///gn<CR>``
 
 " Select using visual mode and pressing F8 will highlight all occurances of that visually
 " selected text and show number of occurances.
@@ -267,19 +267,13 @@ function! MakePattern(text)
 endfunction
 vnoremap <silent> <space><space> :<C-U>let @/="<C-R>=MakePattern(@*)<CR>"<CR>:set hls<CR>
 
-inoremap { {<esc>o}<esc>O
-inoremap ( ()<esc>i
-inoremap [ []<esc>i
-inoremap {} {}
-inoremap () ()
-inoremap [] []
-
 " noremap j gj
 " noremap k gk
 " noremap gj j
 " noremap gk k
 
-tnoremap <esc> <C-\><C-n>
+" Single escape turns on normal mode in bash.
+tnoremap <esc><esc> <C-\><C-n>
 
 
 " Load this colorscheme when using `vimdiff`. This file needs to be in
@@ -363,10 +357,10 @@ hi Comment cterm=italic ctermbg=NONE ctermfg=Blue gui=italic
 
 " cscope_dynamic
 
-nmap <F10> <Plug>CscopeDBInit
-let g:cscopedb_big_file="$HOME/esp/esp-idf/cscope.out"
-let g:cscopedb_small_file="$HOME/esp/cscope_small.db"
-let g:cscopedb_auto_init=1
+" nmap <F10> <Plug>CscopeDBInit
+" let g:cscopedb_big_file="$HOME/.cstags_dir/esp-idf/cscope.out"
+" let g:cscopedb_small_file="$HOME/.cstags_dir/esp-idf/cscope_small.db"
+" let g:cscopedb_auto_init=1
 
 " ####################################
 
