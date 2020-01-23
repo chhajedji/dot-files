@@ -38,4 +38,4 @@ export LC_ALL=en_IN.UTF-8
 
 export PATH="$HOME/.config/i3/scripts:$PATH"
 export PATH="$HOME/scripts:$PATH"
-
+export KDE_SESSION_VERSION=5
