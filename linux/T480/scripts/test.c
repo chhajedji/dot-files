@@ -359,18 +359,20 @@
 
 
 
-int main() {
-    u_int16_t w = 0xaaaa;
-    u_int16_t start = 4;
-    u_int16_t width = 8;
-    u_int16_t data = 0x56;
-
-    u_int16_t c = (1 << (width)) - 1;
-    w &= ~(c << start);
-    w |= data << start;
-
-    printf("w: 0x%04x\n", w);
-}
+/*
+ * int main() {
+ *     u_int16_t w = 0xaaaa;
+ *     u_int16_t start = 4;
+ *     u_int16_t width = 8;
+ *     u_int16_t data = 0x56;
+ * 
+ *     u_int16_t c = (1 << (width)) - 1;
+ *     w &= ~(c << start);
+ *     w |= data << start;
+ * 
+ *     printf("w: 0x%04x\n", w);
+ * }
+ */
 
 
 /*
@@ -382,8 +384,32 @@ int main() {
  * }
  */
 
+/*
+ * int main() {
+ *     printf("Hello world \
+ *             how are you \
+ *             [>commented yes<]I'm good\n");
+ * }
+ */
+
+#define ASDF 1
 int main() {
-    printf("Hello world \
-            how are you \
-            /*commented yes*/I'm good\n");
+#if 0
+    compilation error
+#endif
+#if !1
+        printf("error 2\n");
+#endif
+#if !3
+        printf("error 3\n");
+#endif
+#if !3
+        printf("error 4\n");
+#endif
+#ifndef ASDF
+        printf("asdf\n");
+        asdf
+#endif
+        printf("Hello World\n");
+
 }

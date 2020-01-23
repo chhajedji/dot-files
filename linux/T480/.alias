@@ -43,7 +43,7 @@ meaning() { dict "$@" | less; }
 # Update system smartly.
 up-to-date() {
     sudo apt update
-        if [ "$1" = -y ]; then
+        if [ "$1" == '-y' ]; then
             sudo apt upgrade -y
             sudo apt autoremove -y
             exit
@@ -76,6 +76,9 @@ cgrep() { grep --include='*.\.c' --include='*.\.h' "$@"; }
 
 # Combined cd and ls for a directory or if file, open in Vim.
 cds() { cd "$@" 2>/dev/null && ls -CF || vim + "$@"; }
+
+# `cds` into last modified file.
+ol() { cds `ls -t |head -n 1`; }
 
 # Process tree in less
 ptr() { pstree "$@" | less; }
