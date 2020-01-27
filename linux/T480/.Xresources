@@ -45,7 +45,7 @@
 ! URxvt.shading:  20
 
 ! For true transparency.
-URxvt.background: [86]#000000
+URxvt.background: [82]#000000
 
 ! URxvt.visualBell: true
 URxvt.font: xft:Hack:size=10:antialias=true
@@ -76,7 +76,7 @@ URxvt.keysym.Control-Down: \033[1;5B
 URxvt.keysym.Control-Right: \033[1;5C
 URxvt.keysym.Control-Left: \033[1;5D
 
-! FIXME Allows to scroll when terminal is loading.
+! Allows to scroll when terminal is loading.
 URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URxvt.scrollTtyKeypress: true
@@ -91,8 +91,8 @@ URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: firefox -new-window
 URxvt.keyboard-select.clipboard: true
-URxvt.urlLauncher: firefox
 URxvt.underlineURLs: true
 URxvt.urlButton: 1
 
@@ -113,3 +113,4 @@ URxvt.keysym.M-Page_Up:   perl:scroll:up-halfpage
 URxvt.keysym.M-Page_Down: perl:scroll:down-halfpage
 URxvt.keysym.Home:        perl:scroll:top
 URxvt.keysym.End:         perl:scroll:bottom
+

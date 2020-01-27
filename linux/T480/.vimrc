@@ -79,7 +79,7 @@ set linebreak
 " setting vim to wrap after 120 characters. Lines will get formatted
 " automatically. If set explicitly, select and use `gq` to format lines
 set wrap
-set textwidth=100
+set textwidth=90
 
 " Continue searching a file when reached start/end while searching (on by default).
 set wrapscan
@@ -169,13 +169,15 @@ hi MatchParen cterm=none ctermbg=Green ctermfg=Black
 " Color setting for visually selected text.
 highlight Visual cterm=NONE ctermbg=Darkgrey ctermfg=NONE guibg=Grey40
 
+" Highlight fold color.
+hi Folded ctermbg=black ctermfg=yellow
+
 filetype indent on
 syntax enable
 
 "
-"<leader>l redraws the screen and removes any search highlighting.
-" nnoremap <silent> <leader>l :nohl<CR><leader>l
-nnoremap <silent> <leader>l :nohl<CR>
+"<space>l Toggles highlighted word.
+nnoremap <silent> <space>l :set hlsearch!<CR>
 
 " copy  from/to + clipboard simplified
 vnoremap <C-c> "+y
@@ -211,6 +213,9 @@ command! PI PluginInstall
 " Open `$HOME/.vimrc`
 command! EV tabe + $HOME/.vimrc
 
+" Open new tab.
+command! EE tabe
+
 " Enable and disable mouse.
 command! ME set mouse+=a
 command! MD set mouse-=a
@@ -228,6 +233,8 @@ inoremap <leader>w <esc>:w<CR>
 " tabs to spaces and spaces to tabs
 nnoremap <leader>t :set expandtab!<cr> <bar> w<cr>
 nnoremap <leader>nt :set expandtab<cr> <bar> w<cr>
+
+nnoremap <silent> <leader>s :set spell!<cr>:echo 'spell check toggle'<cr>
 
 "putting the current line at various places on current screen
 nnoremap zj zb
@@ -249,11 +256,12 @@ nnoremap <silent> <leader>F :bp<CR>zv
 nnoremap _F ``mQ``mW[[b%b"xy$`Q`W:echo @x<CR>
 
 " Debug logs in C below current line.
-nnoremap _Q oprintf("\n\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@\n\n\n");<esc>7bhi
+nnoremap _Q oets_printf("\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@\n");<esc>3bhi
+nnoremap _P oprintf("\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@\n");<esc>3bhi
 
 " Highlight all occurrences of current word without moving cursor and show number of occurances. (Similar to *`` but better.)
 nnoremap <silent> <space><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
-nnoremap ,cc :%s///gn<CR>``
+nnoremap ,cc :%s///gn<CR>
 
 " Select using visual mode and pressing F8 will highlight all occurances of that visually
 " selected text and show number of occurances.
@@ -298,8 +306,8 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'itchyny/lightline.vim'
-" Plugin 'tpope/vim-fugitive'
+" Plugin 'itchyny/lightline.vim'
+Plugin 'tpope/vim-fugitive'
 " Plugin 'erig0/cscope_dynamic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
@@ -421,34 +429,34 @@ let g:indentLine_leadingSpaceChar = '·'
 
 " ####################################
 
-" lightline.vim
-" (https://github.com/itchyny/lightline.vim)
-
-" for showing 2 status line (for lightline)
-set laststatus=2
-
-" for not showing modes (eg: -- INSERT --) in status line 
-set noshowmode
-
-if !has('gui_running')
-  set t_Co=256
-endif
-
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
-      \ },
-      \ 'component': {
-      \ 'filename': '%F',
-      \ 'charvaluehex': '0x%B'
-      \ }
-      \ }
-
+"   " lightline.vim
+"   " (https://github.com/itchyny/lightline.vim)
+"   
+"   " For always showing status line in vim. (By default it is set to 1).
+"   set laststatus=2
+"   
+"   " For not showing modes (eg: -- INSERT --) in status line.
+"   set noshowmode
+"   
+"   if !has('gui_running')
+"     set t_Co=256
+"   endif
+"   
+"   let g:lightline = {
+"         \ 'colorscheme': 'one',
+"         \ 'active': {
+"         \   'left': [ [ 'mode', 'paste' ],
+"         \             [ 'readonly', 'filename', 'modified' ] ],
+"         \   'right': [ [ 'lineinfo' ],
+"         \              [ 'percent' ],
+"         \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
+"         \ },
+"         \ 'component': {
+"         \ 'filename': '%f',
+"         \ 'charvaluehex': '0x%B'
+"         \ }
+"         \ }
+"   
 " ####################################
 
 " ctags
