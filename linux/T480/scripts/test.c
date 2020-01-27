@@ -392,24 +392,73 @@
  * }
  */
 
-#define ASDF 1
-int main() {
-#if 0
-    compilation error
-#endif
-#if !1
-        printf("error 2\n");
-#endif
-#if !3
-        printf("error 3\n");
-#endif
-#if !3
-        printf("error 4\n");
-#endif
-#ifndef ASDF
-        printf("asdf\n");
-        asdf
-#endif
-        printf("Hello World\n");
+/*
+ * #define ASDF 1
+ * int main() {
+ * #if 0
+ *     compilation error
+ * #endif
+ * #if !1
+ *         printf("error 2\n");
+ * #endif
+ * #if !3
+ *         printf("error 3\n");
+ * #endif
+ * #if !3
+ *         printf("error 4\n");
+ * #endif
+ * #ifndef ASDF
+ *         printf("asdf\n");
+ *         asdf
+ * #endif
+ *         printf("Hello World\n");
+ * 
+ * }
+ */
 
+/*
+ * int main() {
+ *     u_int64_t b = 0xfedcba9876543210;
+ *     u_int32_t a;
+ *     a = b;
+ *     printf("0x%x\n", a);
+ * }
+ */
+
+/*
+ * #include "string.h"
+ * int main() {
+ *     int a[4], b[4];
+ *     printf("before:\n");
+ *     printf("a: ");
+ *     for (int i = 0; i < 4; i += 1) {
+ *         printf("%d ", a[i]);
+ *     }
+ *     printf("\nb: ");
+ *     for (int i = 0; i < 4; i += 1) {
+ *         printf("%d ", b[i]);
+ *     }
+ *     for (int i =0; i < 4; i += 1) {
+ *         memcpy(a+i, b+i, sizeof(int));
+ *     }
+ *     printf("\nafter:\n");
+ *     printf("a: ");
+ *     for (int i = 0; i < 4; i += 1) {
+ *         printf("%d ", a[i]);
+ *     }
+ *     printf("\nb: ");
+ *     for (int i = 0; i < 4; i += 1) {
+ *         printf("%d ", b[i]);
+ *     }
+ *     printf("\n");
+ * }
+ */
+
+int main() {
+    int *a, b, c, *d;
+    b = 2000;
+    a = &b;
+    *d = 3000;
+    c = *d;
+    printf("a: %d\tb: %d\tc: %d\td: %d\n", *a, b, c, *d);
 }

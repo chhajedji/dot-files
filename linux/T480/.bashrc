@@ -17,7 +17,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
-HISTFILESIZE=2000
+HISTFILESIZE=5000
 export HISTTIMEFORMAT="%d/%m/%y  %T    "
 
 # check the window size after each command and, if necessary,
@@ -164,3 +164,7 @@ PROMPT_COMMAND="pwd > '${HOME}/.cwd'; $PROMPT_COMMAND"
 
 # Show desktop information with logo in a facny way!
 # screenfetch
+
+# Set options for `less` to not bloat terminal when exitted from less. Mainly used in git. Outputs
+# of `git branch` also disappears after setting # this option.
+# export LESS=R

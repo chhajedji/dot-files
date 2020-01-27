@@ -23,8 +23,9 @@
     b = "!blame_in_less() { git blame --color=always \"$@\" | less -R; }; blame_in_less"
     sub = "submodule update --init --recursive --progress"
     pulll = "!pull_with_progress() { git pull --progress \"$@\"; }; pull_with_progress"
+    sd= "!sub_diff() { git diff --submodule=diff \"$@\" --color=always |less -R; }; sub_diff"
 [credential]
     helper = cache --timeout=99999999999999999
 [core]
         ; Don't use `$HOME` here!
-	excludesfile = ~/.gitignore
+        excludesfile = ~/.gitignore

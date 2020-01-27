@@ -1,17 +1,17 @@
-#! /bin/bash
-# This file includes all aliases and functions used regularly.
+#!/bin/bash
 
 # General alias
 
-alias ea="vim + $HOME/.alias"
+alias ea="vim + $HOME/.config/shellcuts/alias"
 alias ev="vim + $HOME/.vimrc"
 alias ebp="vim + $HOME/.bashrc"
 alias ep="vim + $HOME/.profile"
-alias eec="vim + $HOME/.espconfig"
+alias eec="vim + $HOME/.config/shellcuts/espconfig"
+alias SE="source $HOME/.config/shellcuts/espconfig"
 alias exr="vim + $HOME/.Xresources"
 alias SX="xrdb $HOME/.Xresources"
 alias SB="source $HOME/.bashrc"
-alias SA="source $HOME/.alias"
+alias SA="source $HOME/.config/shellcuts/alias"
 alias p2="python"
 alias p3="python3 -q"
 alias v="vim +"
@@ -43,17 +43,11 @@ meaning() { dict "$@" | less; }
 # Update system smartly.
 up-to-date() {
     sudo apt update
-        if [ "$1" == '-y' ]; then
-            sudo apt upgrade -y
-            sudo apt autoremove -y
-            exit
-        else
-            sudo apt upgrade
-            sudo apt autoremove
-            exit
-        fi
+            sudo apt upgrade "$1"
+            sudo apt autoremove "$1"
         sudo apt autoclean
         sudo apt clean
+        exit
 }
 
 # Combined mkdir and cd

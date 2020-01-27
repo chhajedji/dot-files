@@ -39,3 +39,6 @@ export LC_ALL=en_IN.UTF-8
 export PATH="$HOME/.config/i3/scripts:$PATH"
 export PATH="$HOME/scripts:$PATH"
 export KDE_SESSION_VERSION=5
+
+# Set cursor autorepeat time (first) and speed (second).
+xset r rate 400 50

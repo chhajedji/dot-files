@@ -175,7 +175,7 @@ exec --no-startup-id parcellite
 # open applications on startup. Find class of an application with `xprop`
 # assign [class="Thunderbird"] $ws0       # `assign` doesn't work with some applications like Thunderbird. Alternative method to do this:
 for_window [class="Thunderbird"] move to workspace $ws0
-exec thunderbird
+# exec thunderbird
 for_window [class="Gsimplecal"] floating enable, move down 10 px
 for_window [class="SystemView"] move to workspace $ws6
 for_window [class="dolphin"] floating enable, resize set 1400 750, move position center
@@ -309,10 +309,12 @@ bindsym $mod+Shift+Delete exec $term -e htop
 
 # resolution for monitors
 exec_always xrandr --auto
-exec_always xrandr | grep 'HDMI2 connected' && xrandr --output VIRTUAL1 --off --output eDP1 --mode 1600x900 --pos 0x104 --rotate normal --output DP1 --off --output HDMI2 --primary --mode 1920x1080 --pos 1600x0 --rotate normal --output HDMI1 --off --output DP2 --off
+# exec_always xrandr | grep 'HDMI2 connected' && xrandr --output VIRTUAL1 --off --output eDP1 --mode 1600x900 --pos 0x104 --rotate normal --output DP1 --off --output HDMI2 --primary --mode 1920x1080 --pos 1600x0 --rotate normal --output HDMI1 --off --output DP2 --off
+exec_always xrandr | grep 'HDMI2 connected' && . $HOME/.screenlayout/twoMonitor.sh
 
 
-exec_always xrandr | grep 'HDMI2 disconnected' && xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
+# exec_always xrandr | grep 'HDMI2 disconnected' && xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
+exec_always xrandr | grep 'HDMI2 disconnected' && . $HOME/.screenlayout/oneMMonitor.sh
 
 # for showing wifi settings on startup in i3bar
 exec --no-startup-id nm-applet
@@ -366,7 +368,7 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 # hide_edge_borders smart
 # You can also use any non-zero value if you'd like to have a border. This also
 # turns off the name of the window
-for_window [class=".*"] border pixel 4
+for_window [class=".*"] border pixel 2
 # Set inner/outer gaps
 gaps inner 20
 gaps outer 10
