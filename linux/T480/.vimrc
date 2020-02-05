@@ -275,6 +275,16 @@ function! MakePattern(text)
 endfunction
 vnoremap <silent> <space><space> :<C-U>let @/="<C-R>=MakePattern(@*)<CR>"<CR>:set hls<CR>
 
+" Check diff of saved and unsaved versions of the file
+function! s:DiffGitWithSaved()
+        let filename = expand('%')
+        let diffname = tempname()
+        execute 'silent w! '.diffname
+        execute '!git diff --color=always --no-index -- '.shellescape(filename).' '.diffname
+endfunction
+command! DiffGitSaved call s:DiffGitWithSaved()
+nmap <leader>d :DiffGitSaved<CR>
+
 " noremap j gj
 " noremap k gk
 " noremap gj j
