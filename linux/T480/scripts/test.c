@@ -454,11 +454,27 @@
  * }
  */
 
-int main() {
-    int *a, b, c, *d;
-    b = 2000;
-    a = &b;
-    *d = 3000;
-    c = *d;
-    printf("a: %d\tb: %d\tc: %d\td: %d\n", *a, b, c, *d);
+/*
+ * int main() {
+ *     int *a, b, c, *d;
+ *     b = 2000;
+ *     a = &b;
+ *     *d = 3000;
+ *     c = *d;
+ *     printf("a: %d\tb: %d\tc: %d\td: %d\n", *a, b, c, *d);
+ * }
+ */
+
+#include <execinfo.h>
+
+void foo(void) {
+    printf("foo\n");
+}
+
+int main(int argc, char *argv[]) {
+    void *funptr = &foo;
+
+    backtrace_symbols_fd(&funptr, 1, 1);
+
+    return 0;
 }

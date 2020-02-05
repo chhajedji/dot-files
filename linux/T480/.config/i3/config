@@ -180,6 +180,7 @@ for_window [class="Gsimplecal"] floating enable, move down 10 px
 for_window [class="SystemView"] move to workspace $ws6
 for_window [class="dolphin"] floating enable, resize set 1400 750, move position center
 for_window [class="realvnc-vncviewer"] move to workspace $ws5
+for_window [class="Vncviewer"] floating enable; move center
 
 # Scratchpad with dropdown terminal. Not a very good choice to use `konsole` for
 # this purpose. Order may matter, although not tested.
