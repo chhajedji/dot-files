@@ -153,7 +153,7 @@ export CSCOPE_EDITOR=vim
 #     - \A for time in HH:MM
 #     - \j for number of background jobs
 # export PS1="\[\033[1;32m\]\$git_branch\[\033[1;31m\][\[\033[1;33m\]\w \[\033[1;36m\]\A\[\033[1;31m\]]\[\033[01;38;5;208m\] \$([ \j -gt 0 ] && echo [\j])\[\033[0m\]$ "
-export PS1="\[\$bldred\][\[\$bldcyn\]\A \[\$bldylw\]\w\[\$bldred\]]\[\$txtgrn\]\$git_branch\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j]) \[\$txtrst\]$ "
+export PS1="\[\$bldred\][\[\$bldcyn\]\A \[\$bldylw\]\w\[\$bldred\]]\[\$txtgrn\]\$git_branch\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
 # export PS1="\[\$bldgrn\]\$(__git_ps1)\[\$bldred\][\[\$bldylw\]\w \[\$bldcyn\]\A\[\$bldred\]]\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\] $ "
 # Depth of `$PWD` is decided by this.
 PROMPT_DIRTRIM=2
@@ -167,4 +167,4 @@ PROMPT_COMMAND="pwd > '${HOME}/.cwd'; $PROMPT_COMMAND"
 
 # Set options for `less` to not bloat terminal when exitted from less. Mainly used in git. Outputs
 # of `git branch` also disappears after setting # this option.
-# export LESS=R
+export LESS=R

@@ -439,38 +439,40 @@ let g:indentLine_leadingSpaceChar = '·'
 
 " ####################################
 
-"   " lightline.vim
-"   " (https://github.com/itchyny/lightline.vim)
-"   
-"   " For always showing status line in vim. (By default it is set to 1).
-"   set laststatus=2
-"   
-"   " For not showing modes (eg: -- INSERT --) in status line.
-"   set noshowmode
-"   
-"   if !has('gui_running')
-"     set t_Co=256
-"   endif
-"   
-"   let g:lightline = {
-"         \ 'colorscheme': 'one',
-"         \ 'active': {
-"         \   'left': [ [ 'mode', 'paste' ],
-"         \             [ 'readonly', 'filename', 'modified' ] ],
-"         \   'right': [ [ 'lineinfo' ],
-"         \              [ 'percent' ],
-"         \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
-"         \ },
-"         \ 'component': {
-"         \ 'filename': '%f',
-"         \ 'charvaluehex': '0x%B'
-"         \ }
-"         \ }
-"   
+" lightline.vim
+" (https://github.com/itchyny/lightline.vim)
+
+if exists(':lightline')
+" For always showing status line in vim. (By default it is set to 1).
+set laststatus=2
+
+" For not showing modes (eg: -- INSERT --) in status line.
+set noshowmode
+
+if !has('gui_running')
+  set t_Co=256
+endif
+
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
+      \ },
+      \ 'component': {
+      \ 'filename': '%f',
+      \ 'charvaluehex': '0x%B'
+      \ }
+      \ }
+endif
+
 " ####################################
 
 " ctags
-set tags=$HOME/.cstags_dir/esp-idf/tags;
+set tags=$HOME/.cstags_dir/idf/tags;
 
 " ####################################
 
@@ -484,7 +486,7 @@ set tags=$HOME/.cstags_dir/esp-idf/tags;
 let $CSCOPE_EDITOR="Vim"
 set nocsverb
 " cs kill -1
-cs a $HOME/.cstags_dir/esp-idf/cscope.out
+cs a $HOME/.cstags_dir/idf/cscope.out
 " cs a $HOME/.cstags_dir/repos/cscope.out
 set cscopetag
 
@@ -497,7 +499,7 @@ set csto=1
 
 " Map F6 to build cscope and ctags for esp-idf ONLY and add in current file to
 " update the line numbers when new lines are added.
-noremap <F6> :!csb $HOME/esp/esp-idf<CR>:cs reset<CR><CR>
+noremap <F6> :!csb $HOME/esp/idf<CR>:cs reset<CR><CR>
 
 " ####################################
 
