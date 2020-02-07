@@ -474,7 +474,9 @@ void foo(void) {
 int main(int argc, char *argv[]) {
     void *funptr = &foo;
 
-    backtrace_symbols_fd(&funptr, 1, 1);
+    {
+        backtrace_symbols_fd(&funptr, 1, 1);
+    }
 
     return 0;
 }
