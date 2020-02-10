@@ -19,3 +19,6 @@ $if mode=vi
     set keymap vi-insert
     Control-l: clear-screen
     $endif
+
+    # Case insensitive auto-completion
+set completion-ignore-case on
