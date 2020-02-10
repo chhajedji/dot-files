@@ -13,6 +13,11 @@ set incsearch
 set hlsearch
 set autoindent
 
+" Only for GVim.
+if has("gui_running")
+    colorscheme darkblue
+endif
+
 " The width of a TAB is set to 4.  Still it is a \t. It is just that Vim will
 " interpret it to be having a width of 4. While using tabs, use `tabstop` and
 " not `softtabstop` (leave it unset). While using spaces instead of tabs, use
@@ -24,7 +29,6 @@ set shiftwidth=4
 
 " Sets the number of columns for a TAB.
 set softtabstop=4
-
 " no tabs, but spaces!
 set expandtab
 
@@ -147,6 +151,9 @@ set dir=$HOME/.tmp/
 set notermguicolors
 set t_Co=256
 
+" Neovim - Cursor to blink in normal mode also.
+set guicursor=a:blinkon100
+
 " highlighting options in vsplit and gui
 hi vertsplit guifg=fg guibg=bg
 hi StatusLine guibg=White guifg=Black
@@ -175,7 +182,7 @@ hi Folded ctermbg=black ctermfg=yellow
 filetype indent on
 syntax enable
 
-"
+
 "<space>l Toggles highlighted word.
 nnoremap <silent> <space>l :set hlsearch!<CR>
 
@@ -220,15 +227,33 @@ command! EE tabe
 command! ME set mouse+=a
 command! MD set mouse-=a
 
+"function! s:Showlogs(...)
+"    if exists(a:0)
+"        for values in a:000
+"            term cat values
+"        endfor
+"    else
+"        term cat monlog
+"    endif
+"    only
+"endfunction
+
+function! s:Showlogs()
+    term cat monlog
+    only
+endfunction
+
+command! ML call s:Showlogs()
+
 " To map Enter, backspace with new line in normal mode. Not a good idea to map
 " Enter key as it is used to cycle results in `grep`/`vimgrep`.
 " nmap <CR> o<Esc>
 " nmap <BS> i<BS><ESC>l
 
 " saving files, saving files with/without tabs
-nnoremap <leader>wv :source $MYVIMRC<CR><CR>
-nnoremap <leader>w :w<CR>
+nnoremap <silent><leader>v :source $MYVIMRC<CR>:echo ':source $MYVIMRC'<CR>
 inoremap <leader>w <esc>:w<CR>
+nnoremap <leader>w :w<CR>
 
 " tabs to spaces and spaces to tabs
 nnoremap <leader>t :set expandtab!<cr> <bar> w<cr>
@@ -252,8 +277,9 @@ nnoremap <silent> <leader>f :bn<CR>zv
 nnoremap <silent> <leader>F :bp<CR>zv
 " nnoremap <leader>co :copen<CR>
 
-" Get current function name.
-nnoremap _F ``mQ``mW[[b%b"xy$`Q`W:echo @x<CR>
+" Get current function name. Start by going to end of a function (with ][) so that if
+" opening brace of function is not in new line, this wouldn't skip a function.
+nnoremap _F ``mQ``mW][%b%b"xye`Q`W:echo @x<CR>
 
 " Debug logs in C below current line.
 nnoremap _Q oets_printf("\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@\n");<esc>3bhi
@@ -263,8 +289,15 @@ nnoremap _P oprintf("\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@\n");<esc>3bhi
 nnoremap <silent> <space><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 nnoremap ,cc :%s///gn<CR>
 
-" Select using visual mode and pressing F8 will highlight all occurances of that visually
-" selected text and show number of occurances.
+" Toggle cursor line.
+nnoremap <silent> <leader>l :set cursorline!<cr>
+
+" Mapping for [[ and ]] to go to all type of funtion start.
+" nnoremap [[ ][%
+" nnoremap ]] ][][%
+
+" Select using visual mode and pressing mapped key will highlight all occurances of that
+" visually selected text and show number of occurances.
 set guioptions+=a
 function! MakePattern(text)
   let pat = escape(a:text, '\')
@@ -317,7 +350,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 " Plugin 'itchyny/lightline.vim'
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 " Plugin 'erig0/cscope_dynamic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
@@ -330,6 +363,7 @@ Plugin 'Yggdroot/indentLine'
 " Plugin 'sheerun/vim-polyglot'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'blueyed/vim-diminactive'
+" Plugin 'ctrlpvim/ctrlp.vim'
 
 " Some good colorschemes
 " Plugin 'altercation/vim-colors-solarized'
@@ -348,6 +382,7 @@ filetype plugin indent on    " required
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  set laststatus=1
 endif
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -439,40 +474,38 @@ let g:indentLine_leadingSpaceChar = '·'
 
 " ####################################
 
-" lightline.vim
-" (https://github.com/itchyny/lightline.vim)
-
-if exists(':lightline')
-" For always showing status line in vim. (By default it is set to 1).
-set laststatus=2
-
-" For not showing modes (eg: -- INSERT --) in status line.
-set noshowmode
-
-if !has('gui_running')
-  set t_Co=256
-endif
-
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
-      \ },
-      \ 'component': {
-      \ 'filename': '%f',
-      \ 'charvaluehex': '0x%B'
-      \ }
-      \ }
-endif
-
+"    " lightline.vim
+"    " (https://github.com/itchyny/lightline.vim)
+"
+"    " For always showing status line in vim. (By default it is set to 1).
+"    set laststatus=2
+"
+"    " For not showing modes (eg: -- INSERT --) in status line.
+"    set noshowmode
+"
+"    if !has('gui_running')
+"      set t_Co=256
+"    endif
+"
+"    let g:lightline = {
+"          \ 'colorscheme': 'one',
+"          \ 'active': {
+"          \   'left': [ [ 'mode', 'paste' ],
+"          \             [ 'readonly', 'filename', 'modified' ] ],
+"          \   'right': [ [ 'lineinfo' ],
+"          \              [ 'percent' ],
+"          \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
+"          \ },
+"          \ 'component': {
+"          \ 'filename': '%f',
+"          \ 'charvaluehex': '0x%B'
+"          \ }
+"          \ }
+"    
 " ####################################
 
 " ctags
-set tags=$HOME/.cstags_dir/idf/tags;
+set tags=$HOME/.cstags_dir/esp-idf/tags;
 
 " ####################################
 
@@ -486,7 +519,7 @@ set tags=$HOME/.cstags_dir/idf/tags;
 let $CSCOPE_EDITOR="Vim"
 set nocsverb
 " cs kill -1
-cs a $HOME/.cstags_dir/idf/cscope.out
+cs a $HOME/.cstags_dir/esp-idf/cscope.out
 " cs a $HOME/.cstags_dir/repos/cscope.out
 set cscopetag
 
@@ -499,7 +532,7 @@ set csto=1
 
 " Map F6 to build cscope and ctags for esp-idf ONLY and add in current file to
 " update the line numbers when new lines are added.
-noremap <F6> :!csb $HOME/esp/idf<CR>:cs reset<CR><CR>
+noremap <F6> :!csb $IDF_PATH<CR>:cs reset<CR><CR>
 
 " ####################################
 
@@ -543,3 +576,14 @@ let g:diminactive_enable_focus = 1
 
 " ####################################
 
+" CtrlP
+" Refer https://github.com/ctrlpvim/ctrlp.vim
+
+" Binding for invoking Ctrlp. Need not be Ctrl-p. :P
+let g:ctrlp_map = '<C-l>'
+
+" Set working directory.
+let g:ctrlp_working_path_mode = 'rc'
+
+" Ignore gitignore files.
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
