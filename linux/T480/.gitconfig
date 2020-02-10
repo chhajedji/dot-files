@@ -16,9 +16,11 @@
     trustExitCode = true
     cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
 [alias]
-    ; Check for environment variable `LESS` having option "R". If this is enabled,
-    ; automatically many commands will open in less without bloating terminal.
-    l = "!log_in_less() { git log --color=always \"$@\" | less -R; }; log_in_less"
+; `sa` displays all alias.
+    sa="!show_alias() {  git config --get-regexp alias; }; show_alias"
+; Check for environment variable `LESS` having option "R". If this is enabled,
+; automatically many commands will open in less without bloating terminal.
+    l = "!log_in_less() { git log --decorate=full --color=always \"$@\" | less -R; }; log_in_less"
     lo = "log --oneline"
     d = "!diff_in_less() { git diff --color=always \"$@\" | less -R; }; diff_in_less"
     s = "!status_and_show() { if [ $@ ]; then git show $@ --color=always |less -R;else git status;fi; }; status_and_show"
@@ -30,4 +32,4 @@
     helper = cache --timeout=99999999999999999
 [core]
         ; Don't use `$HOME` here!
-        excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore

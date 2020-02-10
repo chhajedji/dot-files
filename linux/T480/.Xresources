@@ -55,7 +55,7 @@ URxvt.boldItalicfont: xft:Hack:size=10:italic:bold:antialias=true
 URxvt.letterSpace: -1
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24
-URxvt.internalBorder: 5
+URxvt.internalBorder: 10
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
 URxvt.saveLines: 1048576

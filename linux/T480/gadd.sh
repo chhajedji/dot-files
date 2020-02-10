@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/usr/bin/python3
 
 # If this file executable, then `cd` will not actually change the current directory. So always run
 # this script with relative to current path (eg: `. ~/scripts/gadd.sh`).

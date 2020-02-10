@@ -117,7 +117,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-for f in $HOME/.config/shellcuts/*; do source "$f"; done
+source $HOME/.espconfig
+source $HOME/.alias
 
 # next 2 lines for git to auto change branch when switched to new directory
 source "$HOME/.bash/git-aware-prompt/colors.sh"
@@ -153,7 +154,7 @@ export CSCOPE_EDITOR=vim
 #     - \A for time in HH:MM
 #     - \j for number of background jobs
 # export PS1="\[\033[1;32m\]\$git_branch\[\033[1;31m\][\[\033[1;33m\]\w \[\033[1;36m\]\A\[\033[1;31m\]]\[\033[01;38;5;208m\] \$([ \j -gt 0 ] && echo [\j])\[\033[0m\]$ "
-export PS1="\[\$bldred\][\[\$bldcyn\]\A \[\$bldylw\]\w\[\$bldred\]]\[\$txtgrn\]\$git_branch\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
+export PS1="\[\$bldred\][\[\$txtrst\]\[\$txtcyn\]\A \[\$txtylw\]\w\[\$bldred\]]\[\$txtrst\]\[\$txtgrn\]\$git_branch\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
 # export PS1="\[\$bldgrn\]\$(__git_ps1)\[\$bldred\][\[\$bldylw\]\w \[\$bldcyn\]\A\[\$bldred\]]\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\] $ "
 # Depth of `$PWD` is decided by this.
 PROMPT_DIRTRIM=2
