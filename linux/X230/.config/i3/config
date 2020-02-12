@@ -363,4 +363,4 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 hide_edge_borders smart
 
 # Hide window name.
-for_window [class=".*"] border pixel 4
+for_window [class=".*"] border pixel 2
