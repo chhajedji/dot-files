@@ -163,7 +163,7 @@ syntax enable
 
 "<leader>l redraws the screen and removes any search highlighting.
 " nnoremap <silent> <leader>l :nohl<CR><leader>l
-nnoremap <silent> <leader>l :nohl<CR>
+nnoremap <silent> <space>l :set hlsearch!<cr>
 
 " copy paste from/to + clipboard simplified
 vnoremap <C-c> "+y
@@ -186,18 +186,20 @@ nmap ,cs :let @+=expand("%")<CR>
 nmap ,cp :let @+=expand("%:p")<CR>
 
 " saving files, saving files with/without tabs
-nnoremap <silent> <leader>wv :cs kill -1<CR><CR>:source $MYVIMRC<CR><CR>
+nnoremap <silent> <leader>v :cs kill -1<CR><CR>:source $MYVIMRC<CR><CR>
 nnoremap <silent> <leader>w :w<CR>
 inoremap <silent> <leader>w <esc>:w<CR>
 
 " tabs to spaces and spaces to tabs
-nnoremap <leader>t :set expandtab!<cr> <bar> w<cr>
-nnoremap <leader>nt :set expandtab<cr> <bar> w<cr>
+nnoremap <leader>t :set noexpandtab<cr>
+nnoremap <leader>nt :set expandtab<cr>
 
 "putting the current line at various places on current screen
 nnoremap zj zb
 nnoremap zk zt
 
+" Spell toggle.
+nnoremap <silent><leader>s :set spell!<cr>:echo "Spell toggle"<cr>
 " Navigate through vim tabs. Note that default " behaviour of `gh` is to go into
 " `Select-mode`. As this is not used by me, " currently, hence mapping it!
 nnoremap gl gt
