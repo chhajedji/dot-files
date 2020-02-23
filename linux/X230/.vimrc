@@ -17,16 +17,16 @@ set autoindent
 " interpret it to be having a width of 4. While using tabs, use `tabstop` and
 " not `softtabstop` (leave it unset). While using spaces instead of tabs, use
 " `softtabstop` and not `tabstop`(unset).
-" set tabstop=4
+set tabstop=4
 
 " Indents with '>' will have a width of 4.
 set shiftwidth=4
 
 " Sets the number of columns for a TAB.
-set softtabstop=4
+" set softtabstop=4
 
-" no tabs, but spaces!
-set expandtab
+" no spaces, but tabs!
+set noexpandtab
 
 " Indentation with mixed tabs and spaces.
 " These settings will cause as many hard tabs as possible being used for
