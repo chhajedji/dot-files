@@ -291,7 +291,7 @@ exec_always xrandr | grep 'HDMI2 connected' && . $HOME/.screenlayout/twoMonitor.
 
 
 # exec_always xrandr | grep 'HDMI2 disconnected' && xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
-exec_always xrandr | grep 'HDMI2 disconnected' && . $HOME/.screenlayout/oneMMonitor.sh
+exec_always xrandr | grep 'HDMI2 disconnected' && . $HOME/.screenlayout/oneMonitor.sh
 
 # for showing wifi settings on startup in i3bar
 exec --no-startup-id nm-applet
