@@ -223,10 +223,15 @@ bindsym $mod+o resize grow width 7 px or 7 ppt
 # finds out, if available)
 bar {
 
+        # Press $mode key to show i3bar.
+        mode hide
         position top
         # separator_symbol "〉"
         status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
 }
+
+# Binding to toggle visibility for i3bar.
+bindsym $mod+Escape bar mode toggle
 
 # Polybar
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh

@@ -12,6 +12,7 @@ set ruler
 set incsearch
 set hlsearch
 set autoindent
+  set laststatus=0
 
 " Only for GVim.
 if has("gui_running")
@@ -80,10 +81,12 @@ set smartcase
 " words will not break at end of line
 set linebreak
 
-" setting vim to wrap after 120 characters. Lines will get formatted
+" setting vim to enter in a new line after 90 characters. Lines will get formatted
 " automatically. If set explicitly, select and use `gq` to format lines
-set wrap
 set textwidth=90
+
+" Wraps lines after end of screen.
+set wrap
 
 " Continue searching a file when reached start/end while searching (on by default).
 set wrapscan
@@ -105,7 +108,8 @@ set list
 
 " setting line characters
 set showbreak=↪\ 
-set listchars=tab:→\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
+set listchars=tab:→\ ,space:\ ,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
+" set listchars=tab:→\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
 " set listchars=tab:\┆\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
 
 " When a bracket is inserted, briefly jump to the matching one.  The
@@ -153,6 +157,10 @@ set t_Co=256
 
 " Neovim - Cursor to blink in normal mode also.
 set guicursor=a:blinkon100
+
+" This will start nvim and quit so the curosr will blink in Vim also! Hackish way of
+" making cursor blink in Vim :P
+command! C !nvim -c "q" && echo 'Is cursor blinking?'
 
 " highlighting options in vsplit and gui
 hi vertsplit guifg=fg guibg=bg
@@ -223,10 +231,20 @@ command! EV tabe + $HOME/.vimrc
 " Open new tab.
 command! EE tabe
 
+function! s:Newterm()
+    tabe
+    term
+    only
+endfunction
+
+" Open terminal in new tab without stopping vim.
+command! TT call s:Newterm()
+
 " Enable and disable mouse.
 command! ME set mouse+=a
 command! MD set mouse-=a
 
+" FIXME
 "function! s:Showlogs(...)
 "    if exists(a:0)
 "        for values in a:000
@@ -238,7 +256,18 @@ command! MD set mouse-=a
 "    only
 "endfunction
 
-function! s:Showlogs()
+"    function! s:Showlogs(...)
+"        tabe
+"        for fileopen in a:000
+"            term cat fileopen
+"            only
+"        endfor
+"    endfunction
+"    
+"    command! -nargs=1 ML call s:Showlogs(<f-args>)
+
+function! s:Showlogs(...)
+    tabe
     term cat monlog
     only
 endfunction
@@ -272,13 +301,15 @@ nnoremap zk zt
 nnoremap gl gt
 nnoremap gL gT
 
-" Cycle through grep results
+" Cycle through various buffers.
 nnoremap <silent> <leader>f :bn<CR>zv
 nnoremap <silent> <leader>F :bp<CR>zv
 " nnoremap <leader>co :copen<CR>
 
 " Get current function name. Start by going to end of a function (with ][) so that if
-" opening brace of function is not in new line, this wouldn't skip a function.
+" opening brace of function is not in new line, this wouldn't skip a function. This might
+" fail depending upon vim's implementation of `%`. In case of a commented '{', this
+" mapping might misbehave.
 nnoremap _F ``mQ``mW][%b%b"xye`Q`W:echo @x<CR>
 
 " Debug logs in C below current line.
@@ -291,6 +322,10 @@ nnoremap ,cc :%s///gn<CR>
 
 " Toggle cursor line.
 nnoremap <silent> <leader>l :set cursorline!<cr>
+
+" Move when nowrap is set.
+" nnoremap <C-h> 5zh
+" nnoremap <C-l> 5zl
 
 " Mapping for [[ and ]] to go to all type of funtion start.
 " nnoremap [[ ][%
@@ -353,10 +388,10 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'tpope/vim-fugitive'
 " Plugin 'erig0/cscope_dynamic'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-surround'
+" Plugin 'tpope/vim-surround'
 Plugin 'gnattishness/cscope_maps'
 " Plugin 'scrooloose/nerdtree'
-Plugin 'Yggdroot/indentLine'
+" Plugin 'Yggdroot/indentLine'
 " Plugin 'hari-rangarajan/cctree'
 " Plugin 'vim-scripts/taglist.vim'
 " Plugin 'severin-lemaignan/vim-minimap'
@@ -382,7 +417,6 @@ filetype plugin indent on    " required
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  set laststatus=1
 endif
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -460,33 +494,33 @@ let g:NERDSpaceDelims = 1
 
 " ####################################
 
-" indentLine
-
-" leading spaces will also be highlighted
-let g:indentLine_leadingSpaceEnabled = 1
-
-"show different indentation levels with different characters
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-" " set character for leading spaces. By default it is '˰'
-let g:indentLine_leadingSpaceChar = '·'
-
-
+"        " indentLine
+"        
+"        " leading spaces will also be highlighted
+"        let g:indentLine_leadingSpaceEnabled = 1
+"        
+"        "show different indentation levels with different characters
+"        let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+"        
+"        " " set character for leading spaces. By default it is '˰'
+"        let g:indentLine_leadingSpaceChar = '·'
+"        
+"        
 " ####################################
 
 "    " lightline.vim
 "    " (https://github.com/itchyny/lightline.vim)
-"
+"    
 "    " For always showing status line in vim. (By default it is set to 1).
 "    set laststatus=2
-"
+"    
 "    " For not showing modes (eg: -- INSERT --) in status line.
 "    set noshowmode
-"
+"    
 "    if !has('gui_running')
 "      set t_Co=256
 "    endif
-"
+"    
 "    let g:lightline = {
 "          \ 'colorscheme': 'one',
 "          \ 'active': {
@@ -586,4 +620,4 @@ let g:ctrlp_map = '<C-l>'
 let g:ctrlp_working_path_mode = 'rc'
 
 " Ignore gitignore files.
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
