@@ -465,18 +465,50 @@
  * }
  */
 
-#include <execinfo.h>
+/*
+ * #include <execinfo.h>
+ * 
+ * void foo(void) {
+ *     printf("foo\n");
+ * }
+ * 
+ * int main(int argc, char *argv[]) {
+ *     void *funptr = &foo;
+ * 
+ *     {
+ *         backtrace_symbols_fd(&funptr, 1, 1);
+ *     }
+ * 
+ *     return 0;
+ * }
+ */
 
-void foo(void) {
-    printf("foo\n");
-}
+/*
+ * int main(void)
+ * {
+ *     int a[3] = {
+ *         [2] = 3,
+ *         [1] = 2,
+ *         [0] = 1,
+ *     };
+ *     for (int i = 0; i < 3; i += 1) {
+ *         printf("%d\t", a[i]);
+ *     }
+ *     printf("\n");
+ * }
+ */
+/*
+ * int main(void)
+ * {
+ *     int a[] = {0, 1, 2};
+ *     printf("%d\n", a[-1]);
+ * }
+ */
 
-int main(int argc, char *argv[]) {
-    void *funptr = &foo;
+/*
+ * int main(void)
+ * {
+ *     printf("Hello\rWorld\n");
+ * }
+ */
 
-    {
-        backtrace_symbols_fd(&funptr, 1, 1);
-    }
-
-    return 0;
-}
