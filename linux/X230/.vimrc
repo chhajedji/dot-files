@@ -97,7 +97,8 @@ set list
 
 " setting line characters
 set showbreak=↪\ 
-set listchars=tab:→\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
+set listchars=tab:→\ ,space:\ ,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
+" set listchars=tab:→\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
 " set listchars=tab:\┆\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
 
 " When a bracket is inserted, briefly jump to the matching one.  The
@@ -210,7 +211,7 @@ vnoremap // y/<C-R>"<CR>
 
 " Cycle through grep results
 nnoremap <silent> <leader>f :bn<CR>zv
-nnoremap <silent> <leader>b :bp<CR>zv
+nnoremap <silent> <leader>F :bp<CR>zv
 " nnoremap <leader>co :copen<CR>
 
 " Highlight all occurrences of current word without moving cursor. (Similar to *`` but better.)
@@ -269,7 +270,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
 Plugin 'gnattishness/cscope_maps'
 " Plugin 'scrooloose/nerdtree'
-Plugin 'Yggdroot/indentLine'
+" Plugin 'Yggdroot/indentLine'
 " Plugin 'hari-rangarajan/cctree'
 " Plugin 'vim-scripts/taglist.vim'
 " Plugin 'severin-lemaignan/vim-minimap'

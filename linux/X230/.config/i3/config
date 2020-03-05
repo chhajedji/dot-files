@@ -198,7 +198,7 @@ bindsym $mod+minus [class="^(?!URxvt$)"] scratchpad show
 # bindsym $mod+minus [title="^(?!dropdown*$)"] scratchpad show
 
 # Toggle wifi on and off
-bindsym $mod+Escape exec wifi_toggle.sh
+bindsym $mod+Shift+Escape exec wifi_toggle.sh
 
 bindsym $mod+grave exec focus_window.sh
 
@@ -260,6 +260,8 @@ bar {
         # status_command python /usr/local/lib/python3.6/dist-packages/powerline/bindings/i3/powerline-i3.py
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
 }
+
+bindsym $mod+Escape bar mode toggle
 
 # Polybar
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
