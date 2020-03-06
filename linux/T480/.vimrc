@@ -83,7 +83,7 @@ set linebreak
 
 " setting vim to enter in a new line after 90 characters. Lines will get formatted
 " automatically. If set explicitly, select and use `gq` to format lines
-set textwidth=90
+" set textwidth=90
 
 " Wraps lines after end of screen.
 set wrap

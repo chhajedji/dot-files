@@ -512,3 +512,11 @@
  * }
  */
 
+#define hi(a)
+
+int main(void)
+{
+    printf("1\n");
+    hi(2)
+    printf("2\n");
+}
