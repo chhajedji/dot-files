@@ -122,8 +122,8 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-# set $ws0 "10: "
 set $ws0 "10"
+set $ws11 "BS"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -146,6 +146,7 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+Mod2+KP_9 workspace $ws9
 bindsym $mod+0 workspace $ws0
 bindsym $mod+Mod2+KP_0 workspace $ws0
+bindsym $mod+BackSpace workspace $ws11
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -158,18 +159,20 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws0
+bindsym $mod+Shift+BackSpace move container to workspace $ws11
 
 # Separate workspaces on monitors.
 workspace $ws1 output eDP1
 workspace $ws2 output eDP1
 workspace $ws3 output eDP1
 workspace $ws4 output eDP1
-workspace $ws5 output HDMI2
+workspace $ws5 output eDP1
 workspace $ws6 output HDMI2
 workspace $ws7 output HDMI2
 workspace $ws8 output HDMI2
 workspace $ws9 output HDMI2
 workspace $ws0 output HDMI2
+workspace $ws11 output HDMI2
 
 exec --no-startup-id parcellite
 # open applications on startup. Find class of an application with `xprop`
@@ -179,7 +182,7 @@ for_window [class="Thunderbird"] move to workspace $ws0
 for_window [class="Gsimplecal"] floating enable, move down 10 px
 for_window [class="SystemView"] move to workspace $ws6
 for_window [class="dolphin"] floating enable, resize set 1400 750, move position center
-for_window [class="realvnc-vncviewer"] move to workspace $ws5
+for_window [class="realvnc-vncviewer"] move to workspace $ws11
 for_window [class="Vncviewer"] floating enable; move center; move scratchpad
 
 # Scratchpad with dropdown terminal. Not a very good choice to use `konsole` for
