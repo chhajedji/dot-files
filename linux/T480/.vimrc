@@ -10,13 +10,13 @@ set nocompatible
 set number relativenumber
 set ruler
 set incsearch
-set hlsearch
+" set hlsearch
 set autoindent
   set laststatus=0
 
 " Only for GVim.
 if has("gui_running")
-    colorscheme darkblue
+    colorscheme desert
 endif
 
 " The width of a TAB is set to 4.  Still it is a \t. It is just that Vim will
@@ -108,9 +108,8 @@ set list
 
 " setting line characters
 set showbreak=↪\ 
-set listchars=tab:→\ ,space:\ ,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
-" set listchars=tab:→\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
-" set listchars=tab:\┆\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨"
+" set listchars=tab:→\ ,space:\ ,nbsp:␣,trail:·,extends:⟩,precedes:⟨
+set listchars=tab:→\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨
 
 " When a bracket is inserted, briefly jump to the matching one.  The
 " jump is only done if the match can be seen on the screen.  The time to
@@ -158,6 +157,9 @@ set t_Co=256
 " Neovim - Cursor to blink in normal mode also.
 set guicursor=a:blinkon100
 
+" For not showing modes (eg: -- INSERT --) in status line.
+set noshowmode
+
 " This will start nvim and quit so the curosr will blink in Vim also! Hackish way of
 " making cursor blink in Vim :P
 command! C !nvim -c "q" && echo 'Is cursor blinking?'
@@ -204,6 +206,10 @@ vnoremap <C-P> xh"+p
 nnoremap YY <esc>V"+y
 
 " shortcut for splitting screens/windows
+noremap <C-Left> <C-w>h
+noremap <C-Up> <C-w>k
+noremap <C-Right> <C-w>l
+noremap <C-Down> <C-w>j
 noremap <C-h> <C-w>h
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
@@ -243,6 +249,7 @@ command! TT call s:Newterm()
 " Enable and disable mouse.
 command! ME set mouse+=a
 command! MD set mouse-=a
+command! SETX !xset r rate 400 50
 
 " FIXME
 "function! s:Showlogs(...)
@@ -290,6 +297,9 @@ nnoremap <leader>nt :set expandtab<cr> <bar> w<cr>
 
 nnoremap <silent> <leader>s :set spell!<cr>:echo 'spell check toggle'<cr>
 
+" Toggle wrap.
+nnoremap <silent><leader>q :set wrap!<CR>:echo "Toggle wrapping"<CR>
+
 "putting the current line at various places on current screen
 nnoremap zj zb
 nnoremap zk zt
@@ -318,7 +328,7 @@ nnoremap _P oprintf("\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@\n");<esc>3bhi
 
 " Highlight all occurrences of current word without moving cursor and show number of occurances. (Similar to *`` but better.)
 nnoremap <silent> <space><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
-nnoremap ,cc :%s///gn<CR>
+nnoremap ,cc :%s///gn<CR>``
 
 " Toggle cursor line.
 nnoremap <silent> <leader>l :set cursorline!<cr>
@@ -396,8 +406,8 @@ Plugin 'gnattishness/cscope_maps'
 " Plugin 'vim-scripts/taglist.vim'
 " Plugin 'severin-lemaignan/vim-minimap'
 " Plugin 'sheerun/vim-polyglot'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'blueyed/vim-diminactive'
+" Plugin 'octol/vim-cpp-enhanced-highlight'
+" Plugin 'blueyed/vim-diminactive'
 " Plugin 'ctrlpvim/ctrlp.vim'
 
 " Some good colorschemes
@@ -465,24 +475,24 @@ hi Comment cterm=italic ctermbg=NONE ctermfg=Blue gui=italic
 " Use individual plugin of polyglot listed on their github page.
 "
 " ####################################
-"
-"vim-cpp-enhanced-highlight
-"
-"Highlighting of class scope is disabled by default. To enable set
-let g:cpp_class_scope_highlight = 1
 
-" Highlighting of member variables is disabled by default. To enable set
-let g:cpp_member_variable_highlight = 1
-
-" Highlighting of class names in declarations is disabled by default. To enable set
-let g:cpp_class_decl_highlight = 1
-
-" Highlighting of library concepts is enabled by
-let g:cpp_concepts_highlight = 1
-
-" Highlighting of user defined functions can be disabled by
-" let g:cpp_no_function_highlight = 1
-
+"       "vim-cpp-enhanced-highlight
+"       "
+"       "Highlighting of class scope is disabled by default. To enable set
+"       let g:cpp_class_scope_highlight = 1
+"       
+"       " Highlighting of member variables is disabled by default. To enable set
+"       let g:cpp_member_variable_highlight = 1
+"       
+"       " Highlighting of class names in declarations is disabled by default. To enable set
+"       let g:cpp_class_decl_highlight = 1
+"       
+"       " Highlighting of library concepts is enabled by
+"       let g:cpp_concepts_highlight = 1
+"       
+"       " Highlighting of user defined functions can be disabled by
+"       " let g:cpp_no_function_highlight = 1
+"       
 " ####################################
 "
 " NERDCommenter
@@ -604,8 +614,8 @@ noremap <F6> :!csb $IDF_PATH<CR>:cs reset<CR><CR>
 
 " vim-diminactive
 
-highlight ColorColumn ctermbg=0 guibg=#081C23
-let g:diminactive_enable_focus = 1
+"       highlight ColorColumn ctermbg=0 guibg=#081C23
+"       let g:diminactive_enable_focus = 1
 
 
 " ####################################
