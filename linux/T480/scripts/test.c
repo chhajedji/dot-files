@@ -512,11 +512,56 @@
  * }
  */
 
-#define hi(a)
+/*
+ * #define hi(a)
+ * 
+ * int main(void)
+ * {
+ *     printf("1\n");
+ *     hi(2)
+ *     printf("2\n");
+ * }
+ */
+
+/*
+ * #include "string.h"
+ * 
+ * int main(void)
+ * {
+ *     const char *a = "hello";
+ *     char *b = "hello";
+ *     printf("%d\n%s\n", strncmp(a, b, 10), b);
+ * }
+ */
+
+/*
+ * int f2(void)
+ * {
+ *     return 2;
+ * }
+ * #define func()                      \
+ *     do {                            \
+ *         int a;             \
+ *         a = f2()
+ * 
+ * #define func2()                     \
+ *         f2()                        \
+ *     } while(0)
+ * 
+ * int main(void)
+ * {
+ *     func();
+ * }
+ */
+
+inline int foo(int a)
+{
+    return (a+1);
+}
 
 int main(void)
 {
-    printf("1\n");
-    hi(2)
-    printf("2\n");
+    int b;
+    b = foo(3);
+    printf("%d\n", b);
 }
