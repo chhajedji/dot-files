@@ -366,3 +366,32 @@ hide_edge_borders smart
 
 # Hide window name.
 for_window [class=".*"] border pixel 2
+
+#############################
+### settings for i3-gaps: ###
+#############################
+
+# hide_edge_borders smart
+# You can also use any non-zero value if you'd like to have a border. This also
+# turns off the name of the window
+for_window [class=".*"] border pixel 2
+# Set inner/outer gaps
+set $inner_gap 10
+set $outer_gap 5
+gaps inner $inner_gap
+gaps outer $outer_gap
+
+# Activate smart borders (always). No borders for single window but borders for
+# multiple windows
+smart_borders on
+
+# Change outer gaps size
+bindsym $mod+z		gaps outer current plus 5
+bindsym $mod+Shift+z	gaps outer current minus 5
+
+bindsym $mod+x			gaps inner current plus 5
+bindsym $mod+Shift+x		gaps inner current minus 5
+
+# No gaps (almost fullscreen) and set to default gaps.
+bindsym $mod+f		gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Shift+f		gaps inner current set $inner_gap; gaps outer current set $outer_gap
