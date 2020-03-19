@@ -1,9 +1,30 @@
-!! Colorscheme
+!! Colorscheme      0-7 normal; 8-15 bright
 
 ! special
+
 *.foreground: #93a1a1
 *.background: #141c21
 *.cursorColor: #ff00fF
+
+
+!   ! Exact colors
+!   
+!   *color0:  #000000 // black
+!   *color1:  #B40000 // red
+!   *color2:  #00AA00 // green
+!   *color3:  #AAAA00 // yellow
+!   *color4:  #5555AA // blue
+!   *color5:  #AA00AA // magenta
+!   *color6:  #00AAAA // cyan
+!   *color7:  #AAAAAA // white
+!   *color8:  #555555 // black (now and below: bright)
+!   *color9:  #FF0000 // red
+!   *color10: #00FF00 // green
+!   *color11: #FFFF00 // yellow
+!   *color12: #6464FF // blue
+!   *color13: #FF00FF // magenta
+!   *color14: #00FFFF // cyan
+!   *color15: #FFFFFF // white
 
 ! black
 *.color0: #263640
@@ -48,10 +69,10 @@
 URxvt.background: [82]#000000
 
 ! URxvt.visualBell: true
-URxvt.font: xft:Hack:size=10:antialias=true
-URxvt.boldFont: xft:Hack:size=10:bold:antialias=true
-URxvt.italicFont: xft:Hack:size=10:italic:antialias=true
-URxvt.boldItalicfont: xft:Hack:size=10:italic:bold:antialias=true
+URxvt.font: xft:Hack:size=12:antialias=true
+URxvt.boldFont: xft:Hack:size=12:bold:antialias=true
+URxvt.italicFont: xft:Hack:size=12:italic:antialias=true
+URxvt.boldItalicfont: xft:Hack:size=12:italic:bold:antialias=true
 URxvt.letterSpace: -1
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24
