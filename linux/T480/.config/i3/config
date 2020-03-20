@@ -53,7 +53,7 @@ bindsym $mod+q mode $close
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -b'     # Give dmenu commands like this.
 bindsym $mod+Shift+d exec dolphin
 
 # change focus
@@ -224,8 +224,13 @@ bindsym $mod+o resize grow width 7 px or 7 ppt
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+#                    RRGGBBAA
+set $transparent    #00000000
 bar {
 
+        colors {
+        background $transparent
+        }
         # Press $mode key to show i3bar.
         mode hide
         position top
