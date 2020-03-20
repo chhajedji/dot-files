@@ -26,38 +26,42 @@
 !   *color14: #00FFFF // cyan
 !   *color15: #FFFFFF // white
 
+
+! Better colors with some offset.
+
 ! black
-*.color0: #263640
-*.color8: #4a697d
+*.color0:   #263640
+*.color8:   #4a697d
 
 ! red
-*.color1: #d12f2c
-*.color9: #fa3935
+*.color1:   #d12f2c
+*.color9:   #fa3935
 
 ! green
-*.color2: #819400
-*.color10: #a4bd00
+! *.color2:   #819400
+! *.color10:  #a4bd00
+*.color2:   #00aa00
+*.color10:  #00ff00
 
 ! yellow
-*.color3: #b08500
-*.color11: #d9a400
+*.color3:   #b08500
+*.color11:  #d9a400
 
 ! blue
-*.color4: #2587cc
-! *.color4: #00DDFF
-*.color12: #2ca2f5
+*.color4:   #2587cc
+*.color12:  #2ca2f5
 
 ! magenta
-*.color5: #696ebf
-*.color13: #8086e8
+*.color5:   #696ebf
+*.color13:  #8086e8
 
 ! cyan
-*.color6: #289c93
-*.color14: #33c5ba
+*.color6:   #289c93
+*.color14:  #33c5ba
 
 ! white
-*.color7: #bfbaac
-*.color15: #fdf6e3
+*.color7:   #bfbaac
+*.color15:  #fdf6e3
 
 !! URxvt Appearance
 
@@ -76,7 +80,7 @@ URxvt.boldItalicfont: xft:Hack:size=12:italic:bold:antialias=true
 URxvt.letterSpace: -1
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24
-URxvt.internalBorder: 10
+URxvt.internalBorder: 7
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
 URxvt.saveLines: 1048576

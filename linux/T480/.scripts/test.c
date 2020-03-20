@@ -554,14 +554,26 @@
  * }
  */
 
-inline int foo(int a)
-{
-    return (a+1);
-}
+/*
+ * inline int foo(int a)
+ * {
+ *     return (a+1);
+ * }
+ * 
+ * int main(void)
+ * {
+ *     int b;
+ *     b = foo(3);
+ *     printf("%d\n", b);
+ * }
+ */
 
 int main(void)
 {
-    int b;
-    b = foo(3);
-    printf("%d\n", b);
+    char *a[] = {
+        [0] = "Hello",
+        [1] = "World",
+        [6] = "Five"
+    };
+    printf("%s\t%s\t%s\t%s\t%s\t%s\n", a[0], a[1], a[2], a[5], a[7], a[4]);
 }

@@ -63,7 +63,7 @@ set confirm
 
 " Set the command window height to 2 lines, to avoid many cases of having to
 " 'press <Enter> to continue'
-" set cmdheight=2
+set cmdheight=2
 
 " features in vertical split
 " set fillchars+=vert:\┊
@@ -106,10 +106,10 @@ set nocursorline
 " This is required to highlight spedific parts like tab, space, eol. Specific parts can be set as done below 
 set list
 
-" setting line characters
+" Setting list characters
+" Some special characters: ▶    →   ␣   ·   ⟨   ⟩   ↲   «   »
 set showbreak=↪\ 
-" set listchars=tab:→\ ,space:\ ,nbsp:␣,trail:·,extends:⟩,precedes:⟨
-set listchars=tab:→\ ,space:\ ,eol:↲,nbsp:␣,trail:·,extends:⟩,precedes:⟨
+set listchars=tab:\ \ ,space:\ ,nbsp:␣,trail:·,extends:⟩,precedes:⟨
 
 " When a bracket is inserted, briefly jump to the matching one.  The
 " jump is only done if the match can be seen on the screen.  The time to
@@ -233,6 +233,12 @@ command! PI PluginInstall
 
 " Open `$HOME/.vimrc`
 command! EV tabe + $HOME/.vimrc
+"
+" Source Xresources
+command! SX !xrdb $HOME/.Xresources
+
+" Build st
+command! Stb !sudo make uninstall clean install >/dev/null && echo "Successfully built, launching st" && st >/dev/null &
 
 " Open new tab.
 command! EE tabe
@@ -249,7 +255,12 @@ command! TT call s:Newterm()
 " Enable and disable mouse.
 command! ME set mouse+=a
 command! MD set mouse-=a
+
+" Set cursor rate.
 command! SETX !xset r rate 400 50
+
+" Toggle numbers.
+command! NUM set relativenumber! number!
 
 " FIXME
 "function! s:Showlogs(...)
@@ -571,8 +582,10 @@ set cscopetag
 " set cscoperelative
 set nocscoperelative
 
-" Search ctags database first. Useful in case of inline functions.
-set csto=1
+" Search ctags database first. Useful in case of inline functions. If 'csto'
+" is set to one, tag file(s) are searched before cscope database(s).  The
+" default is zero.
+set csto=0
 
 " Map F6 to build cscope and ctags for esp-idf ONLY and add in current file to
 " update the line numbers when new lines are added.
@@ -620,14 +633,14 @@ noremap <F6> :!csb $IDF_PATH<CR>:cs reset<CR><CR>
 
 " ####################################
 
-" CtrlP
-" Refer https://github.com/ctrlpvim/ctrlp.vim
-
-" Binding for invoking Ctrlp. Need not be Ctrl-p. :P
-let g:ctrlp_map = '<C-l>'
-
-" Set working directory.
-let g:ctrlp_working_path_mode = 'rc'
-
-" Ignore gitignore files.
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+"   " CtrlP
+"   " Refer https://github.com/ctrlpvim/ctrlp.vim
+"
+"   " Binding for invoking Ctrlp. Need not be Ctrl-p. :P
+"   let g:ctrlp_map = '<C-l>'
+"
+"   " Set working directory.
+"   let g:ctrlp_working_path_mode = 'rc'
+"
+"   " Ignore gitignore files.
+"   " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
