@@ -334,6 +334,9 @@ exec XDG_CURRENT_DESKTOP=KDE
 
 exec redshift -O 3700
 
+# Search in Firefox from dmenu.
+bindsym $mod+g exec dmenu_search.sh
+
 # Transparency.
 bindsym $mod+c exec trans_dec.sh
 bindsym $mod+shift+c exec trans_inc.sh
