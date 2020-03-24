@@ -184,7 +184,7 @@ hi cursorline cterm=bold ctermbg=black
 hi MatchParen cterm=none ctermbg=Green ctermfg=Black
 
 " Color setting for visually selected text.
-highlight Visual cterm=NONE ctermbg=Darkgrey ctermfg=NONE guibg=Grey40
+highlight Visual cterm=NONE ctermbg=Lightgrey ctermfg=Black guibg=Grey40
 
 " Highlight fold color.
 hi Folded ctermbg=black ctermfg=yellow
