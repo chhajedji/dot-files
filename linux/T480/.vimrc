@@ -233,9 +233,6 @@ command! PI PluginInstall
 
 " Open `$HOME/.vimrc`
 command! EV tabe + $HOME/.vimrc
-"
-" Source Xresources
-command! SX !xrdb $HOME/.Xresources
 
 " Build st
 command! Stb !sudo make uninstall clean install >/dev/null && echo "Successfully built, launching st" && st >/dev/null &
@@ -298,7 +295,6 @@ command! ML call s:Showlogs()
 " nmap <BS> i<BS><ESC>l
 
 " saving files, saving files with/without tabs
-nnoremap <silent><leader>v :source $MYVIMRC<CR>:echo ':source $MYVIMRC'<CR>
 inoremap <leader>w <esc>:w<CR>
 nnoremap <leader>w :w<CR>
 
@@ -388,11 +384,22 @@ tnoremap <esc><esc> <C-\><C-n>
 if &diff
     colorscheme apprentice
 endif
+
 " set syntax for every `.espconfig` file
-au BufNewFile,BufRead .espconfig call dist#ft#SetFileTypeSH("bash")
+autocmd BufNewFile,BufRead .espconfig call dist#ft#SetFileTypeSH("bash")
 
+" Save a file as soon as it is opened in vim even when it's empty.
+autocmd BufNewFile * :w
 
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ plugins ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" Source Xdefaults and Xresources.
+autocmd BufWritePost .Xresources :!xrdb $HOME/.Xresources
+autocmd BufWritePost .Xdefaults :!xrdb $HOME/.Xdefaults
+
+" Source vim configuration upon save
+autocmd! BufWritePost $MYVIMRC :source %
+autocmd! BufWritePost $MYVIMRC :echom "Reloaded " . $MYVIMRC
+
+" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! plugins !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 " setup for Vundle Plugin manager
 "
