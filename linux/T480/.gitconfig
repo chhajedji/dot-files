@@ -22,7 +22,7 @@
 ; automatically many commands will open in less without bloating terminal.
     l = "!log_in_less() { git log --decorate=full --color=always \"$@\" | less -R; }; log_in_less"
     lo = "log --oneline"
-    d = "!diff_in_less() { git diff --color=always \"$@\" | less -R; }; diff_in_less"
+    d = "!diff_in_less() { git diff --color-words --color=always \"$@\" | less -R; }; diff_in_less"
     s = "status"
     b = "!blame_in_less() { git blame --color=always \"$@\" | less -R; }; blame_in_less"
     sub = "submodule update --init --recursive --progress"
