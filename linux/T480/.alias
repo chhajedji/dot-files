@@ -9,16 +9,14 @@ alias ep="vim + $HOME/.profile"
 alias eec="vim + $HOME/.espconfig"
 alias SE="source $HOME/.espconfig"
 alias exr="vim + $HOME/.Xresources"
-alias SX="xrdb $HOME/.Xresources"
 alias SB="source $HOME/.bashrc"
 alias SA="source $HOME/.alias"
-alias gsc="cd $HOME/"
 alias p2="python"
 alias p3="python3 -q"
 alias v="vim +"
 alias nv="nvim +"
 alias make="make -j32"
-alias bst="sudo make uninstall >/dev/null && sudo make clean install >/dev/null && echo 'st build successfully.'"
+alias bst="sudo make uninstall >/dev/null && sudo make clean install >/dev/null && echo 'st build successfully.'"   # Build st.
 # alias make="colormake"       # `sudo apt install colormake` if not installed. NOTE: menuconfig was not navigatable with colormake
 alias m="clear;echo 'make >/dev/null';printenv IDF_PATH >/dev/null && make defconfig >/dev/null; make -j32 >/dev/null && echo 'Built successfully with make.' || echo 'Build with make failed.'"
 alias :q="exit"
@@ -31,14 +29,18 @@ alias upgrade="sudo apt upgrade"
 alias clean="sudo apt clean"
 alias autoclean="sudo apt autoclean"
 alias autoremove="sudo apt autoremove"
+alias open="xdg-open"
+alias untar="tar -xvf"
+
 # Copy without newline.
 alias copy='xargs echo -n |xclip -sel c'
+
+# Enable/Disable mouse and touchpad.
 alias te="xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"Device Enabled\" 1"
 alias td="xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"Device Enabled\" 0"
 alias me="xinput set-prop \"PixArt Lenovo USB Optical Mouse\" \"Device Enabled\" 1"
 alias md="xinput set-prop \"PixArt Lenovo USB Optical Mouse\" \"Device Enabled\" 0"
-alias open="xdg-open"
-alias untar="tar -xvf"
+
 
 # functions
 
@@ -58,7 +60,7 @@ up-to-date() {
 mkcdir() { mkdir "$@" && cd "$@"; }
 
 # Tree will open in less
-tr() { tree -C "$@" | less -R; }
+ltree() { tree -C "$@" | less -R; }
 
 # Modified git diff
 gd() { git diff --color=always "$@" | less -R; }
@@ -77,29 +79,6 @@ ol() { cds `ls -t |head -n 1`; }
 
 # Process tree in less
 ptr() { pstree "$@" | less; }
-
-# # Build and move cscope and ctags database to $HOME/.cstags_dir
-# csb() {
-#     mkdir -p $HOME/.cstags_dir
-#     if [ $1 ]; then
-#         if [ $1 = '.' ]; then
-#             target_dir="`basename $PWD`"
-#         else
-#             target_dir="`basename $1`"
-#         fi
-#         cd $1
-#     else
-#         target_dir="`basename $PWD`"
-#     fi
-#     cscope -Rb
-#     ctags -R .
-#     if [ -d $HOME/.cstags_dir/$target_dir ]; then
-#         mv cscope.out tags $HOME/.cstags_dir/$target_dir/
-#     else
-#         mkdir -p $HOME/.cstags_dir/$target_dir
-#         mv cscope.out tags $HOME/.cstags_dir/$target_dir/
-#     fi
-# }
 
 # Add colors to man pages.
 
