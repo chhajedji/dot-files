@@ -2,22 +2,25 @@
 
 # General alias
 
-alias ea="vim + $HOME/.config/shellcuts/alias"
+alias ea="vim + $HOME/.alias"
 alias ev="vim + $HOME/.vimrc"
 alias ebp="vim + $HOME/.bashrc"
 alias ep="vim + $HOME/.profile"
-alias eec="vim + $HOME/.config/shellcuts/espconfig"
-alias SE="source $HOME/.config/shellcuts/espconfig"
+alias eec="vim + $HOME/.espconfig"
+alias SE="source $HOME/.espconfig"
 alias exr="vim + $HOME/.Xresources"
 alias SX="xrdb $HOME/.Xresources"
 alias SB="source $HOME/.bashrc"
-alias SA="source $HOME/.config/shellcuts/alias"
+alias SA="source $HOME/.alias"
+alias gsc="cd $HOME/"
 alias p2="python"
 alias p3="python3 -q"
 alias v="vim +"
+alias nv="nvim +"
 alias make="make -j32"
+alias bst="sudo make uninstall >/dev/null && sudo make clean install >/dev/null && echo 'st build successfully.'"
 # alias make="colormake"       # `sudo apt install colormake` if not installed. NOTE: menuconfig was not navigatable with colormake
-alias m="clear;echo 'make >/dev/null';make defconfig >/dev/null;make -j32 >/dev/null"
+alias m="clear;echo 'make >/dev/null';printenv IDF_PATH >/dev/null && make defconfig >/dev/null; make -j32 >/dev/null && echo 'Built successfully with make.' || echo 'Build with make failed.'"
 alias :q="exit"
 alias pforce="git push --force-with-lease"    # force push with lease
 alias eic="vim + $HOME/.config/i3/config"
@@ -28,12 +31,14 @@ alias upgrade="sudo apt upgrade"
 alias clean="sudo apt clean"
 alias autoclean="sudo apt autoclean"
 alias autoremove="sudo apt autoremove"
-alias copy='xclip -sel c'
+# Copy without newline.
+alias copy='xargs echo -n |xclip -sel c'
 alias te="xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"Device Enabled\" 1"
 alias td="xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"Device Enabled\" 0"
 alias me="xinput set-prop \"PixArt Lenovo USB Optical Mouse\" \"Device Enabled\" 1"
 alias md="xinput set-prop \"PixArt Lenovo USB Optical Mouse\" \"Device Enabled\" 0"
 alias open="xdg-open"
+alias untar="tar -xvf"
 
 # functions
 
@@ -47,7 +52,6 @@ up-to-date() {
             sudo apt autoremove "$1"
         sudo apt autoclean
         sudo apt clean
-        exit
 }
 
 # Combined mkdir and cd
@@ -65,10 +69,7 @@ gl() { git log --color=always "$@" | less -R; }
 # Display size summary in human readable format.
 sz() { du -sh "$@"; }
 
-# Default grep .c and .h files without list
-cgrep() { grep --include='*.\.c' --include='*.\.h' "$@"; }
-
-# Combined cd and ls for a directory or if file, open in Vim.
+# Combined cd and ls for a directory or if file, open in Neovim.
 cds() { cd "$@" 2>/dev/null && ls -CF || vim + "$@"; }
 
 # `cds` into last modified file.
@@ -101,15 +102,19 @@ ptr() { pstree "$@" | less; }
 # }
 
 # Add colors to man pages.
-man() {
-LESS_TERMCAP_md=$'\e[01;31m' \
-LESS_TERMCAP_me=$'\e[0m' \
-LESS_TERMCAP_se=$'\e[0m' \
-LESS_TERMCAP_so=$'\e[01;44;33m' \
-LESS_TERMCAP_ue=$'\e[0m' \
-LESS_TERMCAP_us=$'\e[01;32m' \
-command man "$@"
-}
+
+# Start blinking
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+# Start bold
+export LESS_TERMCAP_md=$(tput bold; tput setaf 2) # green
+# Start stand out
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3) # yellow
+# End standout
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+# Start underline
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 1) # red
+# End bold, blinking, standout, underline
+export LESS_TERMCAP_me=$(tput sgr0)
 
 # alias for git
 alias gitgraph="git log --graph --decorate --oneline --all"
