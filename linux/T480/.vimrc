@@ -171,7 +171,7 @@ hi StatusLine guibg=White guifg=Black
 " Set color for keys mentioned in `listchars`
 " hi SpecialKey ctermfg=darkgrey guifg=grey70
 
-hi cursorline cterm=bold ctermbg=black
+hi cursorline cterm=NONE ctermbg=black
 
 " Changes colors for current line number and relativenumbers. After this,
 " current line number is in yellow (by default which is changed with
@@ -256,9 +256,6 @@ command! MD set mouse-=a
 " Set cursor rate.
 command! SETX !xset r rate 400 50
 
-" Toggle numbers.
-command! NUM set relativenumber! number!
-
 " FIXME
 "function! s:Showlogs(...)
 "    if exists(a:0)
@@ -300,7 +297,6 @@ nnoremap <leader>w :w<CR>
 
 " tabs to spaces and spaces to tabs
 nnoremap <leader>t :set expandtab!<cr> <bar> w<cr>
-nnoremap <leader>nt :set expandtab<cr> <bar> w<cr>
 
 nnoremap <silent> <leader>s :set spell!<cr>:echo 'spell check toggle'<cr>
 
@@ -385,19 +381,18 @@ if &diff
     colorscheme apprentice
 endif
 
-" set syntax for every `.espconfig` file
+" Set syntax for every `.espconfig` file.
 autocmd BufNewFile,BufRead .espconfig call dist#ft#SetFileTypeSH("bash")
 
 " Save a file as soon as it is opened in vim even when it's empty.
-autocmd BufNewFile * :w
+" autocmd BufNewFile * :w
 
 " Source Xdefaults and Xresources.
 autocmd BufWritePost .Xresources :!xrdb $HOME/.Xresources
 autocmd BufWritePost .Xdefaults :!xrdb $HOME/.Xdefaults
 
-" Source vim configuration upon save
-autocmd! BufWritePost $MYVIMRC :source %
-autocmd! BufWritePost $MYVIMRC :echom "Reloaded " . $MYVIMRC
+" Source vim configuration upon save.
+autocmd! BufWritePost $MYVIMRC :source $MYVIMRC
 
 " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! plugins !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
