@@ -188,9 +188,11 @@ for_window [instance="dropdown_*"] floating enable, resize set 1200 650, move ce
 
 # Settings for specific usage.
 for_window [class="^URxvt$" instance="dropdown_terminal"] move scratchpad
+for_window [class="^URxvt$" instance="dropdown_python"] move scratchpad
 
 # Start a dropdown terminal widnow.
 exec --no-startup-id urxvt -name dropdown_terminal
+exec --no-startup-id startpy3.sh
 
 # bindsym F12 scratchpad show; move position center
 # bindsym F12 [class="^konsole$" instance="dropdown_terminal"] scratchpad show; move position center
@@ -198,6 +200,9 @@ exec --no-startup-id urxvt -name dropdown_terminal
 bindsym F12 [class="^URxvt$" instance="dropdown_terminal"] scratchpad show
 bindsym $mod+F12 exec --no-startup-id urxvt -name dropdown_terminal
 bindsym $mod+shift+minus move scratchpad
+
+bindsym $mod+c [class="^URxvt$" instance="dropdown_python"] scratchpad show
+bindsym $mod+Shift+c exec startpy3.sh
 
 # Show every scratchpad window but URxvt.
 bindsym $mod+minus [class="^(?!URxvt$)" instance="^(?!dropdown_.*$)"] scratchpad show
@@ -337,10 +342,6 @@ bindsym $mod+g exec dmenu_search.sh
 
 # Search for words through dmenu.
 bindsym $mod+m exec dmenu_dict.sh
-
-# Transparency.
-bindsym $mod+c exec trans_dec.sh
-bindsym $mod+shift+c exec trans_inc.sh
 
 # wallpaper
 exec new_wall.sh
