@@ -19,6 +19,9 @@ if has("gui_running")
     colorscheme desert
 endif
 
+" Statusline displays ascii values also. To use this, `set ls=2`.
+set statusline=%<%f%h%m%r%=%b\ 0x%B\ \ %l,%c%V\ %P
+
 " The width of a TAB is set to 4.  Still it is a \t. It is just that Vim will
 " interpret it to be having a width of 4. While using tabs, use `tabstop` and
 " not `softtabstop` (leave it unset). While using spaces instead of tabs, use
@@ -109,7 +112,7 @@ set list
 " Setting list characters
 " Some special characters: ▶    →   ␣   ·   ⟨   ⟩   ↲   «   »
 set showbreak=↪\ 
-set listchars=tab:\ \ ,space:\ ,nbsp:␣,trail:·,extends:⟩,precedes:⟨
+set listchars=tab:·\ ,nbsp:␣,trail:·,extends:⟩,precedes:⟨
 
 " When a bracket is inserted, briefly jump to the matching one.  The
 " jump is only done if the match can be seen on the screen.  The time to
@@ -282,6 +285,7 @@ function! s:Showlogs(...)
     tabe
     term cat monlog
     only
+    !nvim -c "q"
 endfunction
 
 command! ML call s:Showlogs()
@@ -323,7 +327,7 @@ nnoremap <silent> <leader>F :bp<CR>zv
 " opening brace of function is not in new line, this wouldn't skip a function. This might
 " fail depending upon vim's implementation of `%`. In case of a commented '{', this
 " mapping might misbehave.
-nnoremap _F ``mQ``mW][%b%b"xye`Q`W:echo @x<CR>
+nnoremap _F ``mo``mp][%b%b"xye`o`p:echo @x<CR>
 
 " Debug logs in C below current line.
 nnoremap _Q oets_printf("\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@\n");<esc>3bhi
@@ -343,6 +347,9 @@ nnoremap <silent> <leader>l :set cursorline!<cr>
 " Mapping for [[ and ]] to go to all type of funtion start.
 " nnoremap [[ ][%
 " nnoremap ]] ][][%
+"
+" Source .vimrc.
+nnoremap <leader>v :source $MYVIMRC<CR>:echom "source $MYVIMRC"<CR>
 
 " Select using visual mode and pressing mapped key will highlight all occurances of that
 " visually selected text and show number of occurances.

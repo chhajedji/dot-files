@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # This script is shamelessly copied from https://github.com/ShikherVerma/i3lock-multimonitor
 
 #Constants

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 # source: https://foxypanda.me/making-i3-windows-float-without-for-window/
 
 # Get the command from arguments

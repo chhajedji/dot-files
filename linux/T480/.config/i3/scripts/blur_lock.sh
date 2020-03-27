@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Credits: https://github.com/petvas/i3lock-blur
 TMPBG=/tmp/screen.png
 LOCK=$HOME/.config/i3/media_files/lock2.png
