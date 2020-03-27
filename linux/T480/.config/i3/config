@@ -334,11 +334,12 @@ exec XDG_CURRENT_DESKTOP=KDE
 
 exec redshift -O 3700
 
-# Search in Firefox from dmenu.
-bindsym $mod+g exec dmenu_search.sh
+# Google search from dmenu.
+bindsym $mod+g exec dmenu_input.sh -g
 
-# Search for words through dmenu.
-bindsym $mod+m exec dmenu_dict.sh
+
+bindsym $mod+m exec dmenu_input.sh -d       # Search in dictionary.
+bindsym $mod+Shift+m exec dmenu_input.sh -m       # Open manual page.
 
 # wallpaper
 exec new_wall.sh
