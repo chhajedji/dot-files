@@ -54,7 +54,7 @@ bindsym $mod+q mode $close
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -b'     # Give dmenu commands like this.
- bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+ bindsym $mod+p exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+Shift+d exec dolphin
 
 # change focus
@@ -177,7 +177,7 @@ for_window [class="Thunderbird"] move to workspace $ws0
 for_window [class="Gsimplecal"] floating enable, move down 10 px
 for_window [class="SystemView"] move to workspace $ws6
 for_window [class="dolphin"] floating enable, resize set 1400 750, move position center
-for_window [class="realvnc-vncviewer"] move to workspace $ws11
+for_window [class="realvnc-vncviewer"] move to workspace $ws11, gaps outer 0, gaps inner 0
 for_window [class="Vncviewer"] floating enable; move center; move scratchpad
 
 # Scratchpad with dropdown_terminal terminal. Not a very good choice to use `konsole` for
@@ -231,9 +231,6 @@ bindsym $mod+o resize grow width 7 px or 7 ppt
 set $transparent    #00000000
 bar {
 
-        colors {
-        background $transparent
-        }
         # Press $mode key to show i3bar.
         mode hide
         position top

@@ -1,3 +1,5 @@
+#!/bin/sh
+
 if pgrep -x screenkey > /dev/null
 then
     pkill screenkey
