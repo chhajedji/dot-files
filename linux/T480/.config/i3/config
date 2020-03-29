@@ -53,8 +53,8 @@ bindsym $mod+q mode $close
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -b'     # Give dmenu commands like this.
- bindsym $mod+p exec --no-startup-id i3-dmenu-desktop
+
+ bindsym $mod+p exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -fn "Inconsolata 12"'
 bindsym $mod+Shift+d exec dolphin
 
 # change focus
@@ -232,8 +232,8 @@ set $transparent    #00000000
 bar {
 
         # Press $mode key to show i3bar.
-        mode hide
-        position top
+        # mode hide
+        position bottom
         # separator_symbol "〉"
         status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
 }
@@ -301,11 +301,11 @@ bindsym $mod+Shift+Delete exec $term -e htop
 # resolution for monitors
 exec_always xrandr --auto
 # exec_always xrandr | grep 'HDMI2 connected' && xrandr --output VIRTUAL1 --off --output eDP1 --mode 1600x900 --pos 0x104 --rotate normal --output DP1 --off --output HDMI2 --primary --mode 1920x1080 --pos 1600x0 --rotate normal --output HDMI1 --off --output DP2 --off
-exec_always xrandr | grep 'HDMI2 connected' && . $HOME/.screenlayout/twoMonitor.sh
+exec_always xrandr | grep 'HDMI2 connected' && . $HOME/.monitorlayout/twoMonitor.sh
 
 
 # exec_always xrandr | grep 'HDMI2 disconnected' && xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
-exec_always xrandr | grep 'HDMI2 disconnected' && . $HOME/.screenlayout/oneMonitor.sh
+exec_always xrandr | grep 'HDMI2 disconnected' && . $HOME/.monitorlayout/oneMonitor.sh
 
 # for showing wifi settings on startup in i3bar
 exec --no-startup-id nm-applet
@@ -330,7 +330,12 @@ exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 
 bindsym $mod+grave exec focus_window.sh
 
-exec XDG_CURRENT_DESKTOP=KDE
+# exec XDG_CURRENT_DESKTOP=KDE
+
+# Autolock after 3 minutes using `pic_lock_exec.sh`.
+# FIXME. It locks even when video is playing.
+
+# exec xautolock -time 3 -locker pic_lock_exec.sh &
 
 exec redshift -O 3700
 
@@ -363,9 +368,13 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 # You can also use any non-zero value if you'd like to have a border. This also
 # turns off the name of the window
 for_window [class=".*"] border pixel 2
+
 # Set inner/outer gaps
-gaps inner 20
-gaps outer 10
+set $inner_gap 15
+# Just enough to not be covered by bar.
+set $outer_gap 8
+gaps inner $inner_gap
+gaps outer $outer_gap
 
 # Activate smart borders (always). No borders for single window but borders for
 # multiple windows
@@ -380,4 +389,4 @@ bindsym $mod+Shift+x		gaps inner current minus 5
 
 # No gaps (almost fullscreen) and set to default gaps.
 bindsym $mod+f		gaps inner current set 0; gaps outer current set 0
-bindsym $mod+Shift+f		gaps inner current set 20; gaps outer current set 10
+bindsym $mod+Shift+f		gaps inner current set $inner_gap; gaps outer current set $outer_gap

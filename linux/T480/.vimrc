@@ -398,6 +398,10 @@ autocmd BufNewFile,BufRead .espconfig call dist#ft#SetFileTypeSH("bash")
 autocmd BufWritePost .Xresources :!xrdb $HOME/.Xresources
 autocmd BufWritePost .Xdefaults :!xrdb $HOME/.Xdefaults
 
+" Restarting configuration files
+autocmd BufWritePost dunstrc :!pkill dunst && nohup dunst -config $HOME/.config/dunst/dunstrc &
+autocmd BufWritePost compton.conf :!pkill compton && compton --config $HOME/.config/compton/compton.conf -b
+
 " Source vim configuration upon save.
 autocmd! BufWritePost $MYVIMRC :source $MYVIMRC
 
