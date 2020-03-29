@@ -41,6 +41,7 @@ export PATH="$HOME/.scripts:$PATH"
 export KDE_SESSION_VERSION=5
 export EDITOR=vim
 export CSCOPE_EDITOR=$EDITOR
+export CDPATH=$HOME:$CDPATH
 
 # Add colors to less.
 

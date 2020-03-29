@@ -8,17 +8,20 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
+# HISTCONTROL can take 3 values:
+#     - erasedups     Don't store duplicates.
+#     - ignorespace   Ignore commands starting with spaces.
+#     - ignoreboth    Ignore above mentioned both types.
+HISTCONTROL=erasedups
 
-# append to the history file, don't overwrite it
+# append to the history file, don't overwrite it.
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=5000
 export HISTTIMEFORMAT="%d/%m/%y  %T    "
+export HISTFILE=$HOME/.bash/bash_history
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -100,3 +103,6 @@ export PROMPT_COMMAND="pwd > '${HOME}/.cwd'; $PROMPT_COMMAND"
 # Set options for `less` to not bloat terminal when exitted from less. Mainly used in git. Outputs
 # of `git branch` also disappears after setting # this option.
 export LESS=R
+
+# Autocorrect some misspelled words during `cd`.
+shopt -s cdspell

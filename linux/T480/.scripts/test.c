@@ -568,12 +568,14 @@
  * }
  */
 
-int main(void)
-{
-    char *a[] = {
-        [0] = "Hello",
-        [1] = "World",
-        [6] = "Five"
-    };
-    printf("%s\t%s\t%s\t%s\t%s\t%s\n", a[0], a[1], a[2], a[5], a[7], a[4]);
-}
+/*
+ * int main(void)
+ * {
+ *     char *a[] = {
+ *         [0] = "Hello",
+ *         [1] = "World",
+ *         [6] = "Five"
+ *     };
+ *     printf("%s\t%s\t%s\t%s\t%s\t%s\n", a[0], a[1], a[2], a[5], a[7], a[4]);
+ * }
+ */
