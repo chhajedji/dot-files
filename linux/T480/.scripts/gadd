@@ -1,32 +1,39 @@
-#!/usr/bin/python3
+#!/usr/bin/sh
 
 # Always run this script relative to current path (eg: `. gadd`). Or else
 # `cd` will not actually change directory!
 
-cd $HOME/pnl/github/dot-files/
+cd $HOME/pnl/github/dot-files/linux/T480/
 
 git checkout T480 >/dev/null
 
-cd $HOME/pnl/github/dot-files/linux/T480/
+# Remove all unhidden and hidden files.
+rm -rf $HOME/pnl/github/dot-files/linux/T480/*
+rm -rf $HOME/pnl/github/dot-files/linux/T480/.[a-Z]*
 
+
+# Changed files at $HOME/.
+cp -r               \
+$HOME/.gitconfig    \
+$HOME/.bash         \
+$HOME/.inputrc      \
+$HOME/.Xresources   \
+$HOME/.scripts      \
+$HOME/.alias        \
+$HOME/.vimrc        \
+$HOME/.profile      \
+$HOME/.bashrc       \
+$HOME/.fonts        \
+$HOME/.vim          \
+$HOME/pnl/github/dot-files/linux/T480/
+
+# Changed files in $HOME/.config/.
+mkdir -p $HOME/pnl/github/dot-files/linux/T480/.config/
 cp -r                       \
 $HOME/.config/i3            \
 $HOME/.config/dunst         \
 $HOME/.config/compton       \
 $HOME/.config/gsimplecal    \
 $HOME/pnl/github/dot-files/linux/T480/.config/
-
-cp -r               \
-$HOME/.gitconfig    \
-$HOME/.bash         \
-$HOME/.inputrc      \
-$HOME/.Xresources   \
-$HOME/.scripts/     \
-$HOME/.alias        \
-$HOME/.vimrc        \
-$HOME/.profile      \
-$HOME/.bashrc       \
-$HOME/.fonts        \
-$HOME/pnl/github/dot-files/linux/T480/
 
 git status
