@@ -13,4 +13,4 @@ echo Lock image: $IMG
 xset dpms 8; pic_lock.sh -i $IMG; xset dpms 600
 
 
-# xset dpms 8; pic_lock.sh -i $HOME/.config/i3/media_files/background.png; xset dpms 600
+# xset dpms 8; pic_lock.sh -i $HOME/.config/i3/other_files/background.png; xset dpms 600
