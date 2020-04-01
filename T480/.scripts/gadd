@@ -3,13 +3,13 @@
 # Always run this script relative to current path (eg: `. gadd`). Or else
 # `cd` will not actually change directory!
 
-cd $HOME/pnl/github/dot-files/linux/T480/
+cd $HOME/pnl/github/dot-files/T480/
 
 git checkout T480 >/dev/null
 
 # Remove all unhidden and hidden files.
-rm -rf $HOME/pnl/github/dot-files/linux/T480/*
-rm -rf $HOME/pnl/github/dot-files/linux/T480/.[a-Z]*
+rm -rf $HOME/pnl/github/dot-files/T480/*
+rm -rf $HOME/pnl/github/dot-files/T480/.[a-Z]*
 
 
 # Changed files at $HOME/.
@@ -25,15 +25,15 @@ $HOME/.profile      \
 $HOME/.bashrc       \
 $HOME/.fonts        \
 $HOME/.vim          \
-$HOME/pnl/github/dot-files/linux/T480/
+$HOME/pnl/github/dot-files/T480/
 
 # Changed files in $HOME/.config/.
-mkdir -p $HOME/pnl/github/dot-files/linux/T480/.config/
+mkdir -p $HOME/pnl/github/dot-files/T480/.config/
 cp -r                       \
 $HOME/.config/i3            \
 $HOME/.config/dunst         \
 $HOME/.config/compton       \
 $HOME/.config/gsimplecal    \
-$HOME/pnl/github/dot-files/linux/T480/.config/
+$HOME/pnl/github/dot-files/T480/.config/
 
 git status
