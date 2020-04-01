@@ -1,4 +1,4 @@
 #!/bin/sh
 
-paplay $HOME/.config/i3/media_files/alert.ogg
+paplay $HOME/.config/i3/other_files/alert.ogg
 
