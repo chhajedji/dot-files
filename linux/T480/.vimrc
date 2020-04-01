@@ -163,6 +163,9 @@ set guicursor=a:blinkon100
 " For not showing modes (eg: -- INSERT --) in status line.
 set noshowmode
 
+" ctags
+set tags=$HOME/.cstags_dir/esp-idf/tags;
+
 " This will start nvim and quit so the curosr will blink in Vim also! Hackish way of
 " making cursor blink in Vim :P
 command! C !nvim -c "q" && echo 'Is cursor blinking?'
@@ -368,7 +371,7 @@ function! s:DiffGitWithSaved()
         let filename = expand('%')
         let diffname = tempname()
         execute 'silent w! '.diffname
-        execute '!git diff --color=always --no-index -- '.shellescape(filename).' '.diffname
+        execute '!git diff --color-words --color=always --no-index -- '.shellescape(filename).' '.diffname
 endfunction
 command! DiffGitSaved call s:DiffGitWithSaved()
 nmap <leader>d :DiffGitSaved<CR>
@@ -570,10 +573,6 @@ let g:NERDSpaceDelims = 1
 "          \ }
 "          \ }
 "    
-" ####################################
-
-" ctags
-set tags=$HOME/.cstags_dir/esp-idf/tags;
 
 " ####################################
 
