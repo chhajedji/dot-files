@@ -48,10 +48,16 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Script to send notification when command takes longer than pre-determined time.
+# Set time for long command's timeout.
+LONG_RUNNING_COMMAND_TIMEOUT=15
+[ -f $HOME/.scripts/undistract-me.sh ] && source $HOME/.scripts/undistract-me.sh
+
 [ -f $HOME/.espconfig ] && source $HOME/.espconfig
 [ -f $HOME/.alias ] && source $HOME/.alias
 
 # next 2 lines for git to auto change branch when switched to new directory
+
 [ -f $HOME/.bash/colors.sh ] && source "$HOME/.bash/colors.sh"
 [ -f $HOME/.bash/prompt.sh ] && source "$HOME/.bash/prompt.sh"
 
@@ -95,7 +101,11 @@ export PROMPT_DIRTRIM=2
 
 # Write path to current working directory in file `$HOME/.cwd`. This file is used in
 # i3 config to open new terminal in same directory.
-export PROMPT_COMMAND="pwd > '${HOME}/.cwd'; $PROMPT_COMMAND"
+if [ -n "$PROMPT_COMMAND" ]; then
+    PROMPT_COMMAND="pwd > '${HOME}/.cwd'; $PROMPT_COMMAND"
+else
+    PROMPT_COMMAND="pwd > '${HOME}/.cwd'"
+fi
 
 # Show desktop information with logo in a facny way!
 # screenfetch

@@ -33,7 +33,12 @@ find_git_branch() {
 #    }
 
 #PROMPT_COMMAND="find_git_branch; find_git_dirty; $PROMPT_COMMAND"
-PROMPT_COMMAND="find_git_branch; $PROMPT_COMMAND"
+
+if [ -n "$PROMPT_COMMAND" ]; then
+    PROMPT_COMMAND="find_git_branch;$PROMPT_COMMAND"
+else
+    PROMPT_COMMAND="find_git_branch"
+fi
 
 # Default Git enabled prompt with dirty state
 # export PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
