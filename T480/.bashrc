@@ -50,7 +50,7 @@ fi
 
 # Script to send notification when command takes longer than pre-determined time.
 # Set time for long command's timeout.
-LONG_RUNNING_COMMAND_TIMEOUT=15
+LONG_RUNNING_COMMAND_TIMEOUT=20
 [ -f $HOME/.scripts/undistract-me.sh ] && source $HOME/.scripts/undistract-me.sh
 
 [ -f $HOME/.espconfig ] && source $HOME/.espconfig

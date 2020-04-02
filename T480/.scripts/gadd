@@ -14,17 +14,18 @@ rm -rf $HOME/pnl/github/dot-files/T480/.[a-Z]*
 
 # Changed files at $HOME/.
 cp -r               \
-$HOME/.gitconfig    \
+$HOME/.vim          \
 $HOME/.bash         \
-$HOME/.inputrc      \
-$HOME/.Xresources   \
-$HOME/.scripts      \
+$HOME/.fonts        \
 $HOME/.alias        \
 $HOME/.vimrc        \
-$HOME/.profile      \
 $HOME/.bashrc       \
-$HOME/.fonts        \
-$HOME/.vim          \
+$HOME/.inputrc      \
+$HOME/.scripts      \
+$HOME/.profile      \
+$HOME/.gitconfig    \
+$HOME/.Xresources   \
+$HOME/.bash_profile \
 $HOME/pnl/github/dot-files/T480/
 
 # Changed files in $HOME/.config/.

@@ -11,7 +11,7 @@
 
 # Default timeout is 10 seconds.
 if [ -z "$LONG_RUNNING_COMMAND_TIMEOUT" ]; then
-    LONG_RUNNING_COMMAND_TIMEOUT=30
+    LONG_RUNNING_COMMAND_TIMEOUT=15
 fi
 
 # The pre-exec hook functionality is in a separate branch.
@@ -70,7 +70,7 @@ function notify_when_long_running_commands_finish_install() {
                     [[ -n $DISPLAY ]] &&
                     [[ ! " $LONG_RUNNING_IGNORE_LIST " == *" $appname "* ]] ; then
                     local icon=dialog-information
-                    local urgency=low
+                    local urgency=normal
                     if [[ $__preexec_exit_status != 0 ]]; then
                         icon=dialog-error
                         urgency=normal
