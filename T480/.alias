@@ -75,6 +75,7 @@ up-to-date() {
             sudo apt autoremove "$1"
         sudo apt autoclean
         sudo apt clean
+        clear
 }
 
 # Combined mkdir and cd
