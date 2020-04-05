@@ -282,7 +282,7 @@ set $black               #000000
 # Always bind `Control+q` to something. If not binded and pressed by mistake, all
 # sessions of firefox will be killed which is ultra annoying.
 bindsym Control+q exec blur_lock.sh
-bindsym $mod+Shift+q exec blur_lock.sh
+bindsym $mod+Shift+q exec suspend_lock.sh
 # bindsym Control+q exec i3lock -ef --color "$bg-color" && xset dpms 5
 # bindsym Control+q exec i3lock -ei $(find /home/chinmay/Pictures/wallpapers -type f \(-iname \*.png \) | shuf -n1)       #Need to setup for different monitors. Also only .png, no other.
 # bindsym Control+q exec i3lock -ei $(find $HOME/Pictures/wallpapers -iname *.png | shuf -n1)
