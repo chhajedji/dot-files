@@ -1,6 +1,6 @@
-
-# set $term --no-startup-id exec i3-sensible-terminal
+set $mod Mod4
 set $term $TERMINAL
+font pango:Hack 10
 
 bindsym $mod+Shift+Return	exec --no-startup-id konsole
 
@@ -9,17 +9,7 @@ bindsym $mod+Shift+Return	exec --no-startup-id konsole
 #
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
-#
 
-# i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
-set $mod Mod4
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:Hack 10
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -54,8 +44,9 @@ bindsym $mod+q mode $close
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 
- bindsym $mod+p exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -b -i -fn "Inconsolata 12"'
-bindsym $mod+Shift+d exec dolphin
+ bindsym $Mod+p exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -p "Run application: " -b -i -fn "Inconsolata 12"'
+ bindsym $Mod+Shift+p exec --no-startup-id dmenu_run  -p "Run script: " -b -i -fn "Inconsolata 12"
+ bindsym $mod+Shift+d exec dolphin
 
 # change focus
 bindsym $mod+h focus left
@@ -72,41 +63,42 @@ bindsym $mod+KP_Up focus up
 bindsym $mod+KP_Right focus right
 
 # move focused and floating window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h	    move left
+bindsym $mod+Shift+j	    move down
+bindsym $mod+Shift+k	    move up
+bindsym $mod+Shift+l	    move right
+bindsym $mod+Shift+Left	    move left
+bindsym $mod+Shift+Down	    move down
+bindsym $mod+Shift+Up	    move up
+bindsym $mod+Shift+Right    move right
 
 # Move current workspace to monitors.
-bindsym $mod+Ctrl+Left		move workspace to output left
-bindsym $mod+Ctrl+Down		move workspace to output down
-bindsym $mod+Ctrl+Up		move workspace to output up
-bindsym $mod+Ctrl+Right		move workspace to output right
-bindsym $mod+Ctrl+h		move workspace to output left
-bindsym $mod+Ctrl+j		move workspace to output down
-bindsym $mod+Ctrl+k		move workspace to output up
-bindsym $mod+Ctrl+l		move workspace to output right
+bindsym $mod+Ctrl+Left   move workspace to output left
+bindsym $mod+Ctrl+Down   move workspace to output down
+bindsym $mod+Ctrl+Up     move workspace to output up
+bindsym $mod+Ctrl+Right  move workspace to output right
+bindsym $mod+Ctrl+h      move workspace to output left
+bindsym $mod+Ctrl+j      move workspace to output down
+bindsym $mod+Ctrl+k      move workspace to output up
+bindsym $mod+Ctrl+l      move workspace to output right
 
 bindsym $mod+t split toggle
+
+bindsym $mod+backslash workspace back_and_forth
 
 # toggle fullscreen mode for the focused container
 bindsym F11 fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+shift+s exec screenkey_toggle.sh
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
 
 set $ws1 "1"
 set $ws2 "2"
@@ -282,13 +274,10 @@ set $black               #000000
 # Always bind `Control+q` to something. If not binded and pressed by mistake, all
 # sessions of firefox will be killed which is ultra annoying.
 bindsym Control+q exec blur_lock.sh
-bindsym $mod+Shift+q exec suspend_lock.sh
+bindsym Control+Shift+q exec suspend_lock.sh
 # bindsym Control+q exec i3lock -ef --color "$bg-color" && xset dpms 5
 # bindsym Control+q exec i3lock -ei $(find /home/chinmay/Pictures/wallpapers -type f \(-iname \*.png \) | shuf -n1)       #Need to setup for different monitors. Also only .png, no other.
 # bindsym Control+q exec i3lock -ei $(find $HOME/Pictures/wallpapers -iname *.png | shuf -n1)
-
-# Suspend system to RAM and lock screen on wake up.
-bindsym Control+Shift+q exec blur_lock.sh && echo mem > /sys/power/state
 
 bindsym $mod+Shift+Tab			workspace prev
 bindsym $mod+Tab			workspace next

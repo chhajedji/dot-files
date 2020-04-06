@@ -1,3 +1,4 @@
+#!/bin/sh
 
 # Whenever script is called, following actions happen:
 #    - set screenoff time to 5 secs
@@ -15,4 +16,3 @@ pic_lock.sh -i $IMG
 xset dpms 600
 
 
-# xset dpms 8; pic_lock.sh -i $HOME/.config/i3/other_files/background.png; xset dpms 600

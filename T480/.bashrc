@@ -102,9 +102,9 @@ export PROMPT_DIRTRIM=2
 # Write path to current working directory in file `$HOME/.cwd`. This file is used in
 # i3 config to open new terminal in same directory.
 if [ -n "$PROMPT_COMMAND" ]; then
-    PROMPT_COMMAND="pwd > '${HOME}/.cwd'; $PROMPT_COMMAND"
+   PROMPT_COMMAND="pwd > '${HOME}/.cwd'; $PROMPT_COMMAND"
 else
-    PROMPT_COMMAND="pwd > '${HOME}/.cwd'"
+   PROMPT_COMMAND="pwd > '${HOME}/.cwd'"
 fi
 
 # Show desktop information with logo in a facny way!
