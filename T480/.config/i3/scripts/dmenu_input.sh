@@ -12,10 +12,13 @@ case $1 in
 
 # Search google.
     -g)
-        URL='https://www.google.com/search?q='
+        SEARCHURL='https://www.google.com/search?q='
+        GOTOURL='https://'
         QUERY=$(echo '' | dmenu -p "Google Search for:" -fn "-xos4-terminus-medium-r-*-*-14-*")
         if [ -n "$QUERY" ]; then
-            xdg-open "${URL}${QUERY}"
+            (echo $QUERY | grep ' ' >/dev/null && xdg-open "${SEARCHURL}${QUERY}" && echo case 1) ||
+                (echo $QUERY | grep '\.' >/dev/null && xdg-open "${GOTOURL}${QUERY}" && echo case 2) ||
+                (xdg-open "${SEARCHURL}${QUERY}" && echo case 3)
             exec i3-msg [class="^Firefox$"] focus >/dev/null
         fi
         ;;
@@ -33,7 +36,7 @@ case $1 in
         ;;
 
     *)
-        MESSAGE="Not a valid option to run with dmenu. :P"
+        MESSAGE="Not a valid option to run. :P"
         urxvt -name dropdown_default -e sh -c "figlet -c ${MESSAGE} |less" >/dev/null
         ;;
 
