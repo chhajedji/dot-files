@@ -10,6 +10,7 @@ bindsym $mod+Shift+Return	exec --no-startup-id konsole
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 
+exec autostart
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -161,11 +162,9 @@ workspace $ws9 output HDMI2
 workspace $ws0 output HDMI2
 workspace $ws11 output HDMI2
 
-exec --no-startup-id parcellite
 # open applications on startup. Find class of an application with `xprop`
 # assign [class="Thunderbird"] $ws0       # `assign` doesn't work with some applications like Thunderbird. Alternative method to do this:
 for_window [class="Thunderbird"] move to workspace $ws0
-# exec thunderbird
 for_window [class="Gsimplecal"] floating enable, move down 10 px
 for_window [class="SystemView"] move to workspace $ws6
 for_window [class="dolphin"] floating enable, resize set 1400 750, move position center
@@ -175,7 +174,6 @@ for_window [class="Vncviewer"] floating enable; move center; move scratchpad
 # Scratchpad with dropdown_terminal terminal. Not a very good choice to use `konsole` for
 # this purpose. Order may matter, although not tested.
 
-# exec --no-startup-id urxvt -name dropdown_terminal
 for_window [instance="dropdown_*"] floating enable, resize set 1200 650, move center
 
 # Settings for specific usage.
@@ -296,26 +294,6 @@ exec_always xrandr | grep 'HDMI2 connected' && . $HOME/.monitorlayout/twoMonitor
 # exec_always xrandr | grep 'HDMI2 disconnected' && xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
 exec_always xrandr | grep 'HDMI2 disconnected' && . $HOME/.monitorlayout/oneMonitor.sh
 
-# for showing wifi settings on startup in i3bar
-exec --no-startup-id nm-applet
-exec --no-startup-id xset dpms 600
-
-# Turnoff touchpad. Use `xinput` to see all inputs. To enable, set it to 1. Put
-# this in i3 config, not .bashrc as for floating wm for my Kubuntu, a script automatically
-# disables it.
-# Usage: `xinput` - lists all input devices.
-#        `xinput list-props [Device name in quotes/Device ID]` - lists all properties of given device.
-#        `xinput set-prop [Device name in quotes/Device ID]` - set desired property for given device.
-exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
-
-# compton - composite manager for i3
-exec --no-startup-id compton --config $HOME/.config/compton/compton.conf -b
-
-
-# exec killall -q /usr/lib/cups/notifier/dbus
-# exec --no-startup-id dunst
-exec killall -q notify-osd
-exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 
 bindsym $mod+grave exec focus_window.sh
 
@@ -326,8 +304,6 @@ bindsym $mod+grave exec focus_window.sh
 
 # exec xautolock -time 3 -locker pic_lock_exec.sh &
 
-exec redshift -O 3700
-
 # Google search from dmenu.
 bindsym $mod+g exec dmenu_input.sh -g
 
@@ -335,8 +311,6 @@ bindsym $mod+g exec dmenu_input.sh -g
 bindsym $mod+m exec dmenu_input.sh -d       # Search in dictionary.
 bindsym $mod+Shift+m exec dmenu_input.sh -m       # Open manual page.
 
-# wallpaper
-exec new_wall.sh
 bindsym $mod+Shift+a exec new_wall.sh
 
 #interactive screenshot by pressing printscreen
