@@ -408,6 +408,16 @@ autocmd BufWritePost compton.conf :!pkill compton && compton --config $HOME/.con
 " Source vim configuration upon save.
 autocmd! BufWritePost $MYVIMRC :source $MYVIMRC
 
+function! s:Configfiles()
+    cs a $HOME/.cstags_dir/st/cscope.out
+    cs a $HOME/.cstags_dir/dwm/cscope.out
+    set tags+=$HOME/.cstags_dir/st/tags
+    set tags+=$HOME/.cstags_dir/dwm/tags
+endfunction
+
+" Load st and dwm cscope databases and tags after opening `config.h`.
+autocmd BufRead config.h call s:Configfiles()
+
 " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! plugins !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 " setup for Vundle Plugin manager
