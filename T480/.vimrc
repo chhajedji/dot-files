@@ -303,7 +303,8 @@ inoremap <leader>w <esc>:w<CR>
 nnoremap <leader>w :w<CR>
 
 " tabs to spaces and spaces to tabs
-nnoremap <leader>t :set expandtab!<cr> <bar> w<cr>
+nnoremap <leader>t :set noexpandtab<cr>
+nnoremap <leader>nt :set expandtab<cr>
 
 nnoremap <silent> <leader>s :set spell!<cr>:echo 'spell check toggle'<cr>
 
@@ -338,7 +339,7 @@ nnoremap _P oprintf("\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@\n");<esc>3bhi
 
 " Highlight all occurrences of current word without moving cursor and show number of occurances. (Similar to *`` but better.)
 nnoremap <silent> <space><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
-nnoremap ,cc :%s///gn<CR>``
+nnoremap ,cc :%s///gn<CR>
 
 " Toggle cursor line.
 nnoremap <silent> <leader>l :set cursorline!<cr>
@@ -371,7 +372,7 @@ function! s:DiffGitWithSaved()
         let filename = expand('%')
         let diffname = tempname()
         execute 'silent w! '.diffname
-        execute '!git diff --color-words --color=always --no-index -- '.shellescape(filename).' '.diffname
+        execute '!git diff --color=always --no-index -- '.shellescape(filename).' '.diffname
 endfunction
 command! DiffGitSaved call s:DiffGitWithSaved()
 nmap <leader>d :DiffGitSaved<CR>
