@@ -72,13 +72,13 @@
 ! For true transparency.
 URxvt.background: [82]#000000
 
+URxvt.font: xft:Noto Mono:size=12:antialias=true
+URxvt.boldFont: xft:Noto Mono:size=12:bold:antialias=true
+URxvt.italicFont: xft:Noto Mono:size=12:italic:antialias=true
+URxvt.boldItalicfont: xft:Noto Mono:size=12:italic:bold:antialias=true
 ! URxvt.visualBell: true
-URxvt.font: xft:Hack:size=12:antialias=true
-URxvt.boldFont: xft:Hack:size=12:bold:antialias=true
-URxvt.italicFont: xft:Hack:size=12:italic:antialias=true
-URxvt.boldItalicfont: xft:Hack:size=12:italic:bold:antialias=true
 URxvt.letterSpace: 0
-URxvt.lineSpace: 0
+URxvt.lineSpace: -3
 URxvt.geometry: 92x24
 URxvt.internalBorder: 7
 URxvt.cursorBlink: true
