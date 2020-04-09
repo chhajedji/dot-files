@@ -18,18 +18,17 @@ case $1 in
         GOTOURL='https://'
         QUERY=$(echo '' | dmenu -p "Search / Go to:" -fn "-xos4-terminus-medium-r-*-*-14-*")
         if [ -n "$QUERY" ]; then
-            (echo $QUERY | grep ' ' >/dev/null && xdg-open "${SEARCHURL}${QUERY}" && echo case 1) ||
-                (echo $QUERY | grep '\.' >/dev/null && xdg-open "${GOTOURL}${QUERY}" && echo case 2) ||
-                (xdg-open "${SEARCHURL}${QUERY}" && echo case 3)
-            exec i3-msg [class="^Firefox$"] focus >/dev/null
+            (echo $QUERY | grep ' ' >/dev/null && $BROWSER "${SEARCHURL}${QUERY}" && echo case 1) ||
+                (echo $QUERY | grep '\.' >/dev/null && $BROWSER "${GOTOURL}${QUERY}" && echo case 2) ||
+                ($BROWSER "${SEARCHURL}${QUERY}" && echo case 3)
         fi
         ;;
 
 # Manual page.
     -m)
         # Store list of all available man pages in a file.
-        apropos . |sort >$HOME/.config/i3/other_files/manlist.txt
-        WORD=$(cat $HOME/.config/i3/other_files/manlist.txt | dmenu -l 20 -p "Manual page for:" -fn "$DMENU_FONT1" | cut -d ' ' -f 1)
+        apropos . |sort >/tmp/manlist.txt
+        WORD=$(cat /tmp/manlist.txt | dmenu -l 20 -p "Manual page for:" -fn "$DMENU_FONT1" | cut -d ' ' -f 1)
         echo $WORD
         if [ -n "$WORD" ]; then
             urxvt -name dropdown_manual -e sh -c "man ${WORD} || figlet -c 'No manual entry for \"${WORD}\"' |less" >/dev/null

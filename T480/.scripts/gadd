@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 # Always run this script relative to current path (eg: `. gadd`). Or else
 # `cd` will not actually change directory!
@@ -13,7 +13,7 @@ rm -rf $HOME/pnl/github/dot-files/T480/.[a-Z]*
 
 
 # Changed files at $HOME/.
-cp -r               \
+cp -fr              \
 $HOME/.vim          \
 $HOME/.bash         \
 $HOME/.fonts        \
@@ -30,7 +30,7 @@ $HOME/pnl/github/dot-files/T480/
 
 # Changed files in $HOME/.config/.
 mkdir -p $HOME/pnl/github/dot-files/T480/.config/
-cp -r                       \
+cp -fr                      \
 $HOME/.config/i3            \
 $HOME/.config/dunst         \
 $HOME/.config/compton       \

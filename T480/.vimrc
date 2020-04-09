@@ -240,8 +240,8 @@ command! PI PluginInstall
 " Open `$HOME/.vimrc`
 command! EV tabe + $HOME/.vimrc
 
-" Build st
-command! Stb !sudo make uninstall clean install >/dev/null && echo "Successfully built, launching st" && st >/dev/null &
+" Build suckless apps.
+command! Sta !sudo make uninstall clean install >/dev/null && echo "Successfully built, launching st" && st >/dev/null &
 
 " Open new tab.
 command! EE tabe
@@ -409,6 +409,7 @@ autocmd BufWritePost compton.conf :!pkill compton && compton --config $HOME/.con
 " Source vim configuration upon save.
 autocmd! BufWritePost $MYVIMRC :source $MYVIMRC
 
+" Function to load st and dwm cscope databases and tags after opening `config.h`.
 function! s:Configfiles()
     cs a $HOME/.cstags_dir/st/cscope.out
     cs a $HOME/.cstags_dir/dwm/cscope.out
@@ -416,8 +417,9 @@ function! s:Configfiles()
     set tags+=$HOME/.cstags_dir/dwm/tags
 endfunction
 
-" Load st and dwm cscope databases and tags after opening `config.h`.
 autocmd BufRead config.h call s:Configfiles()
+
+autocmd BufRead config call dist#ft#SetFileTypeSH("config")
 
 " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! plugins !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

@@ -10,7 +10,7 @@ bindsym $mod+Shift+Return	exec --no-startup-id konsole
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 
-exec autostart
+exec --no-startup-id autostart.sh
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -47,6 +47,7 @@ bindsym $mod+q mode $close
 
  bindsym $Mod+p exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -p "Run application: " -b -i -fn "Inconsolata 12"'
  bindsym $Mod+Shift+p exec --no-startup-id dmenu_run  -p "Run script: " -b -i -fn "Inconsolata 12"
+
  bindsym $mod+Shift+d exec dolphin
 
 # change focus
@@ -167,18 +168,18 @@ workspace $ws11 output HDMI2
 for_window [class="Thunderbird"] move to workspace $ws0
 for_window [class="Gsimplecal"] floating enable, move down 10 px
 for_window [class="SystemView"] move to workspace $ws6
-for_window [class="dolphin"] floating enable, resize set 1400 750, move position center
+for_window [class="dolphin"] floating enable, resize set 1400 750
 for_window [class="realvnc-vncviewer"] move to workspace $ws11, gaps outer 0, gaps inner 0
-for_window [class="Vncviewer"] floating enable; move center; move scratchpad
+for_window [class="Vncviewer"] floating enable; move position center; move scratchpad
 
 # Scratchpad with dropdown_terminal terminal. Not a very good choice to use `konsole` for
 # this purpose. Order may matter, although not tested.
 
-for_window [instance="dropdown_*"] floating enable, resize set 1200 650, move center
+for_window [instance="dropdown_*"] floating enable, resize set 1200 650, move position center
 
 # Settings for specific usage.
-for_window [class="^URxvt$" instance="dropdown_terminal"] move scratchpad
-for_window [class="^URxvt$" instance="dropdown_python"] move scratchpad
+for_window [class="^URxvt$" instance="dropdown_terminal"] move scratchpad; move position center
+for_window [class="^URxvt$" instance="dropdown_python"] move scratchpad; move position center
 
 # Start a dropdown terminal widnow.
 exec --no-startup-id urxvt -name dropdown_terminal
@@ -187,19 +188,18 @@ exec --no-startup-id startpy3.sh
 # bindsym F12 scratchpad show; move position center
 # bindsym F12 [class="^konsole$" instance="dropdown_terminal"] scratchpad show; move position center
 # bindsym F12 [class="^konsole$"] scratchpad show; move position center
-bindsym F12 [class="^URxvt$" instance="dropdown_terminal"] scratchpad show
+bindsym F12 [class="^URxvt$" instance="dropdown_terminal"] scratchpad show, move position center
 bindsym $mod+F12 exec --no-startup-id urxvt -name dropdown_terminal
 bindsym $mod+shift+minus move scratchpad
 
-bindsym $mod+c [class="^URxvt$" instance="dropdown_python"] scratchpad show
+bindsym $mod+c [class="^URxvt$" instance="dropdown_python"] scratchpad show, move position center
 bindsym $mod+Shift+c exec startpy3.sh
 
 # Show every scratchpad window but URxvt.
 bindsym $mod+minus [class="^(?!URxvt$)" instance="^(?!dropdown_.*$)"] scratchpad show
 
 # Show every URxvt scratchpad window.
-bindsym $mod+shift+i [class="^URxvt$" instance="^(?!dropdown_.*$)"] scratchpad show
-# bindsym $mod+minus [instance="^(?!dropdown*$)"] scratchpad show
+bindsym $mod+shift+i [class="^URxvt$" instance="^(?!dropdown_.*$)"] scratchpad show, move position center
 
 # Toggle wifi on and off
 bindsym $mod+Shift+Escape exec wifi_toggle.sh
@@ -271,11 +271,9 @@ set $black               #000000
 
 # Always bind `Control+q` to something. If not binded and pressed by mistake, all
 # sessions of firefox will be killed which is ultra annoying.
+
 bindsym Control+q exec blur_lock.sh
 bindsym Control+Shift+q exec suspend_lock.sh
-# bindsym Control+q exec i3lock -ef --color "$bg-color" && xset dpms 5
-# bindsym Control+q exec i3lock -ei $(find /home/chinmay/Pictures/wallpapers -type f \(-iname \*.png \) | shuf -n1)       #Need to setup for different monitors. Also only .png, no other.
-# bindsym Control+q exec i3lock -ei $(find $HOME/Pictures/wallpapers -iname *.png | shuf -n1)
 
 bindsym $mod+Shift+Tab			workspace prev
 bindsym $mod+Tab			workspace next
