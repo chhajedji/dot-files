@@ -1,7 +1,10 @@
 #!/bin/sh
 
 # Autostart these applications on startup.
+
+# Clipboard manager.
 command -v parcellite && parcellite &
+
 command -v nm-applet && nm-applet &
 
 # Set screen-timeout to 600 seconds.
@@ -13,9 +16,9 @@ xset dpms 600
 # Usage: `xinput` - lists all input devices.
 #        `xinput list-props [Device name in quotes/Device ID]` - lists all properties of given device.
 #        `xinput set-prop [Device name in quotes/Device ID]` - set desired property for given device.
-xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
+xinput set-prop "Synaptics TM3276-022" "Device Enabled" 0
 
-compton --config $HOME/.config/compton/compton.conf -b &
-killall -q notify-osd; dunst -config $HOME/.config/dunst/dunstrc &
-redshift -O 3700 &
+command -v compton && compton --config $HOME/.config/compton/compton.conf -b &
+command -v dunst && killall -q notify-osd; dunst -config $HOME/.config/dunst/dunstrc &
+redshift -P -O 3700 &
 new_wall.sh &
