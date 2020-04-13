@@ -16,7 +16,8 @@ case $1 in
     -g)
         SEARCHURL='https://www.google.com/search?q='
         GOTOURL='https://'
-        QUERY=$(echo '' | dmenu -p "Search / Go to:" -fn "-xos4-terminus-medium-r-*-*-14-*")
+        # QUERY=$(echo '' | dmenu -p "Search / Go to:" -fn "-xos4-terminus-medium-r-*-*-14-*")
+        QUERY=$(echo '' | dmenu -p "Search / Go to:" -fn "$DMENU_FONT1")
         if [ -n "$QUERY" ]; then
             (echo $QUERY | grep ' ' >/dev/null && $BROWSER "${SEARCHURL}${QUERY}" && echo case 1) ||
                 (echo $QUERY | grep '\.' >/dev/null && $BROWSER "${GOTOURL}${QUERY}" && echo case 2) ||

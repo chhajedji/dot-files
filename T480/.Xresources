@@ -78,7 +78,7 @@ URxvt.italicFont: xft:Noto Mono:size=12:italic:antialias=true
 URxvt.boldItalicfont: xft:Noto Mono:size=12:italic:bold:antialias=true
 ! URxvt.visualBell: true
 URxvt.letterSpace: 0
-URxvt.lineSpace: -3
+URxvt.lineSpace: -5
 URxvt.geometry: 92x24
 URxvt.internalBorder: 7
 URxvt.cursorBlink: true
