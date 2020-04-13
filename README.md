@@ -16,4 +16,5 @@ Personal Laptop: X230
 | Editor | Vim |
 | DE | KDE |
 | Shell | bash, zsh |
+| Terminal | URxvt |
 | OS | Ubuntu, Arch |
