@@ -9,7 +9,7 @@ git checkout T480 >/dev/null
 
 # Remove all unhidden and hidden files.
 rm -rf $HOME/pnl/github/dot-files/T480/*
-rm -rf $HOME/pnl/github/dot-files/T480/.[a-Z]*
+rm -rf $HOME/pnl/github/dot-files/T480/.[A-z]*
 
 
 # Changed files at $HOME/.
