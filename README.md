@@ -12,7 +12,7 @@ Personal Laptop: X230
 
 |        |     |
 |--------|-----|
-| WM | i3-gaps |
+| WM | [dwm](https://github.com/chinmaychhajed/dwm) |
 | Editor | Vim |
 | DE | KDE |
 | Shell | bash, zsh |
