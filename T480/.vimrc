@@ -20,7 +20,7 @@ if has("gui_running")
 endif
 
 " Statusline displays ascii values also. To use this, `set ls=2`.
-set statusline=%<%f%h%m%r%=%b\ 0x%B\ \ %l,%c%V\ %P
+set statusline=%<%f%h%m%r%=%b\ [0x%B]\ \ %l,%c%V\ %P
 
 " The width of a TAB is set to 4.  Still it is a \t. It is just that Vim will
 " interpret it to be having a width of 4. While using tabs, use `tabstop` and
@@ -29,10 +29,10 @@ set statusline=%<%f%h%m%r%=%b\ 0x%B\ \ %l,%c%V\ %P
 " set tabstop=4
 
 " Indents with '>' will have a width of 4.
-set shiftwidth=4
+" set shiftwidth=4
 
 " Sets the number of columns for a TAB.
-set softtabstop=4
+" set softtabstop=4
 " no tabs, but spaces!
 set expandtab
 
@@ -241,7 +241,7 @@ command! PI PluginInstall
 command! EV tabe + $HOME/.vimrc
 
 " Build suckless apps.
-command! Sta !sudo make uninstall clean install >/dev/null && echo "Successfully built, launching st" && st >/dev/null &
+command! Bsa !sudo make uninstall clean install >/dev/null && echo "Successfully built, launching st" && st >/dev/null &
 
 " Open new tab.
 command! EE tabe
@@ -303,8 +303,8 @@ inoremap <leader>w <esc>:w<CR>
 nnoremap <leader>w :w<CR>
 
 " tabs to spaces and spaces to tabs
-nnoremap <leader>t :set noexpandtab<cr>
-nnoremap <leader>nt :set expandtab<cr>
+nnoremap <silent><leader>t :set noexpandtab<CR>:echom "Using tabs"<CR>
+nnoremap <silent><leader>nt :set expandtab<CR>:echom "Using spaces"<CR>
 
 nnoremap <silent> <leader>s :set spell!<cr>:echo 'spell check toggle'<cr>
 

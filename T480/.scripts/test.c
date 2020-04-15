@@ -579,3 +579,11 @@
  *     printf("%s\t%s\t%s\t%s\t%s\t%s\n", a[0], a[1], a[2], a[5], a[7], a[4]);
  * }
  */
+
+#include "stdlib.h"
+
+int main(void)
+{
+    char *command = "pwd\ncd /home\nls";
+    system (command);
+}
