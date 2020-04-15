@@ -17,14 +17,11 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+if [ -d "$HOME/.local/bin" ] ; then
+    [ -n "$PATH" ] && PATH="$HOME/.local/bin:$PATH" || PATH="$HOME/.local/bin"
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
+[ -n "$CDPATH" ] && export CDPATH="$HOME/pnl/github:$CDPATH" || export CDPATH="$HOME/pnl/github"
 
 export TERMINAL="urxvt"
 

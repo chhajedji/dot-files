@@ -29,10 +29,10 @@ set statusline=%<%f%h%m%r%=%b\ [0x%B]\ \ %l,%c%V\ %P
 " set tabstop=4
 
 " Indents with '>' will have a width of 4.
-" set shiftwidth=4
+set shiftwidth=4
 
 " Sets the number of columns for a TAB.
-" set softtabstop=4
+set softtabstop=4
 " no tabs, but spaces!
 set expandtab
 
@@ -411,9 +411,9 @@ autocmd! BufWritePost $MYVIMRC :source $MYVIMRC
 
 " Function to load st and dwm cscope databases and tags after opening `config.h`.
 function! s:Configfiles()
-    cs a $HOME/.cstags_dir/st/cscope.out
+    " cs a $HOME/.cstags_dir/st/cscope.out
     cs a $HOME/.cstags_dir/dwm/cscope.out
-    set tags+=$HOME/.cstags_dir/st/tags
+    " set tags+=$HOME/.cstags_dir/st/tags
     set tags+=$HOME/.cstags_dir/dwm/tags
 endfunction
 

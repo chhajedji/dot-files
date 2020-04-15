@@ -16,13 +16,11 @@ alias p3="python3 -q"
 alias v="vim +"
 alias nv="nvim +"
 alias make="make -j32"
-alias bsa="sudo make uninstall >/dev/null && sudo make clean install >/dev/null && echo 'Build successfully.'"   # Build suckelss apps.
 # alias make="colormake"       # `sudo apt install colormake` if not installed. NOTE: menuconfig was not navigatable with colormake
 alias m="clear;echo 'make >/dev/null';printenv IDF_PATH >/dev/null && make defconfig >/dev/null; make -j32 >/dev/null && echo 'Built successfully with make.' || echo 'Build with make failed.'"
 alias :q="exit"
 alias pforce="git push --force-with-lease"    # force push with lease
 alias eic="vim + $HOME/.config/i3/config"
-alias edc="vim +66 $HOME/pnl/github/dwm/config.h"
 alias eib="vim + $HOME/.config/i3/i3blocks.conf"
 alias sdn="shutdown now"
 alias update="sudo apt update"
@@ -99,6 +97,12 @@ cds() { cd "$@" 2>/dev/null && ls -CF || vim + "$@"; }
 
 # `cds` into last modified file.
 ol() { cds `ls -t |head -n 1`; }
+
+# Edit suckless config files (config.h).
+esc() { [ $1 ] && cd $HOME/pnl/github/$1; vim + config.h; }
+
+# Build suckelss apps.
+bsa() { [ $1 ] && cd $HOME/pnl/github/$1; sudo make uninstall >/dev/null && sudo make clean install >/dev/null && echo 'Build successfully.'; }
 
 # Process tree in less
 ptr() { pstree "$@" | less; }
