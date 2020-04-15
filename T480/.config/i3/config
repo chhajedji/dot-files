@@ -276,8 +276,9 @@ bindsym Control+Shift+q exec suspend_lock.sh
 bindsym $mod+Shift+Tab			workspace prev
 bindsym $mod+Tab			workspace next
 
-bindsym $mod+Shift+Return exec firefox
-bindsym $mod+F2 exec firefox -private-window
+bindsym $mod+Shift+Return exec st
+bindsym $mod+F2 exec firefox
+bindsym $mod+Shift+F2 exec firefox -private-window
 
 bindsym $mod+Shift+Delete exec $term -e htop
 

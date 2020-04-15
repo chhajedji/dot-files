@@ -22,6 +22,7 @@ alias m="clear;echo 'make >/dev/null';printenv IDF_PATH >/dev/null && make defco
 alias :q="exit"
 alias pforce="git push --force-with-lease"    # force push with lease
 alias eic="vim + $HOME/.config/i3/config"
+alias edc="vim +66 $HOME/pnl/github/dwm/config.h"
 alias eib="vim + $HOME/.config/i3/i3blocks.conf"
 alias sdn="shutdown now"
 alias update="sudo apt update"
