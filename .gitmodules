@@ -1,0 +1,3 @@
+[submodule "T480/scripts"]
+	path = T480/scripts
+	url = https://github.com/chinmaychhajed/scripts
