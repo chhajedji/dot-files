@@ -22,3 +22,7 @@ command -v compton && compton --config $HOME/.config/compton/compton.conf -b &
 command -v dunst && killall -q notify-osd; dunst -config $HOME/.config/dunst/dunstrc &
 redshift -P -O 3700 &
 new_wall.sh &
+
+xrdb -merge $HOME/.Xresources
+
+wmctrl -m |grep dwm && dwmstatus
