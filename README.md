@@ -18,3 +18,6 @@ Personal Laptop: X230
 | Shell | bash, zsh |
 | Terminal | URxvt |
 | OS | Ubuntu, Arch |
+
+
+> Some scripts used in config files might be present in [scripts/](https://github.com/chinmaychhajed/scripts) submodule.
