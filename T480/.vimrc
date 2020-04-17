@@ -166,10 +166,6 @@ set noshowmode
 " ctags
 set tags=$HOME/.cstags_dir/esp-idf/tags;
 
-" This will start nvim and quit so the curosr will blink in Vim also! Hackish way of
-" making cursor blink in Vim :P
-command! C !nvim -c "q" && echo 'Is cursor blinking?'
-
 " highlighting options in vsplit and gui
 hi vertsplit guifg=fg guibg=bg
 hi StatusLine guibg=White guifg=Black
@@ -230,6 +226,11 @@ nnoremap <silent> _ :resize -3<CR>
 
 " copy file path to + clipboard (system clipboard)
 nmap <silent>,cp :let @+=expand("%:p")<CR>:echo "File path copied"<CR>
+
+command! NUM set relativenumber! number!
+" This will start nvim and quit so the curosr will blink in Vim also! Hackish way of
+" making cursor blink in Vim :P
+command! C !nvim -c "q" && echo 'Is cursor blinking?'
 
 " Command 'F' (`:F`) will show full file path
 command! F echo expand('%:p')
@@ -306,7 +307,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <silent><leader>t :set noexpandtab<CR>:echom "Using tabs"<CR>
 nnoremap <silent><leader>nt :set expandtab<CR>:echom "Using spaces"<CR>
 
-nnoremap <silent> <leader>s :set spell!<cr>:echo 'spell check toggle'<cr>
+nnoremap <silent> <leader>s :setlocal spell!<cr>:echo 'spell check toggle'<cr>
 
 " Toggle wrap.
 nnoremap <silent><leader>q :set wrap!<CR>:echo "Toggle wrapping"<CR>
@@ -420,6 +421,9 @@ endfunction
 autocmd BufRead config.h call s:Configfiles()
 
 autocmd BufRead config call dist#ft#SetFileTypeSH("config")
+
+" Automatically enable spell check for specific filetypes.
+autocmd FileType gitcommit,markdown,text setlocal spell
 
 " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! plugins !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
