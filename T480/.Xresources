@@ -8,7 +8,7 @@
 
 
 !   ! Exact colors
-!   
+
 !   *color0:  #000000 // black
 !   *color1:  #B40000 // red
 !   *color2:  #00AA00 // green
@@ -132,7 +132,7 @@ URxvt.resize-font.step: 1
 !!! ! Disable the `NEW` button.
 !!! URxvt.tabbed.new-button: false
 !!! URxvt.tabbed.disable-shift-down: true
-!
+
 !! Scroll
 URxvt.keysym.M-Page_Up:   perl:scroll:up-halfpage
 URxvt.keysym.M-Page_Down: perl:scroll:down-halfpage

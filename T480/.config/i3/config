@@ -221,7 +221,7 @@ bar {
 
         # Press $mode key to show i3bar.
         # mode hide
-        position bottom
+        position top
         # separator_symbol "〉"
         status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
 }
@@ -276,7 +276,7 @@ bindsym Control+Shift+q exec suspend_lock.sh
 bindsym $mod+Shift+Tab			workspace prev
 bindsym $mod+Tab			workspace next
 
-bindsym $mod+Shift+Return exec st
+bindsym $mod+Shift+Return exec samedir.sh
 bindsym $mod+F2 exec firefox
 bindsym $mod+Shift+F2 exec firefox -private-window
 
