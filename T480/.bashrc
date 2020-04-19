@@ -116,3 +116,6 @@ export LESS=R
 
 # Autocorrect some misspelled words during `cd`.
 shopt -s cdspell
+
+# Disable window freeze by Ctrl - s permanently.
+stty -ixon
