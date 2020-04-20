@@ -1,0 +1,10 @@
+## Adding new fonts. ##
+
+
+- Add fonts to $HOME/.fonts/ or $HOME/.local/share/fonts/ for specific user or /usr/share/fonts/truetype (.ttf) /usr/share/fonts/opentype (.otf) for system wide availability.
+
+- To add fonts to system, use `fc-cache -f -v`.
+
+- To list all fonts, use `fc-list`.
+
+- Pipe `fc-list` in `grep` to check if font is installed or not.
