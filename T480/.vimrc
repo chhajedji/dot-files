@@ -12,11 +12,11 @@ set ruler
 set incsearch
 " set hlsearch
 set autoindent
-  set laststatus=0
+set laststatus=0
 
 " Only for GVim.
 if has("gui_running")
-    colorscheme desert
+    colorscheme apprentice
 endif
 
 " Statusline displays ascii values also. To use this, `set ls=2`.
@@ -420,7 +420,7 @@ endfunction
 
 autocmd BufRead config.h call s:Configfiles()
 
-autocmd! BufWritePost dwmstatus :!pkill dwmstatus; dwmstatus
+    autocmd! BufWritePost dwmstatus :!pkill dwmstatus; dwmstatus
 
 autocmd BufRead config call dist#ft#SetFileTypeSH("config")
 
@@ -457,6 +457,7 @@ Plugin 'gnattishness/cscope_maps'
 " Plugin 'ctrlpvim/ctrlp.vim'
 
 " Some good colorschemes
+Plugin 'romainl/Apprentice'
 " Plugin 'altercation/vim-colors-solarized'
 " Plugin 'Rigellute/rigel'
 " Plugin 'joshdick/onedark.vim'
