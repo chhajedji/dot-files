@@ -1,3 +1,10 @@
+#                     __ _ _
+#    _ __  _ __ ___  / _(_) | ___ 
+#   | '_ \| '__/ _ \| |_| | |/ _ \
+#   | |_) | | | (_) |  _| | |  __/
+#   | .__/|_|  \___/|_| |_|_|\___|
+#   |_|
+
 # $HOME/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if $HOME/.bash_profile or $HOME/.bash_login
 # exists.
