@@ -72,7 +72,7 @@
 ! For true transparency.
 URxvt.background: [82]#000000
 
-URxvt.font: xft:Noto Mono:size=12:antialias=true
+URxvt.font: xft:Noto Mono:size=12:antialias=true,xft:3270Medium Nerd Font:size=11 
 URxvt.boldFont: xft:Noto Mono:size=12:bold:antialias=true
 URxvt.italicFont: xft:Noto Mono:size=12:italic:antialias=true
 URxvt.boldItalicfont: xft:Noto Mono:size=12:italic:bold:antialias=true
