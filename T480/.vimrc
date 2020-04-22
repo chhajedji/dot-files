@@ -416,15 +416,26 @@ autocmd BufWritePost compton.conf :!pkill compton && compton --config $HOME/.con
 " Source vim configuration upon save.
 autocmd! BufWritePost $MYVIMRC :source $MYVIMRC
 
-" Function to load st and dwm cscope databases and tags after opening `config.h`.
-function! s:Configfiles()
-    " cs a $HOME/.cstags_dir/st/cscope.out
+" Functions and auto-commands to load cscope and ctags databases/files when
+" opening suckelss application files.
+function! s:Configsuckless()
+    call s:Configdwm()
+    call s:Configst()
+endfunction
+
+function! s:Configdwm()
     cs a $HOME/.cstags_dir/dwm/cscope.out
-    " set tags+=$HOME/.cstags_dir/st/tags
     set tags+=$HOME/.cstags_dir/dwm/tags
 endfunction
 
-autocmd BufRead config.h call s:Configfiles()
+function! s:Configst()
+    cs a $HOME/.cstags_dir/st/cscope.out
+    set tags+=$HOME/.cstags_dir/st/tags
+endfunction
+
+autocmd BufRead config.h call s:Configsuckless()
+autocmd BufRead dwm.h,dwm.c call s:Configdwm()
+autocmd BufRead st.c,x.c call s:Configst()
 
     autocmd! BufWritePost dwmstatus :!pkill dwmstatus; dwmstatus
 
