@@ -25,7 +25,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
-HISTFILESIZE=5000
+HISTFILESIZE=10000
 export HISTTIMEFORMAT="%d/%m/%y  %T    "
 export HISTFILE=$HOME/.bash/bash_history
 
@@ -62,55 +62,39 @@ LONG_RUNNING_COMMAND_TIMEOUT=20
 [ -f $HOME/.espconfig ] && source $HOME/.espconfig
 [ -f $HOME/.alias ] && source $HOME/.alias
 
-# next 2 lines for git to auto change branch when switched to new directory
-
+# Set proper names for prompt colors using colors and prompt command for git branch.
 [ -f $HOME/.bash/colors.sh ] && source "$HOME/.bash/colors.sh"
 [ -f $HOME/.bash/prompt.sh ] && source "$HOME/.bash/prompt.sh"
 
-# change default editor for cscope to vim
-
-
-# Experiment with PS1
-
-
-# # save pwd in $PROMPT_COMMAND and /tmp/whereami
-# export PROMPT_COMMAND="pwd > /tmp/whereami"
-# # for opening new session in same directory as on previous one.
-# cd $(cat /tmp/whereami)
-
-# modifying prompt (PS1)
+# Setting prompt (PS1).
 
 # While changing PS1, for changing colors, do not use `\e....m` format (Tested
 # for MacOS, not Linux). CRLF setting changes due to this. Use other formatting
 # as used below.
 
-# sample: shows git branch, user, current working directory with colors in background
-# export PS1="\[\033[0m\]Chinmay \[\033[1;48;5;45;38;5;0m\] \w/ \[\033[1;48;5;227;38;5;0m\](\$(git branch 2>/dev/null|grep '^*'|colrm 1 2))$ \[\033[0m\] "
-
-# using `colors.sh` and `prompt.sh` from `$HOME/.bash/git-aware-prompt/`
-
-# export PS1="\[\$bldred\][\[\$bldcyn\]\u \[\$bldylw\]\w\[\$bldred\]] \[\$bldgrn\]\$git_branch\[\$txtrst\]$ "
-
 # reference for color: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
-
-# With username
-# export PS1="\[\033[1;31m\][\[\033[1;36m\]\u \[\033[1;33m\]\w\[\033[1;31m\]] \[\033[1;32m\]\$git_branch\[\033[1;36m\]$\[\033[0m\] "
 
 # Options:
 #     - \A for time in HH:MM
 #     - \j for number of background jobs
-# export PS1="\[\033[1;32m\]\$git_branch\[\033[1;31m\][\[\033[1;33m\]\w \[\033[1;36m\]\A\[\033[1;31m\]]\[\033[01;38;5;208m\] \$([ \j -gt 0 ] && echo [\j])\[\033[0m\]$ "
+
 export PS1="\[\$bldred\][\[\$txtrst\]\[\$txtcyn\]\A \[\$txtylw\]\w\[\$bldred\]]\[\$txtrst\]\[\$txtgrn\]\$git_branch\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
-# export PS1="\[\$bldgrn\]\$(__git_ps1)\[\$bldred\][\[\$bldylw\]\w \[\$bldcyn\]\A\[\$bldred\]]\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\] $ "
+
+
+# Another way to show git branch by using default `__git_ps1`.
+
+# export PS1="\[\$txtred\][\[\$txtylw\]\w \[\$txtcyn\]\A\[\$txtred\]]\[\$txtgrn\]\$(__git_ps1)\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
+
 # Depth of `$PWD` is decided by this.
 export PROMPT_DIRTRIM=2
 
-# Write path to current working directory in file `$HOME/.cwd`. This file is used in
-# i3 config to open new terminal in same directory.
+# Write path to current working directory in file `/tmp/cwd`. This file can be
+# used to open new terminal in same directory.
+# See $HOME/.scripts/samedirnoob.sh and also $HOME/.scripts/samedir.sh
 if [ -n "$PROMPT_COMMAND" ]; then
-   PROMPT_COMMAND="pwd > '${HOME}/.cwd'; $PROMPT_COMMAND"
+   PROMPT_COMMAND="pwd > '/tmp/cwd'; $PROMPT_COMMAND"
 else
-   PROMPT_COMMAND="pwd > '${HOME}/.cwd'"
+   PROMPT_COMMAND="pwd > '/tmp/cwd'"
 fi
 
 # Show desktop information with logo in a facny way!

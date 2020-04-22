@@ -187,6 +187,7 @@ hi cursorline cterm=NONE ctermbg=black
 " may overwrite this.
 " highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 " highlight CursorLineNr cterm=Bold,Italic ctermbg=Black ctermfg=Yellow gui=NONE guibg=#444444 guifg=#ffff00
+highlight CursorLineNr cterm=NONE
 
 " Matching braces color.
 hi MatchParen cterm=none ctermbg=Green ctermfg=Black
@@ -234,7 +235,7 @@ nnoremap <silent> _ :resize -3<CR>
 nmap <silent>,cp :let @+=expand("%:p")<CR>:echo "File path copied"<CR>
 
 command! NUM set relativenumber! number!
-" This will start nvim and quit so the curosr will blink in Vim also! Hackish way of
+" This will start nvim and quit so the curosor will blink in Vim also! Hackish way of
 " making cursor blink in Vim :P
 command! C !nvim -c "q" && echo 'Is cursor blinking?'
 
@@ -372,7 +373,10 @@ function! MakePattern(text)
   let pat = substitute(pat, '\_s\+',  '\\_s\\+', 'g')
   return '\\V' . escape(pat, '\"')
 endfunction
-vnoremap <silent> <space><space> :<C-U>let @/="<C-R>=MakePattern(@*)<CR>"<CR>:set hls<CR>
+vnoremap <space><space> :<C-U>let @/="<C-R>=MakePattern(@*)<CR>"<CR>:set hls<CR>
+" For neovim use below binding. above one doesn't work well with nvim. Below
+" is not the exact way of implementing but more of a hack.
+" vnoremap <space><space> y/\V<C-R>=escape(@",'/\')<CR><CR>:set hls<CR>
 
 " Check diff of saved and unsaved versions of the file
 function! s:DiffGitWithSaved()
@@ -426,18 +430,20 @@ endfunction
 function! s:Configdwm()
     cs a $HOME/.cstags_dir/dwm/cscope.out
     set tags+=$HOME/.cstags_dir/dwm/tags
+    set noexpandtab
 endfunction
 
 function! s:Configst()
     cs a $HOME/.cstags_dir/st/cscope.out
     set tags+=$HOME/.cstags_dir/st/tags
+    set noexpandtab
 endfunction
 
 autocmd BufRead config.h call s:Configsuckless()
 autocmd BufRead dwm.h,dwm.c call s:Configdwm()
 autocmd BufRead st.c,x.c call s:Configst()
 
-    autocmd! BufWritePost dwmstatus :!pkill dwmstatus; dwmstatus
+    autocmd! BufWritePost dwmbar :!pkill dwmbar; dwmbar
 
 autocmd BufRead config call dist#ft#SetFileTypeSH("config")
 
