@@ -27,6 +27,10 @@ $if mode=vi
     Control-l: clear-screen
 $endif
 
+# Try to enable the application keypad when it is called. Some systems
+# need this to enable the arrow keys.
+set enable-keypad on
+
 # Case insensitive auto-completion
 # set completion-ignore-case on
 
