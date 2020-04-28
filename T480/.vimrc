@@ -342,8 +342,8 @@ nnoremap <silent> <leader>F :bp<CR>zv
 nnoremap _F ``mo``mp][%b%b"xye`o`p:echo @x<CR>
 
 " Debug logs in C below current line.
-nnoremap _Q oets_printf("\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@\n");<esc>3bhi
-nnoremap _P oprintf("\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@\n");<esc>3bhi
+nnoremap _Q oets_printf("\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@ \n");<esc>4bhi
+nnoremap _P oprintf("\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@ \n");<esc>4bhi
 
 " Highlight all occurrences of current word without moving cursor and show number of occurances. (Similar to *`` but better.)
 nnoremap <silent> <space><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
@@ -356,8 +356,8 @@ nnoremap <silent> <leader>l :set cursorline!<cr>
 " nnoremap <C-h> 5zh
 " nnoremap <C-l> 5zl
 
-" Mapping for [[ and ]] to go to all type of funtion start.
-" nnoremap [[ ][%
+" Mapping to go to start of funtion.
+nnoremap ]{ ]}%
 " nnoremap ]] ][][%
 "
 " Source .vimrc.
