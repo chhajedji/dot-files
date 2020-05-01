@@ -117,7 +117,7 @@ set list
 
 " Setting list characters
 " Some special characters: ▶    →   ␣   ·   ⟨   ⟩   ↲   «   »
-set showbreak=↪\ 
+set showbreak=▶\ 
 set listchars=tab:·\ ,nbsp:␣,trail:·,extends:⟩,precedes:⟨
 
 " When a bracket is inserted, briefly jump to the matching one.  The

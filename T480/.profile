@@ -30,7 +30,7 @@ fi
 
 [ -n "$CDPATH" ] && export CDPATH="$HOME/pnl/github:$CDPATH" || export CDPATH="$HOME/pnl/github"
 
-export TERMINAL="urxvt"
+export TERMINAL="konsole"
 
 # dolphin, system settings and other KDE applications will not look ugly!
 export XDG_CURRENT_DESKTOP=KDE
