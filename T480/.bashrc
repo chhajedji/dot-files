@@ -55,6 +55,10 @@ if ! shopt -oq posix; then
 fi
 
 # Script to send notification when command takes longer than pre-determined time.
+# Note that in this script `$PROMPT_COMMAND` gets set appended which delays
+# display of prompt. Removing `preexec_set_exit;preexec_invoke_cmd` from
+# `$PROMPT_COMMAND` will put the prompt instantly but then this script will not work.
+
 # Set time for long command's timeout.
 LONG_RUNNING_COMMAND_TIMEOUT=20
 [ -f $HOME/.scripts/undistract-me.sh ] && source $HOME/.scripts/undistract-me.sh
