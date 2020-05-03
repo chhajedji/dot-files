@@ -357,7 +357,7 @@ nnoremap <silent> <leader>l :set cursorline!<cr>
 " nnoremap <C-l> 5zl
 
 " Mapping to go to start of funtion.
-nnoremap ]{ ]}%
+nnoremap ]{ m>]}%`>``
 " nnoremap ]] ][][%
 "
 " Source .vimrc.
@@ -443,7 +443,7 @@ autocmd BufRead config.h call s:Configsuckless()
 autocmd BufRead dwm.h,dwm.c call s:Configdwm()
 autocmd BufRead st.c,x.c call s:Configst()
 
-    autocmd! BufWritePost dwmbar :!pkill dwmbar; dwmbar
+    autocmd! BufWritePost dwmbar :!pkill dwmbar; dwmbar >/dev/null 2>&1
 
 autocmd BufRead config call dist#ft#SetFileTypeSH("config")
 
