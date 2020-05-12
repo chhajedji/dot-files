@@ -138,7 +138,7 @@ set matchtime=3
 " When on, splitting a window will put the new window right of the
 " current one.
 set splitright
-" set splitbelow
+set splitbelow
 
 "setting timeout for esc key as 0
 set timeoutlen=1000 ttimeoutlen=0
@@ -206,6 +206,7 @@ syntax enable
 nnoremap <silent> <space>l :set hlsearch!<CR>
 
 " copy  from/to + clipboard simplified
+vnoremap <CR> "+y
 vnoremap <C-c> "+y
 nnoremap <C-c> V"+y
 nnoremap <C-p> "*p
@@ -231,8 +232,11 @@ nnoremap <silent> = :vertical resize +3<CR>
 nnoremap <silent> + :resize +3<CR>
 nnoremap <silent> _ :resize -3<CR>
 
-" copy file path to + clipboard (system clipboard)
+" copy file path to + clipboard (system clipboard).
 nmap <silent>,cp :let @+=expand("%:p")<CR>:echo "File path copied"<CR>
+
+" copy function name to + clipboard (system clipboard).
+nmap <silent>,cf ``mo``mp][%b%b"+ye`o`p:echom @+ "copied to clipboard"<CR>
 
 command! NUM set relativenumber! number!
 " This will start nvim and quit so the curosor will blink in Vim also! Hackish way of
@@ -297,6 +301,9 @@ function! s:Showlogs(...)
     term cat monlog
     only
     !nvim -c "q"
+    tabp
+    q
+    ls
 endfunction
 
 command! ML call s:Showlogs()
@@ -307,8 +314,8 @@ command! ML call s:Showlogs()
 " nmap <BS> i<BS><ESC>l
 
 " saving files, saving files with/without tabs
-inoremap <leader>w <esc>:w<CR>
-nnoremap <leader>w :w<CR>
+" inoremap <leader>w <esc>:w<CR>
+" nnoremap <leader>w :w<CR>
 
 " tabs to spaces and spaces to tabs
 nnoremap <silent><leader>t :set noexpandtab<CR>:echom "Using tabs"<CR>
@@ -443,7 +450,7 @@ autocmd BufRead config.h call s:Configsuckless()
 autocmd BufRead dwm.h,dwm.c call s:Configdwm()
 autocmd BufRead st.c,x.c call s:Configst()
 
-    autocmd! BufWritePost dwmbar :!pkill dwmbar; dwmbar >/dev/null 2>&1
+autocmd! BufWritePost dwmbar :!pkill dwmbar; dwmbar >/dev/null 2>&1
 
 autocmd BufRead config call dist#ft#SetFileTypeSH("config")
 

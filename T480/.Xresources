@@ -9,9 +9,9 @@
 ! special
 
 *.foreground: #93a1a1
-*.background: #141c21
+! *.background: #141c21     ! Good alternate background color.
+*.background: #000000
 *.cursorColor: #ff00fF
-
 
 !   ! Exact colors
 
@@ -84,7 +84,7 @@ URxvt.boldFont: xft:Noto Mono:size=12:bold:antialias=true
 URxvt.italicFont: xft:Noto Mono:size=12:italic:antialias=true
 URxvt.boldItalicfont: xft:Noto Mono:size=12:italic:bold:antialias=true
 ! URxvt.visualBell: true
-URxvt.letterSpace: 0
+URxvt.letterSpace: -1
 URxvt.lineSpace: -5
 URxvt.geometry: 92x24
 URxvt.internalBorder: 7
