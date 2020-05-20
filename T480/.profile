@@ -42,7 +42,7 @@ export LC_ALL=en_IN.UTF-8
 
 export PATH="$HOME/.scripts:$PATH"
 export KDE_SESSION_VERSION=5
-export EDITOR=vim
+export EDITOR="vim"
 export CSCOPE_EDITOR=$EDITOR
 export BROWSER="firefox -new-window"
 

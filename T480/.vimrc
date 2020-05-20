@@ -170,7 +170,7 @@ set guicursor=a:blinkon100
 set noshowmode
 
 " ctags
-set tags=$HOME/.cstags_dir/esp-idf/tags;
+set tags=$HOME/.cstags_dir/esp-idf/TAGS;
 
 " highlighting options in vsplit and gui
 hi vertsplit guifg=fg guibg=bg
