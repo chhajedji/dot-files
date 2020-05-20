@@ -1,14 +1,16 @@
 #!/bin/bash
 
+[ -n "$EDITOR" ] || EDITOR="vi"
+
 # General alias
 
-alias ea="vim + $HOME/.alias"
-alias ev="vim + $HOME/.vimrc"
-alias ebp="vim + $HOME/.bashrc"
-alias ep="vim + $HOME/.profile"
-alias eec="vim + $HOME/.espconfig"
+alias ea="$EDITOR $HOME/.alias"
+alias ev="$EDITOR $HOME/.vimrc"
+alias ebp="$EDITOR $HOME/.bashrc"
+alias ep="$EDITOR $HOME/.profile"
+alias eec="$EDITOR $HOME/.espconfig"
 alias SE="source $HOME/.espconfig"
-alias exr="vim + $HOME/.Xresources"
+alias exr="$EDITOR $HOME/.Xresources"
 alias SB="source $HOME/.bashrc"
 alias SA="source $HOME/.alias"
 alias p2="python2"
@@ -20,8 +22,8 @@ alias make="make -j32"
 alias m="clear;echo 'make >/dev/null';printenv IDF_PATH >/dev/null && make defconfig >/dev/null; make -j32 >/dev/null && echo 'Built successfully with make.' || echo 'Build with make failed.'"
 alias :q="exit"
 alias pforce="git push --force-with-lease"    # force push with lease
-alias eic="vim + $HOME/.config/i3/config"
-alias eib="vim + $HOME/.config/i3/i3blocks.conf"
+alias eic="$EDITOR $HOME/.config/i3/config"
+alias eib="$EDITOR $HOME/.config/i3/i3blocks.conf"
 alias sdn="shutdown now"
 alias update="sudo apt update"
 alias upgrade="sudo apt upgrade"
@@ -97,13 +99,13 @@ gl() { git log --color=always "$@" | less -R; }
 sz() { du -sh "$@"; }
 
 # Combined cd and ls for a directory or if file, open in Neovim.
-cds() { cd "$@" 2>/dev/null && ls -CF || vim + "$@"; }
+cds() { cd "$@" 2>/dev/null && ls -CF || $EDITOR "$@"; }
 
 # `cds` into last modified file.
 ol() { cds `ls -t |head -n 1`; }
 
 # Edit suckless config files (config.h).
-esc() { [ $1 ] && cd $HOME/pnl/github/$1; vim + config.h; }
+esc() { [ $1 ] && cd $HOME/pnl/github/$1; $EDITOR config.h; }
 
 # Build suckelss apps.
 bsa() {
