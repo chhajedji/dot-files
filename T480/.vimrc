@@ -16,7 +16,7 @@ set nocompatible
 set number relativenumber
 set ruler
 set incsearch
-" set hlsearch
+set hlsearch
 set autoindent
 set laststatus=0
 
@@ -179,7 +179,7 @@ hi StatusLine guibg=White guifg=Black
 " Set color for keys mentioned in `listchars`
 " hi SpecialKey ctermfg=darkgrey guifg=grey70
 
-hi cursorline cterm=NONE ctermbg=black
+hi cursorline cterm=NONE ctermbg=000000
 
 " Changes colors for current line number and relativenumbers. After this,
 " current line number is in yellow (by default which is changed with
@@ -298,6 +298,11 @@ command! SETX !xset r rate 400 50
 
 function! s:Showlogs(...)
     tabe
+    nnoremap u 
+    vnoremap u 
+    nnoremap d 
+    vnoremap d 
+    set readonly
     term cat monlog
     only
     !nvim -c "q"
@@ -476,6 +481,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
 " Plugin 'tpope/vim-surround'
 Plugin 'gnattishness/cscope_maps'
+Plugin 'easymotion/vim-easymotion'
 " Plugin 'scrooloose/nerdtree'
 " Plugin 'Yggdroot/indentLine'
 " Plugin 'hari-rangarajan/cctree'

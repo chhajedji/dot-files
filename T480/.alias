@@ -5,6 +5,7 @@
 # General alias
 
 alias ea="$EDITOR $HOME/.alias"
+alias em="emacsclient"
 alias ev="$EDITOR $HOME/.vimrc"
 alias ebp="$EDITOR $HOME/.bashrc"
 alias ep="$EDITOR $HOME/.profile"
@@ -80,7 +81,7 @@ up-to-date() {
      sudo apt autoclean
      sudo apt clean
     )
-        clear
+    exit
 }
 
 # Combined mkdir and cd
@@ -102,7 +103,7 @@ sz() { du -sh "$@"; }
 cds() { cd "$@" 2>/dev/null && ls -CF || $EDITOR "$@"; }
 
 # `cds` into last modified file.
-ol() { cds `ls -t |head -n 1`; }
+ol() { cds "$(ls -t | head -n 1)"; }
 
 # Edit suckless config files (config.h).
 esc() { [ $1 ] && cd $HOME/pnl/github/$1; $EDITOR config.h; }
