@@ -34,6 +34,9 @@ alias autoremove="sudo apt autoremove"
 alias open="xdg-open"
 alias untar="tar -xvf"
 
+# Find and save all git repositories in $HOME/.
+alias gitdbupdate="find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles"
+
 # Copy without newline.
 alias copy='xargs echo -n |xclip -sel c'
 
@@ -80,6 +83,7 @@ up-to-date() {
      sudo apt autoremove "$1"
      sudo apt autoclean
      sudo apt clean
+     find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles
     )
     exit
 }
