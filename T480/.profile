@@ -28,7 +28,7 @@ if [ -d "$HOME/.local/bin" ] ; then
     [ -n "$PATH" ] && PATH="$HOME/.local/bin:$PATH" || PATH="$HOME/.local/bin"
 fi
 
-[ -n "$CDPATH" ] && export CDPATH="$HOME/pnl/github:$CDPATH" || export CDPATH="$HOME/pnl/github"
+# [ -n "$CDPATH" ] && export CDPATH="$HOME/pnl/github:$CDPATH" || export CDPATH="$HOME/pnl/github"
 
 export TERMINAL="konsole"
 
