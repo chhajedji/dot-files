@@ -354,8 +354,8 @@ nnoremap <silent> <leader>F :bp<CR>zv
 nnoremap _F ``mo``mp][%b%b"xye`o`p:echo @x<CR>
 
 " Debug logs in C below current line.
-nnoremap _Q oets_printf("\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@ \n");<esc>4bhi
-nnoremap _P oprintf("\n@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@ \n");<esc>4bhi
+nnoremap _Q oets_printf("\n@@@@  @@@@ \n");<esc>4bhi
+nnoremap _P oprintf("\n@@@@  @@@@ \n");<esc>4bhi
 
 " Highlight all occurrences of current word without moving cursor and show number of occurances. (Similar to *`` but better.)
 nnoremap <silent> <space><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>

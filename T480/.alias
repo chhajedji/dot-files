@@ -83,7 +83,9 @@ up-to-date() {
      sudo apt autoremove "$1"
      sudo apt autoclean
      sudo apt clean
-     find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles
+
+     # Update database for all git repos.
+     find $HOME/ -regex .*/\.git$ -type d 2>/dev/null > $HOME/.tmp/gitfiles
     )
     exit
 }
