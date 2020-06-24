@@ -130,13 +130,11 @@ ptr() { pstree "$@" | less; }
 
 # alias for git
 alias gitgraph="git log --graph --decorate --oneline --all"
-alias gitb="git branch"
-alias gitl="clear && git log --oneline"
 alias s="git status 2>/dev/null || ls --color=auto"
 alias sub="git submodule update --init --recursive --progress"
 alias dinit="git submodule deinit --all -f"
 alias gcm="git checkout master"
-alias gcl="git checkout -"
+alias gcp="git branch | sed -n 's/\* \(.*\)/\1/p' | xargs echo -n | xclip -sel c && echo Branch copied to clipboard."
 
 # Alias for opening files in less with default syntax hilighting. Run this alias to color files in less.
 alias lesc='LESS="-R" LESSOPEN="|pygmentize -g %s" less'
