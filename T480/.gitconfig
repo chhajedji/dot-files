@@ -36,6 +36,9 @@
     sub = "submodule update --init --recursive --progress"
     pulll = "!pull_with_progress() { git pull --progress \"$@\"; }; pull_with_progress"
     sd= "!sub_diff() { git diff --submodule=diff \"$@\" --color=always |less -R; }; sub_diff"
+    cp="!copybranch() { git branch | sed -n 's/\\* \\(.*\\)/\\1/p'      \
+                          | xargs echo -n                               \
+                          | xclip -sel c && echo \"Branch copied to clipboard\"; }; copybranch"
 [credential]
     helper = cache --timeout=99999999999999999
 [core]
