@@ -66,10 +66,27 @@ LONG_RUNNING_COMMAND_TIMEOUT=20
 [ -f $HOME/.espconfig ] && source $HOME/.espconfig
 [ -f $HOME/.alias ] && source $HOME/.alias
 
-# Set proper names for prompt colors using colors and prompt command for git branch.
+# Set proper names for prompt colors using `tput'.
 [ -f $HOME/.bash/colors.sh ] && source "$HOME/.bash/colors.sh"
-[ -f $HOME/.bash/prompt.sh ] && source "$HOME/.bash/prompt.sh"
 
+# Append prompt to keep track of current git branch.
+find_git_branch() {
+    # Based on: http://stackoverflow.com/a/13003854/170413
+    local branch
+    git_branch=$(git branch 2>/dev/null|grep '^*'|colrm 1 2)
+    if [ -z "$git_branch" ]
+    then
+        git_branch="$git_branch"
+    else
+        git_branch="($git_branch)"
+    fi
+}
+
+if [ -n "$PROMPT_COMMAND" ]; then
+    PROMPT_COMMAND="find_git_branch;$PROMPT_COMMAND"
+else
+    PROMPT_COMMAND="find_git_branch"
+fi
 # Setting prompt (PS1).
 
 # While changing PS1, for changing colors, do not use `\e....m` format (Tested
@@ -82,10 +99,10 @@ LONG_RUNNING_COMMAND_TIMEOUT=20
 #     - \A for time in HH:MM
 #     - \j for number of background jobs
 
-export PS1="\[\$bldred\][\[\$txtrst\]\[\$txtcyn\]\A \[\$txtylw\]\w\[\$bldred\]]\[\$txtrst\]\[\$txtgrn\]\$git_branch\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
+# export PS1="\[\$bldred\][\[\$txtrst\]\[\$txtcyn\]\A \[\$txtylw\]\w\[\$bldred\]]\[\$txtrst\]\[\$txtgrn\]\$git_branch\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
 
 # Minimalist prompt showing current directory and number of background jobs.
-# export PS1="\[\$bldwht\]\w\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
+export PS1="\[\$bldwht\]\w\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
 
 
 # Another way to show git branch by using default `__git_ps1`.
@@ -99,13 +116,13 @@ export PROMPT_DIRTRIM=2
 # used to open new terminal in same directory.
 # See $HOME/.scripts/samedirnoob.sh and also $HOME/.scripts/samedir.sh
 if [ -n "$PROMPT_COMMAND" ]; then
-   PROMPT_COMMAND="pwd > '/tmp/cwd'; $PROMPT_COMMAND"
+   PROMPT_COMMAND="$PROMPT_COMMAND;pwd > '/tmp/cwd'"
 else
    PROMPT_COMMAND="pwd > '/tmp/cwd'"
 fi
 
 # Show desktop information with logo in a facny way!
-# screenfetch
+# type neofetch >/dev/null 2>&1 && neofetch
 
 # Set options for `less` to not bloat terminal when exitted from less. Mainly used in git. Outputs
 # of `git branch` also disappears after setting # this option.
@@ -116,4 +133,3 @@ shopt -s cdspell
 
 # Disable window freeze by Ctrl - s permanently.
 stty -ixon
-
