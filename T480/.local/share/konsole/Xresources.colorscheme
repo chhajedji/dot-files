@@ -1,5 +1,5 @@
 [Background]
-Color=20,28,33
+Color=0,28,35
 RandomHueRange=360
 RandomSaturationRange=100
 
@@ -104,5 +104,5 @@ RandomSaturationRange=100
 Blur=true
 ColorRandomization=false
 Description=Xresources
-Opacity=0.92
+Opacity=0.86
 Wallpaper=

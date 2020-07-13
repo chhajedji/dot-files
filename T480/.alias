@@ -109,11 +109,11 @@ sz() { du -sh "$@"; }
 cds() { cd "$@" 2>/dev/null && ls -CF || $EDITOR "$@"; }
 
 # `cds` into last modified file.
-ol() { cds "$(ls -t | head -n 1)"; }
+ol() { realpath "$(ls -t | head -n 1)"; }
 
 # Open emacsclient for a window hiding terminal if `devour' is presetn or
 # detaching process from terminal
-em() { type devour >/dev/null 2>&1 && devour emacsclient -c "$@" || { setsid emacsclient -c "$@" & }; }
+em() { devour emacsclient -c "$@" || { setsid emacsclient -c "$@" & }; }
 
 # Edit suckless config files (config.h).
 esc() { [ $1 ] && cd $HOME/pnl/github/$1; $EDITOR config.h; }
