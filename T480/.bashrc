@@ -1,7 +1,7 @@
 #    _               _
-#   | |__   __ _ ___| |__  _ __ ___ 
+#   | |__   __ _ ___| |__  _ __ ___
 #   | '_ \ / _` / __| '_ \| '__/ __|
-#   | |_) | (_| \__ \ | | | | | (__ 
+#   | |_) | (_| \__ \ | | | | | (__
 #   |_.__/ \__,_|___/_| |_|_|  \___|
 
 # $HOME/.bashrc: executed by bash(1) for non-login shells.
@@ -82,11 +82,11 @@ find_git_branch() {
     fi
 }
 
-if [ -n "$PROMPT_COMMAND" ]; then
-    PROMPT_COMMAND="find_git_branch;$PROMPT_COMMAND"
-else
-    PROMPT_COMMAND="find_git_branch"
-fi
+# if [ -n "$PROMPT_COMMAND" ]; then
+#     PROMPT_COMMAND="find_git_branch;$PROMPT_COMMAND"
+# else
+#     PROMPT_COMMAND="find_git_branch"
+# fi
 
 # Setting prompt (PS1).
 
@@ -103,7 +103,7 @@ fi
 # export PS1="\[\$bldred\][\[\$txtrst\]\[\$txtcyn\]\A \[\$txtylw\]\w\[\$bldred\]]\[\$txtrst\]\[\$txtgrn\]\$git_branch\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
 
 # Minimalist prompt showing current directory and number of background jobs.
-export PS1="\[\$bldwht\]\w\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
+# export PS1="\[\$bldwht\]\w\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
 
 
 # Another way to show git branch by using default `__git_ps1`.

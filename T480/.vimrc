@@ -1,7 +1,7 @@
 "
-"   __   _(_)_ __ ___  _ __ ___ 
+"   __   _(_)_ __ ___  _ __ ___
 "   \ \ / / | '_ ` _ \| '__/ __|
-"    \ V /| | | | | | | | | (__ 
+"    \ V /| | | | | | | | | (__
 "     \_/ |_|_| |_| |_|_|  \___|
 
 let mapleader = "\\"
@@ -65,7 +65,7 @@ set nostartofline
 set confirm
 
 " Enable use of the mouse for all modes to disable this, use `set mouse-=a`
-" set mouse=a
+set mouse=a
 
 " Use visual bell instead of beeping when doing something wrong
 " set visualbell
@@ -109,10 +109,10 @@ set nocursorline
 " set cursorcolumn
 
 " Maintain undo history between sessions
-"set undofile 
+"set undofile
 "set undodir=$HOME/.vim/undodir
 
-" This is required to highlight spedific parts like tab, space, eol. Specific parts can be set as done below 
+" This is required to highlight spedific parts like tab, space, eol. Specific parts can be set as done below
 set list
 
 " Setting list characters
@@ -293,7 +293,7 @@ command! SETX !xset r rate 400 50
 "            only
 "        endfor
 "    endfunction
-"    
+"
 "    command! -nargs=1 ML call s:Showlogs(<f-args>)
 
 function! s:Showlogs(...)
@@ -481,7 +481,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
 " Plugin 'tpope/vim-surround'
 Plugin 'gnattishness/cscope_maps'
-Plugin 'easymotion/vim-easymotion'
+" Plugin 'easymotion/vim-easymotion'
 " Plugin 'scrooloose/nerdtree'
 " Plugin 'Yggdroot/indentLine'
 " Plugin 'hari-rangarajan/cctree'
@@ -563,19 +563,19 @@ hi Comment cterm=italic ctermbg=NONE ctermfg=Blue gui=italic
 "       "
 "       "Highlighting of class scope is disabled by default. To enable set
 "       let g:cpp_class_scope_highlight = 1
-"       
+"
 "       " Highlighting of member variables is disabled by default. To enable set
 "       let g:cpp_member_variable_highlight = 1
-"       
+"
 "       " Highlighting of class names in declarations is disabled by default. To enable set
 "       let g:cpp_class_decl_highlight = 1
-"       
+"
 "       " Highlighting of library concepts is enabled by
 "       let g:cpp_concepts_highlight = 1
-"       
+"
 "       " Highlighting of user defined functions can be disabled by
 "       " let g:cpp_no_function_highlight = 1
-"       
+"
 " ####################################
 "
 " NERDCommenter
@@ -588,32 +588,32 @@ let g:NERDSpaceDelims = 1
 " ####################################
 
 "        " indentLine
-"        
+"
 "        " leading spaces will also be highlighted
 "        let g:indentLine_leadingSpaceEnabled = 1
-"        
+"
 "        "show different indentation levels with different characters
 "        let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-"        
+"
 "        " " set character for leading spaces. By default it is '˰'
 "        let g:indentLine_leadingSpaceChar = '·'
-"        
-"        
+"
+"
 " ####################################
 
 "    " lightline.vim
 "    " (https://github.com/itchyny/lightline.vim)
-"    
+"
 "    " For always showing status line in vim. (By default it is set to 1).
 "    set laststatus=2
-"    
+"
 "    " For not showing modes (eg: -- INSERT --) in status line.
 "    set noshowmode
-"    
+"
 "    if !has('gui_running')
 "      set t_Co=256
 "    endif
-"    
+"
 "    let g:lightline = {
 "          \ 'colorscheme': 'one',
 "          \ 'active': {
@@ -628,7 +628,7 @@ let g:NERDSpaceDelims = 1
 "          \ 'charvaluehex': '0x%B'
 "          \ }
 "          \ }
-"    
+"
 
 " ####################################
 
@@ -646,7 +646,7 @@ cs a $HOME/.cstags_dir/esp-idf/cscope.out
 " cs a $HOME/.cstags_dir/repos/cscope.out
 set cscopetag
 
-" Do not set `cscoperelative` if using a database not stored in the root directory of a project. 
+" Do not set `cscoperelative` if using a database not stored in the root directory of a project.
 " set cscoperelative
 set nocscoperelative
 
@@ -681,9 +681,9 @@ noremap <F6> :!csb $IDF_PATH<CR>:cs reset<CR><CR>
 " let g:CCTreeKeyCompressTree = 'zs'
 " let g:CCTreeKeyDepthPlus = '<C-\>='
 " let g:CCTreeKeyDepthMinus = '<C-\>-'
-" 
+"
 " let g:CCTreeWindowVertical = 1
-" 
+"
 " let g:CCTreeDisplayMode = 1
 "             default: 1
 " Values: 1 -- Ultra-compact (takes minimum screen width)

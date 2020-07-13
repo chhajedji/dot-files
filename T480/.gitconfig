@@ -17,6 +17,7 @@
     cmd = meld "$LOCAL" "$REMOTE"
 [merge]
     tool = meld
+	conflictStyle = diff3
 [mergetool]
     prompt = false
 [mergetool "meld"]
