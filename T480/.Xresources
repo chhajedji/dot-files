@@ -9,8 +9,9 @@
 ! special
 
 *.foreground: #93a1a1
-! *.background: #141c21     ! Good alternate background color.
-*.background: #000000
+! Good alternate background color.
+*.background: #141c21
+! *.background: #000000
 *.cursorColor: #ff00fF
 
 !   ! Exact colors
