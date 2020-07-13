@@ -5,7 +5,6 @@
 # General alias
 
 alias ea="$EDITOR $HOME/.alias"
-alias em="emacsclient"
 alias ev="$EDITOR $HOME/.vimrc"
 alias ebp="$EDITOR $HOME/.bashrc"
 alias ep="$EDITOR $HOME/.profile"
@@ -85,7 +84,8 @@ up-to-date() {
      sudo apt clean
 
      # Update database for all git repos.
-     find $HOME/ -regex .*/\.git$ -type d 2>/dev/null > $HOME/.tmp/gitfiles
+     find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles
+    sudo updatedb
     )
     exit
 }
@@ -110,6 +110,10 @@ cds() { cd "$@" 2>/dev/null && ls -CF || $EDITOR "$@"; }
 
 # `cds` into last modified file.
 ol() { cds "$(ls -t | head -n 1)"; }
+
+# Open emacsclient for a window hiding terminal if `devour' is presetn or
+# detaching process from terminal
+em() { type devour >/dev/null 2>&1 && devour emacsclient -c "$@" || { setsid emacsclient -c "$@" & }; }
 
 # Edit suckless config files (config.h).
 esc() { [ $1 ] && cd $HOME/pnl/github/$1; $EDITOR config.h; }

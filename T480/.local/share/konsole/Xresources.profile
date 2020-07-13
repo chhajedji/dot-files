@@ -24,4 +24,4 @@ ScrollBarPosition=2
 BlinkingCursorEnabled=true
 FlowControlEnabled=false
 ReverseUrlHints=true
-UrlHintsModifiers=201326592
+UrlHintsModifiers=134217728
