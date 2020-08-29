@@ -65,7 +65,7 @@ set nostartofline
 set confirm
 
 " Enable use of the mouse for all modes to disable this, use `set mouse-=a`
-set mouse=a
+" set mouse=a
 
 " Use visual bell instead of beeping when doing something wrong
 " set visualbell
