@@ -1,5 +1,5 @@
 [Background]
-Color=0,28,35
+Color=0,0,0
 RandomHueRange=360
 RandomSaturationRange=100
 
@@ -101,7 +101,7 @@ RandomHueRange=360
 RandomSaturationRange=100
 
 [General]
-Blur=true
+Blur=false
 ColorRandomization=false
 Description=Xresources
 Opacity=0.86

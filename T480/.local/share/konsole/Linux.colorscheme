@@ -89,8 +89,8 @@ Color=101,101,101
 Color=255,255,255
 
 [General]
-Blur=false
+Blur=true
 ColorRandomization=false
 Description=Linux Colors
-Opacity=0.83
+Opacity=0.33
 Wallpaper=
