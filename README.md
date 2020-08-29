@@ -15,9 +15,9 @@ Personal Laptop: X230
 | WM             | [dwm](https://github.com/chinmaychhajed/dwm) |
 | Editor         | Emacs                                        |
 | DE             | KDE                                          |
-| Shell          | bash, zsh                                    |
+| Shell          | bash (active), zsh                           |
 | Terminal       | Konsole (active), URxvt                      |
-| OS             | Ubuntu, Arch                                 |
+| OS             | Ubuntu (active), Arch                        |
 
 
 > Some scripts used in config files might be present in [scripts/](https://github.com/chinmaychhajed/scripts) submodule.
