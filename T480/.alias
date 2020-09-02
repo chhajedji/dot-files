@@ -110,7 +110,11 @@ cds() { cd "$@" 2>/dev/null && ls -CF || $EDITOR "$@"; }
 
 # Copy full path of last edited file.
 ol() {
-    FILE="$(realpath $(ls -t | head -n 1))" &&
+    if [ $1 ]; then
+        FILE="$(realpath $1/$(ls -t $1 | head -n 1))"
+    else
+        FILE="$(realpath $(ls -t | head -n 1))"
+    fi &&
         echo -n $FILE | xclip -sel c &&
         echo "\"$( basename $FILE)\" copied to clipboard."
 }
