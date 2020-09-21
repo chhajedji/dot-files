@@ -582,6 +582,8 @@ hi Comment cterm=italic ctermbg=NONE ctermfg=Blue gui=italic
 
 filetype plugin on
 
+runtime macros/matchit.vim
+
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 

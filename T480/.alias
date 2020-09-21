@@ -87,7 +87,8 @@ up-to-date() {
      find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles
     sudo updatedb
     )
-    exit
+    [ "$2" != "-n" ] && exit
+
 }
 
 # Combined mkdir and cd
