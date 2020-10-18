@@ -24,7 +24,7 @@ HISTCONTROL=erasedups
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
+HISTSIZE=100000
 HISTFILESIZE=10000
 export HISTTIMEFORMAT="%d/%m/%y  %T    "
 export HISTFILE=$HOME/.bash/bash_history

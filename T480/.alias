@@ -86,7 +86,7 @@ up-to-date() {
         find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles
         sudo updatedb
     )
-    [ "$2" != "-n" ] && exit
+    [ "$2" != "-n" ] && exit || return 0
 
 }
 

@@ -68,3 +68,5 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 # Set cursor autorepeat time (first) and speed (second).
 xset r rate 400 50
+
+[ -f $HOME/.esp_profile ] && source $HOME/.esp_profile
