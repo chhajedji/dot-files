@@ -16,59 +16,59 @@
 
 !   ! Exact colors
 
-!   *color0:  #000000 // black
-!   *color1:  #B40000 // red
-!   *color2:  #00AA00 // green
-!   *color3:  #AAAA00 // yellow
-!   *color4:  #5555AA // blue
-!   *color5:  #AA00AA // magenta
-!   *color6:  #00AAAA // cyan
-!   *color7:  #AAAAAA // white
-!   *color8:  #555555 // black (now and below: bright)
-!   *color9:  #FF0000 // red
-!   *color10: #00FF00 // green
-!   *color11: #FFFF00 // yellow
-!   *color12: #6464FF // blue
-!   *color13: #FF00FF // magenta
-!   *color14: #00FFFF // cyan
-!   *color15: #FFFFFF // white
+  *color0:  #000000 // black
+  *color1:  #B40000 // red
+  *color2:  #00AA00 // green
+  *color3:  #AAAA00 // yellow
+  *color4:  #5555AA // blue
+  *color5:  #AA00AA // magenta
+  *color6:  #00AAAA // cyan
+  *color7:  #AAAAAA // white
+  *color8:  #555555 // black (now and below: bright)
+  *color9:  #FF0000 // red
+  *color10: #00FF00 // green
+  *color11: #FFFF00 // yellow
+  *color12: #6464FF // blue
+  *color13: #FF00FF // magenta
+  *color14: #00FFFF // cyan
+  *color15: #FFFFFF // white
 
 
-! Better colors with some offset.
-
-! black
-*.color0:   #263640
-*.color8:   #4a697d
-
-! red
-*.color1:   #d12f2c
-*.color9:   #fa3935
-
-! green
-! *.color2:   #819400
-! *.color10:  #a4bd00
-*.color2:   #00aa00
-*.color10:  #00ff00
-
-! yellow
-*.color3:   #b08500
-*.color11:  #d9a400
-
-! blue
-*.color4:   #2587cc
-*.color12:  #2ca2f5
-
-! magenta
-*.color5:   #696ebf
-*.color13:  #8086e8
-
-! cyan
-*.color6:   #289c93
-*.color14:  #33c5ba
-
-! white
-*.color7:   #bfbaac
-*.color15:  #fdf6e3
+! ! Better colors with some offset.
+!
+! ! black
+! *.color0:   #263640
+! *.color8:   #4a697d
+!
+! ! red
+! *.color1:   #d12f2c
+! *.color9:   #fa3935
+!
+! ! green
+! ! *.color2:   #819400
+! ! *.color10:  #a4bd00
+! *.color2:   #00aa00
+! *.color10:  #00ff00
+!
+! ! yellow
+! *.color3:   #b08500
+! *.color11:  #d9a400
+!
+! ! blue
+! *.color4:   #2587cc
+! *.color12:  #2ca2f5
+!
+! ! magenta
+! *.color5:   #696ebf
+! *.color13:  #8086e8
+!
+! ! cyan
+! *.color6:   #289c93
+! *.color14:  #33c5ba
+!
+! ! white
+! *.color7:   #bfbaac
+! *.color15:  #fdf6e3
 
 !! URxvt Appearance
 
@@ -136,7 +136,7 @@ URxvt.resize-font.bigger: C-equal
 URxvt.resize-font.step: 1
 
 !!! ! tabbed
-!!! 
+!!!
 !!! ! Disable the `NEW` button.
 !!! URxvt.tabbed.new-button: false
 !!! URxvt.tabbed.disable-shift-down: true
@@ -146,4 +146,3 @@ URxvt.keysym.M-Page_Up:   perl:scroll:up-halfpage
 URxvt.keysym.M-Page_Down: perl:scroll:down-halfpage
 URxvt.keysym.Home:        perl:scroll:top
 URxvt.keysym.End:         perl:scroll:bottom
-
