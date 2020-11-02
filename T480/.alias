@@ -142,7 +142,7 @@ m() {
     clear
     echo 'make >/dev/null';printenv IDF_PATH >/dev/null && make defconfig >/dev/null
     make -j32 >/dev/null && echo 'Built successfully with make.' ||
-            RETURN="$?" && echo 'Build with make failed.' && return $RETURN
+            { RETURN="$?" && echo 'Build with make failed.' && return $RETURN; }
 }
 
 # Process tree in less
