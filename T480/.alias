@@ -31,6 +31,7 @@ alias autoclean="sudo apt autoclean"
 alias autoremove="sudo apt autoremove"
 alias open="xdg-open"
 alias untar="tar -xvf"
+alias se='[ $? = 0 ] && exit'
 
 # Find and save all git repositories in $HOME/.
 alias gitdbupdate="find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles"
