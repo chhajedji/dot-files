@@ -36,9 +36,6 @@ alias se='[ $? = 0 ] && exit'
 # Find and save all git repositories in $HOME/.
 alias gitdbupdate="find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles"
 
-# Copy without newline.
-alias copy='xargs echo -n |xclip -sel c'
-
 # Enable/Disable mouse and touchpad.
 alias te="xinput set-prop \"Synaptics TM3276-022\" \"Device Enabled\" 1"
 alias td="xinput set-prop \"Synaptics TM3276-022\" \"Device Enabled\" 0"
@@ -68,6 +65,12 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 
 # functions
+
+# Copy. To copy without new line, give option `-n'.
+copy() {
+    [ "$1" = "-n" ] && xargs echo -n | xclip -sel c ||
+        xclip -sel c
+}
 
 # `dict` will always open in less
 meaning() { dict "$@" | less; }
