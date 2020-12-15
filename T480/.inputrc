@@ -32,7 +32,7 @@ $endif
 set enable-keypad on
 
 # Case insensitive auto-completion
-# set completion-ignore-case on
+set completion-ignore-case on
 
 # Reload inputrc with C-x C-r. Alternately `bind -f ~/.inputrc` can also be used.
 "\C-x\C-r": re-read-init-file
