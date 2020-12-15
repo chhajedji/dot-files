@@ -75,6 +75,17 @@ copy() {
 # `dict` will always open in less
 meaning() { dict "$@" | less; }
 
+# Search file in fzf and open in Vim
+ef() {
+    if $(command -v fzf >/dev/null 2>&1); then
+        IP="$(fzf)"
+        [ -n "$IP" ] && vim "$IP"
+    else
+        echo "Error: fzf not found."
+        return 1
+    fi
+}
+
 # Update system smartly.
 up-to-date() {
 
@@ -112,10 +123,25 @@ sz() { du -sh "$@"; }
 # Combined cd and ls for a directory or if file, open in Neovim.
 cds() { cd "$@" 2>/dev/null && ls -CF || $EDITOR "$@"; }
 
-# Copy full path of last edited file.
+# Copy full path of last edited file or given file.
 ol() {
+    # If any input is provided then go to that directory
     if [ $1 ]; then
-        FILE="$(realpath $1/$(ls -t $1 | head -n 1))"
+
+        # If the provided input if a file, then copy path of that
+        # file.
+        if [ -f $1 ]; then
+            echo -n $(realpath $1) | xclip -sel c
+            echo "\"$(basename $1)\" copied to clipboard."
+            return 0
+
+            # If input is not a file, copy last edited file in that
+            # directory.
+        else
+            FILE="$(realpath $1/$(ls -t $1 | head -n 1))"
+        fi
+        # If no input is provided, copy last updated file/directory in
+        # current directory
     else
         FILE="$(realpath $(ls -t | head -n 1))"
     fi &&
