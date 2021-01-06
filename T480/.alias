@@ -9,6 +9,7 @@ alias ev="$EDITOR $HOME/.vimrc"
 alias ebp="$EDITOR $HOME/.bashrc"
 alias ep="$EDITOR $HOME/.profile"
 alias eec="$EDITOR $HOME/.espconfig"
+alias eep="$EDITOR $HOME/.esp_profile"
 alias SE="source $HOME/.espconfig"
 alias exr="$EDITOR $HOME/.Xresources"
 alias SB="source $HOME/.bashrc"
@@ -55,7 +56,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -AtlF'
+alias ll='ls -AltF'
 alias la='ls -A'
 alias l='ls -CF'
 
