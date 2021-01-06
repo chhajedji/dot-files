@@ -1,23 +1,15 @@
 # dot-files
 
-
 ## Configuration used
 
-
-Work laptop: T480
-
-Personal Laptop: X230
-
-
-
-| Currently used | Application                                                 |
-|----------------|-------------------------------------------------------------|
-| WM             | [dwm](https://github.com/chinmaychhajed/dwm) (active), i3wm |
-| Editor         | Emacs                                                       |
-| DE             | KDE                                                         |
-| Shell          | bash (active), zsh                                          |
-| Terminal       | Konsole (active), URxvt                                     |
-| OS             | Ubuntu (active), Arch                                       |
+| Currently used | Application                                            |
+|----------------|--------------------------------------------------------|
+| WM             | [dwm](https://github.com/chhajedji/dwm) (active), i3wm |
+| Editor         | Emacs                                                  |
+| DE             | KDE                                                    |
+| Shell          | bash                                                   |
+| Terminal       | Konsole (active), URxvt                                |
+| OS             | Ubuntu                                                 |
 
 
-> Some scripts used in config files might be present in [scripts/](https://github.com/chinmaychhajed/scripts) submodule.
+> Scripts used in config files are present at [chhajedji/scripts](https://github.com/chhajedji/scripts) submodule.
