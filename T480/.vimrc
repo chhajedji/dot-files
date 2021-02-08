@@ -201,6 +201,7 @@ hi Folded ctermbg=black ctermfg=yellow
 filetype indent on
 syntax enable
 
+nnoremap <silent><leader>a : set relativenumber!<CR>
 
 "<space>l Toggles highlighted word.
 nnoremap <silent> <space>l :set hlsearch!<CR>
@@ -304,11 +305,10 @@ function! s:Showlogs(...)
     vnoremap d 
     set readonly
     term cat monlog
+    set mouse+=a
     only
-    !nvim -c "q"
     tabp
     q
-    ls
 endfunction
 
 command! ML call s:Showlogs()
