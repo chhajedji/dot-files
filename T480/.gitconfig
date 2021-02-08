@@ -40,6 +40,8 @@
     cp="!copybranch() { git branch | sed -n 's/\\* \\(.*\\)/\\1/p'      \
                           | xargs echo -n                               \
                           | xclip -sel c && echo \"Branch copied to clipboard\"; }; copybranch"
+    ; switch git local branches using fzf
+    sb="!switch_branch_fzf() { command -v fzf >/dev/null && git branch | fzf | xargs git checkout; }; switch_branch_fzf"
 [credential]
     helper = cache --timeout=99999999999999999
 [core]
