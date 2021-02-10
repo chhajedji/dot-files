@@ -67,9 +67,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # functions
 
-# Copy. To copy without new line, give option `-n'.
+# Copy. To copy with new line, give option `-n'.
 copy() {
-    [ "$1" = "-n" ] && xargs echo -n | xclip -sel c ||
+    [ "$1" = "-n" ] || xargs echo -n | xclip -sel c ||
         xclip -sel c
 }
 
