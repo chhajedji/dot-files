@@ -8,22 +8,18 @@ alias ea="$EDITOR $HOME/.alias"
 alias ev="$EDITOR $HOME/.vimrc"
 alias ebp="$EDITOR $HOME/.bashrc"
 alias ep="$EDITOR $HOME/.profile"
-alias eec="$EDITOR $HOME/.espconfig"
-alias eep="$EDITOR $HOME/.esp_profile"
-alias SE="source $HOME/.espconfig"
-alias exr="$EDITOR $HOME/.Xresources"
+# alias exr="$EDITOR $HOME/.Xresources"
 alias SB="source $HOME/.bashrc"
 alias SA="source $HOME/.alias"
-alias p2="python2"
-alias p3="python3 -q"
+# alias p2="python2"
+# alias p3="python3 -q"
 alias v="vim +"
-alias nv="nvim +"
 alias make="make -j32"
 # alias make="colormake"       # `sudo apt install colormake` if not installed. NOTE: menuconfig was not navigatable with colormake
 alias :q="exit"
-alias pforce="git push --force-with-lease"    # force push with lease
-alias eic="$EDITOR $HOME/.config/i3/config"
-alias eib="$EDITOR $HOME/.config/i3/i3blocks.conf"
+# i3wm not in use now.
+# alias eic="$EDITOR $HOME/.config/i3/config"
+# alias eib="$EDITOR $HOME/.config/i3/i3blocks.conf"
 alias sdn="shutdown now"
 alias update="sudo apt update"
 alias upgrade="sudo apt upgrade"
@@ -32,9 +28,11 @@ alias autoclean="sudo apt autoclean"
 alias autoremove="sudo apt autoremove"
 alias open="xdg-open"
 alias untar="tar -xvf"
+
+# Close terminal with `exit' if previous command was success.
 alias se='[ $? = 0 ] && exit'
 
-# Find and save all git repositories in $HOME/.
+# Find and save location of all git repositories in $HOME. Useful with dmenu.
 alias gitdbupdate="find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles"
 
 # Enable/Disable mouse and touchpad.
@@ -67,7 +65,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # functions
 
-# Copy. To copy with new line, give option `-n'.
+# Copy output of a command. To copy with new line, give option `-n'.
 copy() {
     [ "$1" = "-n" ] || xargs echo -n | xclip -sel c ||
         xclip -sel c
@@ -98,7 +96,7 @@ up-to-date() {
         sudo apt autoclean
         sudo apt clean
 
-        # Update database for all git repos.
+        # Find and save location of all git repositories in $HOME. Useful with dmenu.
         find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles
         sudo updatedb
     )
@@ -112,16 +110,10 @@ mkcdir() { mkdir "$@" && cd "$@"; }
 # Tree will open in less
 ltree() { tree -C "$@" | less -R; }
 
-# Modified git diff
-gd() { git diff --color=always "$@" | less -R; }
-
-# Similarly modified git log
-gl() { git log --color=always "$@" | less -R; }
-
 # Display size summary in human readable format.
 sz() { du -sh "$@"; }
 
-# Combined cd and ls for a directory or if file, open in Neovim.
+# Combined cd and ls for a directory or if file, open in default EDITOR.
 cds() { cd "$@" 2>/dev/null && ls -CF || $EDITOR "$@"; }
 
 # Copy full path of last edited file or given file.
@@ -147,7 +139,7 @@ ol() {
         FILE="$(realpath $(ls -t | head -n 1))"
     fi &&
         echo -n $FILE | xclip -sel c &&
-        echo "\"$( basename $FILE)\" copied to clipboard."
+        echo "$( basename $FILE)"
 }
 
 # Open emacsclient for a window hiding terminal if `devour' is presetn or
@@ -171,7 +163,8 @@ bsa() {
 # `make' with style B-).
 m() {
     clear
-    echo 'make >/dev/null';printenv IDF_PATH >/dev/null && make defconfig >/dev/null
+    echo 'make >/dev/null'
+     ls sdkconfig >/dev/null 2>&1 || make defconfig >/dev/null
     make -j32 >/dev/null && echo 'Built successfully with make.' ||
             { RETURN="$?" && echo 'Build with make failed.' && return $RETURN; }
 }
