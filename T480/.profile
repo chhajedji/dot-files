@@ -80,3 +80,12 @@ fi
 xset r rate 400 50
 
 [ -f $HOME/.esp_profile ] && source $HOME/.esp_profile
+
+# Default options for fzf.
+export FZF_DEFAULT_OPTS='--height 50% --layout=reverse'
+# Setting `fd' as the default source for fzf instead of `find'.
+export FZF_DEFAULT_COMMAND='fd --type file'
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# Use ~~ as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER='``'

@@ -74,17 +74,6 @@ copy() {
 # `dict` will always open in less
 meaning() { dict "$@" | less; }
 
-# Search file in fzf and open in Vim
-ef() {
-    if $(command -v fzf >/dev/null 2>&1); then
-        IP="$(fzf)"
-        [ -n "$IP" ] && vim "$IP"
-    else
-        echo "Error: fzf not found."
-        return 1
-    fi
-}
-
 # Update system smartly.
 up-to-date() {
 
@@ -167,6 +156,24 @@ m() {
      ls sdkconfig >/dev/null 2>&1 || make defconfig >/dev/null
     make -j32 >/dev/null && echo 'Built successfully with make.' ||
             { RETURN="$?" && echo 'Build with make failed.' && return $RETURN; }
+}
+
+# Change project with `fzf'.
+gg() {
+    mkdir -p $HOME/.tmp
+        [ -e $HOME/.tmp/gitfiles ] || {
+            echo "No git database found. Creating one..";
+            # If `fd' is not installed, use default `find'
+            command -v fd && fd -H "\.git$" ~/ -t d >$HOME/.tmp/gitfiles ||
+                find $HOME/ -regex .*/\.git$ -type d 2>/dev/null > $HOME/.tmp/gitfiles
+        }
+    REPOS="$(cat $HOME/.tmp/gitfiles | xargs dirname  | sed s:/home/$USER:~: | fzf)"
+
+# Cut the '~/' part from the `REPOS'.
+        REPOS="$(echo $REPOS | cut -d '/' -f2-)"
+
+# If user selected any repo then open `$TERMINAL' in that repo.
+        [ "$REPOS" = "" ] || cd $HOME/$REPOS
 }
 
 # Process tree in less
