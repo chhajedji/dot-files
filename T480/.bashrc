@@ -66,6 +66,13 @@ LONG_RUNNING_COMMAND_TIMEOUT=20
 [ -f $HOME/.espconfig ] && source $HOME/.espconfig
 [ -f $HOME/.alias ] && source $HOME/.alias
 
+# Keybindings for using fzf with ctrl-r, ctrl-t and alt-c.
+command -v fzf >/dev/null 2>&1 &&
+    {
+        [ -f $HOME/.scripts/key-bindings.bash ] && source $HOME/.scripts/key-bindings.bash;
+        [ -f $HOME/.scripts/completion.bash ] && source $HOME/.scripts/completion.bash;
+    }
+
 # Set proper names for prompt colors using `tput'.
 [ -f $HOME/.bash/colors.sh ] && source "$HOME/.bash/colors.sh"
 
