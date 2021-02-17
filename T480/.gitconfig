@@ -28,7 +28,7 @@
     sa="!show_alias() {  git config --get-regexp alias; }; show_alias"
 ; Check for environment variable `LESS` having option "R". If this is enabled,
 ; automatically many commands will open in less without bloating terminal.
-    l = "!log_in_less() { git log --decorate=full --color=always \"$@\" | less -R; }; log_in_less"
+    l = "!log_in_less() { git log --stat --decorate=full --color=always \"$@\" | less -R; }; log_in_less"
     lo = "log --oneline"
     d = "!diff_in_less() { git diff --color-words --color=always \"$@\" | less -R; }; diff_in_less"
     s = "status"
