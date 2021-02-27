@@ -130,7 +130,7 @@ exit_code() {
     # previous one.
     PS1=""
 
-    [ "$EXIT" = "0" ] && EXITCOL=$bldwht || EXITCOL=$bldred
+    [ "$EXIT" = "0" ] && EXITCOL=$bldylw || EXITCOL=$bldred
 
     # This will be final prompt, whatever set earlier will be
     # overwritten by this.
@@ -171,3 +171,5 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+# (cat ~/.cache/wal/sequences &)
