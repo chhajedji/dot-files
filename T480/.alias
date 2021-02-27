@@ -189,3 +189,13 @@ alias gcp="git branch | sed -n 's/\* \(.*\)/\1/p' | xargs echo -n | xclip -sel c
 
 # Alias for opening files in less with default syntax hilighting. Run this alias to color files in less.
 alias lesc='LESS="-R" LESSOPEN="|pygmentize -g %s" less'
+
+
+# Sample ffmpeg query to convert .mp4 to .gif
+# Source: https://askubuntu.com/a/837574/734579
+# ffmpeg \
+#   -i opengl-rotating-triangle.mp4 \
+#   -r 15 \
+#   -vf "scale=512:-1,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+#   -ss 00:00:03 -to 00:00:06 \
+#   opengl-rotating-triangle-palettegen.gif
