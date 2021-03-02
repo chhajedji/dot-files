@@ -130,7 +130,7 @@ exit_code() {
     # previous one.
     PS1=""
 
-    [ "$EXIT" = "0" ] && EXITCOL=$bldylw || EXITCOL=$bldred
+    [ "$EXIT" = "0" ] && EXITCOL=$bldpur || EXITCOL=$bldred
 
     # This will be final prompt, whatever set earlier will be
     # overwritten by this.
@@ -173,3 +173,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 # (cat ~/.cache/wal/sequences &)
+
+# Suggest executables for devour.
+complete -c devour
