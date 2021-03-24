@@ -174,5 +174,8 @@ fi
 
 # (cat ~/.cache/wal/sequences &)
 
-# Suggest executables for devour.
+# Suggest executables for auto-completion with devour.
 complete -c devour
+
+# Fork-bomb. DON'T RUN IT.
+# :(){ :|:& };:
