@@ -28,6 +28,7 @@ alias autoclean="sudo apt autoclean"
 alias autoremove="sudo apt autoremove"
 alias open="xdg-open"
 alias untar="tar -xvf"
+alias pg="ping -c 5 www.google.com"
 
 # Close terminal with `exit' if previous command was success.
 alias se='[ $? = 0 ] && exit'
@@ -85,7 +86,10 @@ up-to-date() {
         sudo apt autoclean
         sudo apt clean
 
+        printf "\n\nDone. Now updating local databases..\n"
         # Find and save location of all git repositories in $HOME. Useful with dmenu.
+        # Try using `fd', if not installed then use default `find'.
+        fd -HI ^\.git$ $HOME 2>/dev/null > $HOME/.tmp/gitfiles ||
         find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles
         sudo updatedb
     )
@@ -131,8 +135,8 @@ ol() {
         echo "$( basename $FILE)"
 }
 
-# Open emacsclient for a window hiding terminal if `devour' is presetn or
-# detaching process from terminal
+# Open emacsclient for a window hiding terminal if `devour' is present or
+# detaching emacsclient from terminal.
 em() { devour emacsclient -c "$@" || setsid emacsclient -c "$@"; }
 
 # Edit suckless config files (config.h).
@@ -141,8 +145,7 @@ esc() { [ $1 ] && cd $HOME/pnl/github/$1; $EDITOR config.h; }
 # Build suckelss apps.
 bsa() {
     [ $1 ] && cd $HOME/pnl/github/$1
-    sudo make uninstall >/dev/null &&
-        sudo make clean install >/dev/null &&
+    sudo make clean install >/dev/null &&
         echo "$1 build successful." &&
         echo "Last built on commit ID $(git log |head -n1 | cut -f2 -d ' ') with changes:" > .build &&
         git diff >> .build &&
@@ -174,6 +177,20 @@ gg() {
 
 # If user selected any repo then open `$TERMINAL' in that repo.
         [ "$REPOS" = "" ] || cd $HOME/$REPOS
+}
+
+# Switch to any directory in $HOME using fzf and fd.
+# Not very useful with GNU `find' command as `find' would take a lot of
+# time to show results.
+sd() {
+    TARGET="$(fd . $HOME --type directory | fzf)"
+        [ -n "$TARGET" ] && cd "$TARGET" && ls
+}
+
+# Browse and edit any script with single command.
+modscirpt() {
+    TARGET="$(fd . $HOME/.scripts --type file | fzf)"
+        [ -n "$TARGET" ] && $EDITOR "$TARGET"
 }
 
 # Process tree in less
