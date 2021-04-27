@@ -661,6 +661,9 @@ set csto=0
 " update the line numbers when new lines are added.
 noremap <F6> :!csb $IDF_PATH<CR>:cs reset<CR><CR>
 
+" Bindings compatible with Emacs' cscope.
+nnoremap <C-\>u <C-t>
+
 " ####################################
 
 " minimap
