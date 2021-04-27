@@ -126,10 +126,6 @@ find_git_branch() {
 exit_code() {
     EXIT="$?"
 
-    # PS1 needs to be reset or else it will be appended every time to
-    # previous one.
-    PS1=""
-
     [ "$EXIT" = "0" ] && EXITCOL=$bldpur || EXITCOL=$bldred
 
     # This will be final prompt, whatever set earlier will be
