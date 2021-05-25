@@ -455,7 +455,7 @@ autocmd BufRead config.h call s:Configsuckless()
 autocmd BufRead dwm.h,dwm.c call s:Configdwm()
 autocmd BufRead st.c,x.c call s:Configst()
 
-autocmd! BufWritePost dwmbar :!pkill dwmbar; dwmbar >/dev/null 2>&1
+autocmd! BufWritePost dwmbar :!pkill dwmbar; dwmbar >/dev/null 2>&1 &
 
 autocmd BufRead config call dist#ft#SetFileTypeSH("config")
 
