@@ -67,17 +67,16 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
-# Set cursor autorepeat time (first) and speed (second).
 
 ## pyenv configs
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
 fi
 
 # Set cursor rate.
+# Set cursor autorepeat time (first) and speed (second).
 xset r rate 400 50
 
 [ -f $HOME/.esp_profile ] && source $HOME/.esp_profile
