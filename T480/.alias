@@ -28,7 +28,7 @@ alias autoclean="sudo apt autoclean"
 alias autoremove="sudo apt autoremove"
 alias open="xdg-open"
 alias untar="tar -xvf"
-alias pg="ping -c 5 www.google.com"
+alias pg="ping -c 5 www.google.com; sleep 1.5s; exit"
 
 # Close terminal with `exit' if previous command was success.
 alias se='[ $? = 0 ] && exit'
@@ -87,7 +87,7 @@ up-to-date() {
         sudo apt clean
 
         printf "\n\nDone. Now updating local databases..\n"
-        # Find and save location of all git repositories in $HOME. Useful with dmenu.
+        # Find and save location of all git repositories present in `HOME`.
         # Try using `fd', if not installed then use default `find'.
         fd -HI ^\.git$ $HOME 2>/dev/null > $HOME/.tmp/gitfiles ||
         find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles
@@ -183,7 +183,10 @@ gg() {
 # Not very useful with GNU `find' command as `find' would take a lot of
 # time to show results.
 sd() {
-    TARGET="$(fd . $HOME --type directory | fzf)"
+    # Advantage over using `Alt-c` from fzf: This can be used to go to any
+    # directory in system, not needed to be present only in its current tree +
+    # It will also list hidden directories to navigate.
+    TARGET="$({ fd . $HOME --type directory -HI 2>/dev/null || find $HOME -type d 2>/dev/null; } | fzf)"
         [ -n "$TARGET" ] && cd "$TARGET" && ls
 }
 
@@ -211,8 +214,8 @@ alias lesc='LESS="-R" LESSOPEN="|pygmentize -g %s" less'
 # Sample ffmpeg query to convert .mp4 to .gif
 # Source: https://askubuntu.com/a/837574/734579
 # ffmpeg \
-#   -i opengl-rotating-triangle.mp4 \
+#   -i input.mp4 \
 #   -r 15 \
 #   -vf "scale=512:-1,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
 #   -ss 00:00:03 -to 00:00:06 \
-#   opengl-rotating-triangle-palettegen.gif
+#   output.gif
