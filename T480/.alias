@@ -137,7 +137,7 @@ ol() {
 
 # Open emacsclient for a window hiding terminal if `devour' is present or
 # detaching emacsclient from terminal.
-em() { devour emacsclient -c "$@" || emacsclient -nc "$@"; }
+em() { devour emacsclient -c "$@" || { echo "devour not found." && emacsclient -nc "$@"; }; }
 
 # Edit suckless config files (config.h).
 esc() { [ $1 ] && cd $HOME/pnl/github/$1; $EDITOR config.h; }
