@@ -131,8 +131,10 @@ exit_code() {
     # This will be final prompt, whatever set earlier will be
     # overwritten by this.
     export PS1="\[\$EXITCOL\]\w\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
-}
 
+    # Temp: with git branch
+    # export PS1="\[\$EXITCOL\]\W\[\$bldgrn\]\$(__git_ps1)\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
+}
 
 # Depth of `$PWD` is decided by this.
 export PROMPT_DIRTRIM=2
