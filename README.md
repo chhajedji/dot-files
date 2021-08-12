@@ -12,4 +12,6 @@
 | OS             | Ubuntu                                                 |
 
 
-> Scripts used in config files are present at [chhajedji/scripts](https://github.com/chhajedji/scripts) submodule.
+> I have added some scripts in my `PATH` which are used as commands at
+> various places, specially in config files. These scripts can be
+> found at [chhajedji/scripts](https://github.com/chhajedji/scripts).
