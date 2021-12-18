@@ -23,6 +23,8 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+mkdir -p $HOME/.tmp
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     [ -n "$PATH" ] && PATH="$HOME/.local/bin:$PATH" || PATH="$HOME/.local/bin"
@@ -78,8 +80,6 @@ fi
 # Set cursor rate.
 # Set cursor autorepeat time (first) and speed (second).
 xset r rate 400 50
-
-[ -f $HOME/.esp_profile ] && source $HOME/.esp_profile
 
 # Default options for fzf.
 export FZF_DEFAULT_OPTS='--height 50% --layout=reverse'
