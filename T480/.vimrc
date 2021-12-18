@@ -170,7 +170,7 @@ set guicursor=a:blinkon100
 set noshowmode
 
 " ctags
-set tags=$HOME/.cstags_dir/esp-idf/TAGS;
+" set tags=$HOME/.cstags_dir/esp-idf/TAGS;
 
 " highlighting options in vsplit and gui
 hi vertsplit guifg=fg guibg=bg
@@ -275,44 +275,6 @@ command! MD set mouse-=a
 " Set cursor rate.
 command! SETX !xset r rate 400 50
 
-" FIXME
-"function! s:Showlogs(...)
-"    if exists(a:0)
-"        for values in a:000
-"            term cat values
-"        endfor
-"    else
-"        term cat monlog
-"    endif
-"    only
-"endfunction
-
-"    function! s:Showlogs(...)
-"        tabe
-"        for fileopen in a:000
-"            term cat fileopen
-"            only
-"        endfor
-"    endfunction
-"
-"    command! -nargs=1 ML call s:Showlogs(<f-args>)
-
-function! s:Showlogs(...)
-    tabe
-    nnoremap u 
-    vnoremap u 
-    nnoremap d 
-    vnoremap d 
-    set readonly
-    term cat monlog
-    set mouse+=a
-    only
-    tabp
-    q
-endfunction
-
-command! ML call s:Showlogs()
-
 " To map Enter, backspace with new line in normal mode. Not a good idea to map
 " Enter key as it is used to cycle results in `grep`/`vimgrep`.
 " nmap <CR> o<Esc>
@@ -415,9 +377,6 @@ if &diff
     colorscheme apprentice
 endif
 
-" Set syntax for every `.espconfig` file.
-autocmd BufNewFile,BufRead .espconfig call dist#ft#SetFileTypeSH("bash")
-
 " Save a file as soon as it is opened in vim even when it's empty.
 " autocmd BufNewFile * :w
 
@@ -461,7 +420,7 @@ autocmd! BufWritePost dwmbar :!pkill dwmbar; dwmbar >/dev/null 2>&1 &
 autocmd BufRead config call dist#ft#SetFileTypeSH("config")
 
 " Automatically enable spell check for specific filetypes.
-autocmd FileType gitcommit,markdown,text setlocal spell
+autocmd FileType gitcommit,markdown setlocal spell
 
 " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! plugins !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -645,7 +604,6 @@ let g:NERDSpaceDelims = 1
 let $CSCOPE_EDITOR="Vim"
 set nocsverb
 " cs kill -1
-cs a $HOME/.cstags_dir/esp-idf/cscope.out
 " cs a $HOME/.cstags_dir/repos/cscope.out
 set cscopetag
 
@@ -657,10 +615,6 @@ set nocscoperelative
 " is set to one, tag file(s) are searched before cscope database(s).  The
 " default is zero.
 set csto=0
-
-" Map F6 to build cscope and ctags for esp-idf ONLY and add in current file to
-" update the line numbers when new lines are added.
-noremap <F6> :!csb $IDF_PATH<CR>:cs reset<CR><CR>
 
 " Bindings compatible with Emacs' cscope.
 nnoremap <C-\>u <C-t>

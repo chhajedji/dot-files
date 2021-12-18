@@ -63,7 +63,6 @@ fi
 LONG_RUNNING_COMMAND_TIMEOUT=20
 [ -f $HOME/.scripts/undistract-me.sh ] && source $HOME/.scripts/undistract-me.sh
 
-[ -f $HOME/.espconfig ] && source $HOME/.espconfig
 [ -f $HOME/.alias ] && source $HOME/.alias
 
 # Keybindings for using fzf with ctrl-r, ctrl-t and alt-c.
@@ -130,7 +129,7 @@ exit_code() {
 
     # This will be final prompt, whatever set earlier will be
     # overwritten by this.
-    export PS1="\[\$EXITCOL\]\w\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
+    export PS1="\n\[\$EXITCOL\]\w\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
 
     # Temp: with git branch
     # export PS1="\[\$EXITCOL\]\W\[\$bldgrn\]\$(__git_ps1)\[\033[01;38;5;208m\]\$([ \j -gt 0 ] && echo [\j])\[\$txtrst\]$ "
