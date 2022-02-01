@@ -26,7 +26,7 @@ root	ALL=(ALL:ALL) ALL
 %sudo	ALL=(ALL:ALL) ALL
 
 # Add binaries here to avoid asking password.
-%sudo ALL=(ALL) NOPASSWD: /usr/bin/updatedb,/usr/sbin/shutdown,/usr/bin/reset,/usr/bin/apt,/usr/bin/apt-get,/usr/bin/snap
+%sudo ALL=(ALL) NOPASSWD: /usr/bin/updatedb,/usr/sbin/shutdown,/usr/bin/reset,/usr/bin/apt,/usr/bin/apt-get,/usr/bin/snap,/usr/bin/make,/usr/bin/dpkg,/usr/bin/pkill
 
 # See sudoers(5) for more information on "#include" directives:
 
