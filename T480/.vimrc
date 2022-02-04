@@ -411,7 +411,7 @@ function! s:Configst()
     set noexpandtab
 endfunction
 
-autocmd BufRead config.h call s:Configsuckless()
+autocmd BufRead config.h call s:Configdwm()
 autocmd BufRead dwm.h,dwm.c call s:Configdwm()
 autocmd BufRead st.c,x.c call s:Configst()
 
