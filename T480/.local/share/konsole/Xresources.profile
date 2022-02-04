@@ -8,7 +8,7 @@ Font=Noto Mono,12,-1,5,50,0,0,0,0,0
 CursorShape=0
 
 [General]
-Command=
+Command=/bin/bash
 DimWhenInactive=false
 Name=Xresources
 Parent=FALLBACK/
