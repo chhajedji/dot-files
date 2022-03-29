@@ -37,8 +37,8 @@ alias se='[ $? = 0 ] && exit'
 alias gitdbupdate="find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles"
 
 # Enable/Disable mouse and touchpad.
-alias te="xinput set-prop \"DLL07A0:01 044E:120B\" \"Device Enabled\" 1"
-alias td="xinput set-prop \"DLL07A0:01 044E:120B\" \"Device Enabled\" 0"
+alias te="xinput set-prop \"DELL0A89:00 27C6:0D41 Touchpad\" \"Device Enabled\" 1"
+alias td="xinput set-prop \"DELL0A89:00 27C6:0D41 Touchpad\" \"Device Enabled\" 0"
 alias me="xinput set-prop \"PixArt Lenovo USB Optical Mouse\" \"Device Enabled\" 1"
 alias md="xinput set-prop \"PixArt Lenovo USB Optical Mouse\" \"Device Enabled\" 0"
 
@@ -192,8 +192,10 @@ sd() {
 
 # Browse and edit any script with single command.
 modscirpt() {
+    [ "$1" ] && $EDITOR $HOME/.scripts/"$1" && return
+
     TARGET="$(fd . $HOME/.scripts --type file | fzf)"
-        [ -n "$TARGET" ] && $EDITOR "$TARGET"
+    [ -n "$TARGET" ] && $EDITOR "$TARGET"
 }
 
 # Process tree in less
