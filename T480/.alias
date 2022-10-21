@@ -86,6 +86,9 @@ up-to-date() {
         sudo apt autoclean
         sudo apt clean
 
+        # Oh snap, why not?
+        sudo snap refresh
+
         printf "\n\nDone. Now updating local databases..\n"
         # Find and save location of all git repositories present in `HOME`.
         # Try using `fd', if not installed then use default `find'.
