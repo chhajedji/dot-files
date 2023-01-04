@@ -36,12 +36,6 @@ alias se='[ $? = 0 ] && exit'
 # Find and save location of all git repositories in $HOME. Useful with dmenu.
 alias gitdbupdate="find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles"
 
-# Enable/Disable mouse and touchpad.
-alias te="xinput set-prop \"DELL0A89:00 27C6:0D41 Touchpad\" \"Device Enabled\" 1"
-alias td="xinput set-prop \"DELL0A89:00 27C6:0D41 Touchpad\" \"Device Enabled\" 0"
-alias me="xinput set-prop \"PixArt Lenovo USB Optical Mouse\" \"Device Enabled\" 1"
-alias md="xinput set-prop \"PixArt Lenovo USB Optical Mouse\" \"Device Enabled\" 0"
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
@@ -95,6 +89,7 @@ up-to-date() {
         fd -HI ^\.git$ $HOME 2>/dev/null > $HOME/.tmp/gitfiles ||
         find $HOME/ -regex .*/\.git$ 2>/dev/null > $HOME/.tmp/gitfiles
         sudo updatedb
+        sudo mandb > /dev/null
     )
     [ "$2" != "-n" ] && exit || return 0
 
