@@ -89,3 +89,7 @@ export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Use ~~ as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER='``'
+
+# Work related
+[ -f $HOME/.workprofile ] && source $HOME/.workprofile
+

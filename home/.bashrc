@@ -176,3 +176,6 @@ complete -c devour
 
 # Fork-bomb. DON'T RUN IT.
 # :(){ :|:& };:
+
+# Work related
+[ -f $HOME/.workrc ] && source $HOME/.workrc
