@@ -2,7 +2,7 @@
 AntiAliasFonts=true
 BoldIntense=false
 ColorScheme=Xresources
-Font=Noto Mono,12,-1,5,50,0,0,0,0,0
+Font=Noto Mono,13,-1,5,50,0,0,0,0,0
 
 [Cursor Options]
 CursorShape=0
