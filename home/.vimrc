@@ -443,19 +443,12 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'gnattishness/cscope_maps'
 " Plugin 'easymotion/vim-easymotion'
 " Plugin 'scrooloose/nerdtree'
-" Plugin 'Yggdroot/indentLine'
-" Plugin 'hari-rangarajan/cctree'
-" Plugin 'vim-scripts/taglist.vim'
-" Plugin 'severin-lemaignan/vim-minimap'
-" Plugin 'sheerun/vim-polyglot'
-" Plugin 'octol/vim-cpp-enhanced-highlight'
 " Plugin 'blueyed/vim-diminactive'
 " Plugin 'ctrlpvim/ctrlp.vim'
 
 " Some good colorschemes
 Plugin 'romainl/Apprentice'
 " Plugin 'altercation/vim-colors-solarized'
-" Plugin 'Rigellute/rigel'
 " Plugin 'joshdick/onedark.vim'
 
 
@@ -482,15 +475,6 @@ if (empty($TMUX))
   endif
 endif
 
-" colorscheme rigel
-
-" let g:onedark_hide_endofbuffer=1
-" let g:onedark_termcolors=256
-" let g:onedark_terminal_italics=1
-" colorscheme onedark
-
-" make comments italic. Be sure to put this after setting colorscheme so that
-" colorscheme doesn't override this setting
 hi Comment cterm=italic ctermbg=NONE ctermfg=Blue gui=italic
 
 " ####################################
@@ -509,35 +493,6 @@ hi Comment cterm=italic ctermbg=NONE ctermfg=Blue gui=italic
 "
 " ####################################
 "
-" vim-polyglot
-"
-" Master plugin for all language tools. It invokes other plugins for languages.
-" `octol/vim-cpp-enhanced-highlight` is a part of polyglot working for C/C++.
-" Using `polyglot` messes up with `markdown` files. So avoid using or take care
-" of this issue.
-" Use individual plugin of polyglot listed on their github page.
-"
-" ####################################
-
-"       "vim-cpp-enhanced-highlight
-"       "
-"       "Highlighting of class scope is disabled by default. To enable set
-"       let g:cpp_class_scope_highlight = 1
-"
-"       " Highlighting of member variables is disabled by default. To enable set
-"       let g:cpp_member_variable_highlight = 1
-"
-"       " Highlighting of class names in declarations is disabled by default. To enable set
-"       let g:cpp_class_decl_highlight = 1
-"
-"       " Highlighting of library concepts is enabled by
-"       let g:cpp_concepts_highlight = 1
-"
-"       " Highlighting of user defined functions can be disabled by
-"       " let g:cpp_no_function_highlight = 1
-"
-" ####################################
-"
 " NERDCommenter
 
 filetype plugin on
@@ -547,20 +502,6 @@ runtime macros/matchit.vim
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
-" ####################################
-
-"        " indentLine
-"
-"        " leading spaces will also be highlighted
-"        let g:indentLine_leadingSpaceEnabled = 1
-"
-"        "show different indentation levels with different characters
-"        let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-"
-"        " " set character for leading spaces. By default it is '˰'
-"        let g:indentLine_leadingSpaceChar = '·'
-"
-"
 " ####################################
 
 "    " lightline.vim
@@ -593,11 +534,6 @@ let g:NERDSpaceDelims = 1
 "
 
 " ####################################
-
-" confirm-quit
-
-
-" ####################################
 "
 " cscope_maps
 
@@ -618,38 +554,6 @@ set csto=0
 
 " Bindings compatible with Emacs' cscope.
 nnoremap <C-\>u <C-t>
-
-" ####################################
-
-" minimap
-
-" let g:minimap_show='<leader>ms'
-" let g:minimap_update='<leader>mu'
-" let g:minimap_close='<leader>gc'
-" let g:minimap_toggle='<leader>gt'
-
-
-" ####################################
-" cctree
-
-" Bindings
-" let g:CCTreeKeyTraceForwardTree = '<C-\>>'
-" let g:CCTreeKeyTraceReverseTree = '<C-\><'
-" let g:CCTreeKeyHilightTree = '<C-l>'
-" let g:CCTreeKeySaveWindow = '<C-\>y'
-" let g:CCTreeKeyToggleWindow = '<C-\>w'
-" let g:CCTreeKeyCompressTree = 'zs'
-" let g:CCTreeKeyDepthPlus = '<C-\>='
-" let g:CCTreeKeyDepthMinus = '<C-\>-'
-"
-" let g:CCTreeWindowVertical = 1
-"
-" let g:CCTreeDisplayMode = 1
-"             default: 1
-" Values: 1 -- Ultra-compact (takes minimum screen width)
-"         2 -- Compact       (Takes little more space)
-"         3 -- Wide          (Takes copious amounts of space)
-
 
 " ####################################
 
