@@ -131,8 +131,8 @@ set matchtime=3
 " options in your .vimrc.  To disable restoring:
     " set t_ti= t_te=
 " To enable restoring (for an xterm):
-    " set t_ti=7[r[?47h t_te=[?47l8
-" (Where  is an <Esc>, type CTRL-V <Esc> to insert it)
+    " set t_ti=␛7␛[r␛[?47h t_te=␛[?47l␛8
+" (Where ␛ is an <Esc>, type CTRL-V <Esc> to insert it)
 
 
 " When on, splitting a window will put the new window right of the
@@ -157,7 +157,19 @@ hi SpellBad cterm=underline,bold  ctermfg=015      ctermbg=000
 
 " Set the directory where the swap files are stored, so they don't clutter  normal directories.
 set swapfile
-set dir=$HOME/.tmp/
+" set dir=$HOME/.tmp/
+
+" Set the directory variable
+let dir = $HOME . '/.tmp/'
+
+" Check if the directory exists, and create it if not
+if !isdirectory(dir)
+    call mkdir(dir, "p")
+    echom "Directory created: " . dir
+endif
+
+" Set the directory
+let &dir=dir
 
 " URxvt requires these settings to render color in vim properly.
 set notermguicolors
