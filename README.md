@@ -8,7 +8,7 @@
 | Editor         | [Emacs](https://github.com/chhajedji/.emacs.d), Vim ☮️  |
 | DE             | KDE                                                    |
 | Shell          | bash                                                   |
-| Terminal       | Konsole (active), URxvt                                |
+| Terminal       | Konsole (active), URxvt, xfce4-terminal(active)        |
 | OS             | Ubuntu                                                 |
 
 

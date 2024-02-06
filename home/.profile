@@ -34,6 +34,8 @@ fi
 [ -n "$CDPATH" ] && export CDPATH="$HOME/pnl/github:$CDPATH" || export CDPATH="$HOME/pnl/github"
 
 export TERMINAL="konsole"
+# Light-weight terminal for simple tasks.
+export TERMINAL_LITE="xfce4-terminal"
 
 # dolphin, system settings and other KDE applications will not look ugly!
 export XDG_CURRENT_DESKTOP=KDE

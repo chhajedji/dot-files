@@ -151,7 +151,7 @@ esc()
 {
     [ $1 ] && cd $HOME/pnl/github/$1 && $EDITOR config.h && return
             [ -f config.h ] && $EDITOR config.h ||
-            $EDITOR $HOME/pnl/github/dwm/config.h
+            cd $HOME/pnl/github/dwm/ && $EDITOR config.h
 }
 
 # Build suckelss apps.
