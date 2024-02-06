@@ -143,8 +143,16 @@ ol() {
 # detaching emacsclient from terminal.
 em() { devour emacsclient -c "$@" || { echo "devour not found." && emacsclient -nc "$@"; }; }
 
-# Edit suckless config files (config.h).
-esc() { [ $1 ] && cd $HOME/pnl/github/$1; $EDITOR config.h; }
+# Edit Suckless Config files (config.h).
+# If a directory is given as input, go to that directory and open
+# config.h. Else see if there is already a config.h in the current
+# directory and open it. If not, then open the config.h for dwm.
+esc()
+{
+    [ $1 ] && cd $HOME/pnl/github/$1 && $EDITOR config.h && return
+            [ -f config.h ] && $EDITOR config.h ||
+            $EDITOR $HOME/pnl/github/dwm/config.h
+}
 
 # Build suckelss apps.
 bsa() {
