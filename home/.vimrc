@@ -1,8 +1,11 @@
-"
-"   __   _(_)_ __ ___  _ __ ___
-"   \ \ / / | '_ ` _ \| '__/ __|
-"    \ V /| | | | | | | | | (__
-"     \_/ |_|_| |_| |_|_|  \___|
+"  ______________________________
+" < Welcome to my Vim config. 😃 >
+"  ------------------------------
+"         \   ^__^
+"          \  (oo)\_______
+"             (__)\       )\/\
+"                 ||----w |
+"                 ||     ||
 
 let mapleader = "\\"
 
@@ -39,8 +42,8 @@ set shiftwidth=4
 
 " Sets the number of columns for a TAB.
 set softtabstop=4
-" no tabs, but spaces!
-set expandtab
+" no spaces, but tabs!
+set noexpandtab
 
 " Indentation with mixed tabs and spaces.
 " These settings will cause as many hard tabs as possible being used for
