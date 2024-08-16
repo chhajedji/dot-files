@@ -51,6 +51,12 @@ export EDITOR="vim"
 export CSCOPE_EDITOR=$EDITOR
 export BROWSER="firefox -new-window"
 
+
+if [ -d "$HOME/.cargo/env" ]; then
+    PATH="$HOME/.cargo/env:$PATH"
+fi
+
+
 #       # Add colors to less.
 #       # Start blinking
 #       LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
@@ -95,3 +101,4 @@ export FZF_COMPLETION_TRIGGER='``'
 # Work related
 [ -f $HOME/.workprofile ] && source $HOME/.workprofile
 
+. "$HOME/.cargo/env"
