@@ -111,7 +111,7 @@ ltree() { tree -C "$@" | less -R; }
 sz() { du -sh "$@"; }
 
 # Combined cd and ls for a directory or if file, open in default EDITOR.
-cds() { cd "$@" 2>/dev/null && ls -CF || $EDITOR "$@"; }
+cds() { cd "$@" 2>/dev/null && { ls -CF || true; } || $EDITOR "$@"; }
 
 # Copy full path of last edited file or given file.
 ol() {
