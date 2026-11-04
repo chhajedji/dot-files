@@ -46,6 +46,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto --exclude=cscope* --exclude=tags'
     alias fgrep='fgrep --color=auto --exclude=cscope* --exclude=tags'
     alias egrep='egrep --color=auto --exclude=cscope* --exclude=tags'
+else
+    # BSD ls (macOS) has no --color option; it colors its output when CLICOLOR is set.
+    export CLICOLOR=1
 fi
 
 # some more ls aliases
