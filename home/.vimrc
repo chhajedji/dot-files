@@ -490,7 +490,7 @@ if (empty($TMUX))
   endif
 endif
 
-hi Comment cterm=italic ctermbg=NONE ctermfg=Blue gui=italic
+hi Comment cterm=italic ctermbg=NONE ctermfg=Blue gui=italic guibg=NONE
 
 " ####################################
 
