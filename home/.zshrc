@@ -58,3 +58,14 @@ PROMPT=$'%(?.%F{cyan}%B.%F{red}%B)\n%3~%b%f %(1j.%F{208}[%j]%f.)%# '
 
 # control-u to clear everything behind cursor.
 bindkey '^U' backward-kill-line
+
+# Option-Backspace deletes back to the previous non-alphanumeric character, like M-DEL in
+# Emacs, instead of treating characters in WORDCHARS (/, -, ., _ ...) as part of the word.
+# Ctrl-W keeps the default, larger word.
+backward-kill-emacs-word() {
+    local WORDCHARS=''
+    zle backward-kill-word
+}
+zle -N backward-kill-emacs-word
+bindkey '^[^?' backward-kill-emacs-word
+bindkey '^[^H' backward-kill-emacs-word
